@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - harry/workflows
+      - Harry/workflows
   pull_request:
   workflow_dispatch:
 
