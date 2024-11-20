@@ -27,10 +27,10 @@ jobs:
           cache: "gradle"
 
       - name: "Build project"
-        run: ./gradlew build
+        run: ./project/gradlew build
 
       - name: "Create distribution"
-        run: ./gradlew distZip
+        run: ./project/gradlew distZip
 
       - uses: actions/upload-artifact@v4
         with:
