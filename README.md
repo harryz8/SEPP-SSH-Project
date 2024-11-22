@@ -6,7 +6,9 @@
 
 ## Directories
 
-[Project](./Project)
-[Database](./Database)
-[Report](./Report)
+[Project](./project)
+
+[Database](./database)
+
+[Report](./report)
 
