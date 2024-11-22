@@ -32,7 +32,7 @@ feedback is collected. If required, tweaks to the program will be made.
 
 ## Build Tools
 
-We are going to use Gradle as our build tool. See (this)[./project/build.gradle].
+We are going to use Gradle as our build tool. See [this](./project/build.gradle).
 
 ## Dependencies
 
@@ -40,4 +40,4 @@ We are going to use Gradle as our build tool. See (this)[./project/build.gradle]
 
 ## Continuous Integration
 
-We will use a (gitHub workflow)[./.github/java.yml] to automate continuous integration.
+We will use a [gitHub workflow](./.github/java.yml) to automate continuous integration.
