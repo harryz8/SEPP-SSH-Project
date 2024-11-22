@@ -2,7 +2,7 @@
 
 ## Information
 
-[Software development techniques](./softwareDevelopmentTechniques.md)
+[Software development techniques](./SoftwareDevelopmentTechniques.md)
 
 ## Directories
 
