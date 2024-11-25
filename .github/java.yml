@@ -35,4 +35,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           path: build/distributions/SSH-Fridge-Contents-Tracker.zip
-          name: rps-java-${{ matrix.java-version }}
+          name: SSH-Fridge-Contents-Tracker-java-${{ matrix.java-version }}
