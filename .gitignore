@@ -4,6 +4,7 @@ build/
 !**/src/main/**/build/
 TODO.md
 !**/src/test/**/build/
+Dockerfile
 
 ### IntelliJ IDEA ###
 ../.idea/modules.xml
