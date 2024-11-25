@@ -2,7 +2,9 @@
 
 ## Information
 
-[Software development techniques](./softwareDevelopmentTechniques.md)
+[Software development plan](./software_development_plan/README.md)
+
+[Schedule](./schedule.md)
 
 ## Directories
 
