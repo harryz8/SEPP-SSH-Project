@@ -2,7 +2,7 @@ plugins {
   id 'java'
   id 'application'
   id 'org.javamodularity.moduleplugin' version '1.8.12'
-  id 'org.openjfx.javafxplugin' version '0.0.13'
+  id 'org.openjfx.javafxplugin' version '0.1.0'
   id 'org.beryx.jlink' version '2.25.0'
 }
 
@@ -17,8 +17,8 @@ ext {
   junitVersion = '5.10.2'
 }
 
-//sourceCompatibility = '23'
-//targetCompatibility = '23'
+sourceCompatibility = '9'
+targetCompatibility = '9'
 
 tasks.withType(JavaCompile) {
   options.encoding = 'UTF-8'
@@ -26,16 +26,16 @@ tasks.withType(JavaCompile) {
 
 application {
   mainModule = 'com.sshgroup.ssh_fridge_contents_tracker'
-  mainClass = 'com.sshgroup.ssh_fridge_contents_tracker.HelloApplication'
+  mainClass = 'com.sshgroup.ssh_fridge_contents_tracker.MainApplication'
 }
 
 javafx {
-  version = '17.0.6'
+  version = '17.0.8'
   modules = ['javafx.controls', 'javafx.fxml']
 }
 
 dependencies {
-
+  implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.4'
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
