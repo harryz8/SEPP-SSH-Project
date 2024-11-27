@@ -1,18 +1,18 @@
 # Software Development Techniques
 ## Version Control
 
-We are going to use git with gitHub.
-The main branch is set up to require a review before a branch is merged, i.e. one other person from the team (other than the pull requester) must review a pull request before it is merged with main.
+We are going to use Git with GitHub.
+The main branch is set up to require a review before a branch is merged, i.e. one other person from the team  must review a pull request before can be merged with main.
 
 ## Team Workflows
 
-We will use gitHub's [Kanban](https://github.com/users/harryz8/projects/1) to keep track of issues' status and who they are assigned to.
+We will use GitHub's [kanban](https://github.com/users/harryz8/projects/1) to keep track of issues' statuses and who they are assigned to.
 
 ## Testing
 
 ### Manual Tests
 
-We will carry out manual tests on a function during the development of that function.
+We will carry out manual tests on a function during it's development.
 
 ### Unit Tests
 
@@ -54,7 +54,7 @@ We are going to use Gradle as our build tool.
 
 ## Continuous Integration
 
-We will use a gitHub workflow to automate continuous integration.
+We will use a GitHub workflow to automate continuous integration.
 
 ## Containerisation
 
