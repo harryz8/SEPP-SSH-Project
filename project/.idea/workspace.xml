@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4cb5701a-ef3d-4057-942a-de29c9af81c6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sshgroup/ssh_fridge_contents_tracker/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sshgroup/ssh_fridge_contents_tracker/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sshgroup/ssh_fridge_contents_tracker/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sshgroup/ssh_fridge_contents_tracker/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sshgroup/ssh_fridge_contents_tracker/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,8 +120,8 @@
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Problems" order="1" />
       <window_info anchor="bottom" id="Problems View" order="2" weight="0.17839196" />
-      <window_info anchor="bottom" id="Terminal" order="3" weight="0.33001328" />
-      <window_info active="true" anchor="bottom" id="Run" order="4" visible="true" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="3" visible="true" weight="0.33001328" />
+      <window_info anchor="bottom" id="Run" order="4" />
       <window_info anchor="bottom" id="Build" order="5" weight="0.33001328" />
       <window_info anchor="bottom" id="Services" order="6" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.33001328" />
@@ -221,7 +218,7 @@
       <workItem from="1732704688536" duration="1456000" />
       <workItem from="1732713244884" duration="176000" />
       <workItem from="1732725805092" duration="1951000" />
-      <workItem from="1732747394079" duration="327000" />
+      <workItem from="1732747394079" duration="517000" />
     </task>
     <servers />
   </component>
