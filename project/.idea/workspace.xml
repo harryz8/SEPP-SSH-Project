@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4cb5701a-ef3d-4057-942a-de29c9af81c6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/sshgroup/ssh_fridge_contents_tracker/main-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.github/java.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../.github/java.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../database/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sshgroup/ssh_fridge_contents_tracker/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sshgroup/ssh_fridge_contents_tracker/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sshgroup/ssh_fridge_contents_tracker/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sshgroup/ssh_fridge_contents_tracker/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sshgroup/ssh_fridge_contents_tracker/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/sshgroup/ssh_fridge_contents_tracker/MainApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/sshgroup/ssh_fridge_contents_tracker/MainApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../software_development_plan/softwareDevelopmentTechniques.md" beforeDir="false" afterPath="$PROJECT_DIR$/../software_development_plan/softwareDevelopmentTechniques.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,12 +45,25 @@
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="application" type="c8890929:TasksNode$1" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SSH_Fridge_Contents_Tracker" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="verification" type="c8890929:TasksNode$1" />
+              </path>
             </expand>
             <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -69,13 +80,18 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.Build SSH_Fridge_Contents_Tracker.executor": "Run",
+    "Gradle.MainApplicationTests (1).executor": "Run",
+    "Gradle.MainApplicationTests.demoTestMethod.executor": "Run",
+    "Gradle.MainApplicationTests.executor": "Run",
     "Gradle.SSH_Fridge_Contents_Tracker [:com.sshgroup.ssh_fridge_contents_tracker.HelloApplication.main()].executor": "Run",
     "Gradle.SSH_Fridge_Contents_Tracker [run].executor": "Run",
     "Gradle.project [:com.sshgroup.ssh_fridge_contents_tracker.HelloApplication.main()].executor": "Run",
     "Gradle.project [run].executor": "Run",
+    "Gradle.project [test].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Harry/workflows",
+    "git-widget-placeholder": "Harry/workflows2",
+    "jdk.selected.JAVA_MODULE": "23",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/mnt/c/JavaFX SDK 21/javafx-sdk-21.0.2/lib",
     "node.js.detected.package.eslint": "true",
@@ -97,7 +113,7 @@
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" show_stripe_button="false" />
       <window_info id="Learn" show_stripe_button="false" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24004684" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21272443" />
       <window_info id="Commit" order="1" weight="0.25" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
@@ -108,17 +124,17 @@
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Problems" order="1" />
       <window_info anchor="bottom" id="Problems View" order="2" weight="0.17839196" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="3" visible="true" weight="0.33001328" />
-      <window_info anchor="bottom" id="Run" order="4" weight="0.33001328" />
+      <window_info anchor="bottom" id="Terminal" order="3" weight="0.30876493" />
+      <window_info active="true" anchor="bottom" id="Run" order="4" visible="true" weight="0.30876493" />
       <window_info anchor="bottom" id="Build" order="5" weight="0.33001328" />
       <window_info anchor="bottom" id="Services" order="6" />
-      <window_info anchor="bottom" id="Find" order="6" weight="0.33001328" />
+      <window_info anchor="bottom" id="Find" order="7" weight="0.33001328" />
       <window_info anchor="right" id="Endpoints" show_stripe_button="false" />
       <window_info anchor="right" id="Coverage" show_stripe_button="false" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Notifications" order="0" weight="0.25" />
       <window_info anchor="right" id="AIAssistant" order="1" weight="0.25" />
       <window_info anchor="right" id="Database" order="2" weight="0.25" />
-      <window_info anchor="right" id="Gradle" order="3" weight="0.32982045" />
+      <window_info active="true" anchor="right" id="Gradle" order="3" visible="true" weight="0.32045278" />
       <window_info anchor="right" id="Maven" order="4" weight="0.25" />
     </layout>
   </component>
@@ -129,20 +145,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.project [run]">
-    <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.sshgroup.ssh_fridge_contents_tracker.MainApplication" />
-      <module name="SSH_Fridge_Contents_Tracker.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.sshgroup.ssh_fridge_contents_tracker.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Gradle.project [test]">
     <configuration name="project [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -165,10 +168,32 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="project [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.project [test]" />
         <item itemvalue="Gradle.project [run]" />
-        <item itemvalue="Application.MainApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -194,6 +219,8 @@
       <workItem from="1732100909834" duration="6124000" />
       <workItem from="1732116270745" duration="1347000" />
       <workItem from="1732291266251" duration="2652000" />
+      <workItem from="1732704688536" duration="1456000" />
+      <workItem from="1732713244884" duration="176000" />
     </task>
     <servers />
   </component>
