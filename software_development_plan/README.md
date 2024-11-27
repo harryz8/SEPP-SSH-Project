@@ -2,7 +2,7 @@
 
 ## Reqirements and Design
 
-See EDR
+See [EDR](./SSH_EDR.pdf).
 
 ## Implementation and Unit Testing
 

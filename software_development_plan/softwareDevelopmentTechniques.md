@@ -6,9 +6,13 @@ The main branch is set up to require a review before a branch is merged, i.e. on
 
 ## Team Workflows
 
+We will use gitHub's [Kanban](https://github.com/users/harryz8/projects/1) to keep track of issues' status and who they are assigned to.
+
 ## Testing
 
 ### Manual Tests
+
+We will carry out manual tests on a function during the development of that function.
 
 ### Unit Tests
 
@@ -21,6 +25,8 @@ We plan to:
 3. Then implement these functions, making them pass the tests
 
 ### Integration Tests
+
+During meetings, we will test integration of issues completed during the previous half-week.
 
 ### Property Based Tests
 
