@@ -14,3 +14,5 @@ I have attemped to make a start on the CI workflow.
 * You could filter recipes based on recipe category.
 ## Meetings
 We have decided to meet twice a week until the deadline, on tuesdays and thursdays 1-3pm.
+## Branches
+We decided to create our own branches to work in. They can only be merged into main after at least 1 other person has reviewed the pull request.
