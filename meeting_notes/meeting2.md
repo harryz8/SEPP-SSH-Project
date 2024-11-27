@@ -12,3 +12,5 @@ I have attemped to make a start on the CI workflow.
 * we will use a web-scraper to get prices of items from a range of websites and then average them
 * Recipe database is kept locally, and the user can add more to it.
 * You could filter recipes based on recipe category.
+## Meetings
+We have decided to meet twice a week until the deadline, on tuesdays and thursdays 1-3pm.
