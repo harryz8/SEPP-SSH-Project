@@ -17,6 +17,6 @@ We have decided to meet twice a week until the deadline, on Tuesdays and Thursda
 ## Branches
 We decided to create our own branches to work in. They can only be merged into main after at least 1 other person has reviewed the pull request.
 ## [Kanban](https://github.com/users/harryz8/projects/1/views/1)
-This is where issues (jobs) live. You can take any unassigned issue from the "Ready" queue, assign yourself, move it to the "In progress" queue and then work on it. Close the issue when you are finish and perform a pull request on the branch.
+This is where issues (jobs) live. You can take any unassigned issue from the "Ready" queue, assign yourself, move it to the "In progress" queue and then work on it. Close the issue when you are finished and perform a pull request on the branch.
 
 We spent time splitting the EDR into issues which we added to the kanban. This is yet to be complete so we can add more issues as we think of them.
