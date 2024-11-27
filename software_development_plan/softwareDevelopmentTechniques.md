@@ -26,7 +26,7 @@ We plan to:
 
 ### Integration Tests
 
-
+During meetings, we will test integration of issues completed during the previous half-week.
 
 ### Property Based Tests
 
