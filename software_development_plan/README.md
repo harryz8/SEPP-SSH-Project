@@ -1,6 +1,6 @@
 # Software Development
 
-## Reqirements and Design
+## Requirements and Design
 
 See [EDR](./SSH_EDR.pdf).
 
