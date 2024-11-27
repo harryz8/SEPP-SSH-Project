@@ -43,6 +43,8 @@ We are going to use Gradle as our build tool.
 
 - JavaFX
 - JUnit
+- org.postgresql:postgresql:42.6.0
+- org.hibernate. ⬅️ not finised, see lecture notes
 
 ## Continuous Integration
 
@@ -51,3 +53,5 @@ We will use a gitHub workflow to automate continuous integration.
 ## Containerisation
 
 Do we need to use containerisation?
+
+Maybe we should write a container that manages the database so that when someone installs it through docker, the database doesn't have to be set up maually, and it hosts it on a port.
