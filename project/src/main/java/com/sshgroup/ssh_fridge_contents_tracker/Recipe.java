@@ -3,24 +3,53 @@ package com.sshgroup.ssh_fridge_contents_tracker;
 import java.util.Date;
 import java.util.List;
 
+import java.io.File;
+import java.util.concurrent.ThreadLocalRandom;
+
+//import com.fasterxml.jackson.annotation.JsonCreator;
+//import com.fasterxml.jackson.annotation.JsonProperty;
+//import com.fasterxml.jackson.databind.ObjectMapper;
+
+import jakarta.persistence.*;
+import jdk.jfr.Name;
+
+@Entity
+@Table(name = "recipe_table")
 public class Recipe {
+    @Id
     int recipe_id;
-    String recipe_name;
-    private List<String> recipe_instruction;
     int ingredients_id;
-    private List<String> ingredients;
-    int quantity;
-    int min_cost;
-    String store_link;
-    int quantity_needed;
-    int total_cost;
     int category_id;
-    String category_name;
+
+    @Column
+    private String recipe_name;
+    @Column
+    private String recipe_instruction;
+    @Column
+    private String ingredients;
+    @Column
+    private int quantity;
+    @Column
+    private int min_cost;
+    @Column
+    private String store_link;
+    @Column
+    private int quantity_needed;
+    @Column
+    private int total_cost;
+    @Column
+    private String category_name;
+
+    @Temporal(TemporalType.DATE)
     Date last_update_date;
 
+    public Recipe(){
+
+    }
 
 
-    public Recipe(int recipe_id, String recipe_name, List<String> recipe_instruction, List<String> ingredients, int ingredients_id, int quantity, int min_cost, String store_link, int quantity_needed, int total_cost, int category_id, String category_name, Date last_update_date) {
+
+    public Recipe(int recipe_id, String recipe_name, String recipe_instruction, String ingredients, int ingredients_id, int quantity, int min_cost, String store_link, int quantity_needed, int total_cost, int category_id, String category_name, Date last_update_date) {
         this.recipe_id = recipe_id;
         this.recipe_name = recipe_name;
         this.recipe_instruction = recipe_instruction;
@@ -53,11 +82,11 @@ public class Recipe {
         this.recipe_name = recipe_name;
     }
 
-    public List<String> getInstruction() {
+    public String getInstruction() {
         return recipe_instruction;
     }
 
-    public void setRecipe_instruction(List<String> recipe_instruction) {
+    public void setRecipe_instruction(String recipe_instruction) {
         this.recipe_instruction = recipe_instruction;
     }
 
@@ -69,11 +98,11 @@ public class Recipe {
         this.ingredients_id = ingredients_id;
     }
 
-    public List<String> getIngredients() {
+    public String getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<String> ingredients) {
+    public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -140,4 +169,5 @@ public class Recipe {
     public void setLast_update_date(Date last_update_date) {
         this.last_update_date = last_update_date;
     }
+    
 }
