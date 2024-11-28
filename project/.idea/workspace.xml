@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4cb5701a-ef3d-4057-942a-de29c9af81c6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../database/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../database/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/sshgroup/ssh_fridge_contents_tracker/MainApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/sshgroup/ssh_fridge_contents_tracker/MainApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../software_development_plan/softwareDevelopmentTechniques.md" beforeDir="false" afterPath="$PROJECT_DIR$/../software_development_plan/softwareDevelopmentTechniques.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,9 +84,10 @@
     "Gradle.project [:com.sshgroup.ssh_fridge_contents_tracker.HelloApplication.main()].executor": "Run",
     "Gradle.project [run].executor": "Run",
     "Gradle.project [test].executor": "Run",
+    "Gradle.project.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Harry/workflows2",
+    "git-widget-placeholder": "Harry/hibernate",
     "jdk.selected.JAVA_MODULE": "23",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/mnt/c/JavaFX SDK 21/javafx-sdk-21.0.2/lib",
@@ -109,11 +106,12 @@
   <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
     <layout>
       <window_info id="Bookmarks" show_stripe_button="false" side_tool="true" />
+      <window_info id="ORM" side_tool="true" />
       <window_info id="Merge Requests" show_stripe_button="false" />
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" show_stripe_button="false" />
       <window_info id="Learn" show_stripe_button="false" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21272443" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20746389" />
       <window_info id="Commit" order="1" weight="0.25" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
@@ -124,8 +122,8 @@
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Problems" order="1" />
       <window_info anchor="bottom" id="Problems View" order="2" weight="0.17839196" />
-      <window_info anchor="bottom" id="Terminal" order="3" weight="0.30876493" />
-      <window_info active="true" anchor="bottom" id="Run" order="4" visible="true" weight="0.30876493" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="3" visible="true" weight="0.70709217" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.32978725" />
       <window_info anchor="bottom" id="Build" order="5" weight="0.33001328" />
       <window_info anchor="bottom" id="Services" order="6" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.33001328" />
@@ -134,7 +132,7 @@
       <window_info anchor="right" content_ui="combo" id="Notifications" order="0" weight="0.25" />
       <window_info anchor="right" id="AIAssistant" order="1" weight="0.25" />
       <window_info anchor="right" id="Database" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="Gradle" order="3" visible="true" weight="0.32045278" />
+      <window_info anchor="right" id="Gradle" order="3" weight="0.32045278" />
       <window_info anchor="right" id="Maven" order="4" weight="0.25" />
     </layout>
   </component>
