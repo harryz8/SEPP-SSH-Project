@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4cb5701a-ef3d-4057-942a-de29c9af81c6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sshgroup/ssh_fridge_contents_tracker/Categories.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sshgroup/ssh_fridge_contents_tracker/RecipeToolkit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sshgroup/ssh_fridge_contents_tracker/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sshgroup/ssh_fridge_contents_tracker/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sshgroup/ssh_fridge_contents_tracker/RecipeToolkit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sshgroup/ssh_fridge_contents_tracker/RecipeToolkit.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +107,7 @@
   <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
     <layout>
       <window_info id="Bookmarks" show_stripe_button="false" side_tool="true" />
+      <window_info id="ORM" side_tool="true" />
       <window_info id="Merge Requests" show_stripe_button="false" />
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" show_stripe_button="false" />
@@ -222,6 +222,7 @@
       <workItem from="1732713244884" duration="176000" />
       <workItem from="1732725805092" duration="1951000" />
       <workItem from="1732747394079" duration="607000" />
+      <workItem from="1732781184798" duration="1124000" />
     </task>
     <servers />
   </component>
