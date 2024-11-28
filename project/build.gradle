@@ -17,8 +17,8 @@ ext {
   junitVersion = '5.10.2'
 }
 
-sourceCompatibility = '9'
-targetCompatibility = '9'
+sourceCompatibility = '17'
+targetCompatibility = '17'
 
 tasks.withType(JavaCompile) {
   options.encoding = 'UTF-8'
@@ -39,6 +39,7 @@ dependencies {
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
   runtimeOnly("org.postgresql:postgresql:42.6.0")
+  implementation("org.hibernate.orm:hibernate-core:6.0.0.Final")
 }
 
 test {
