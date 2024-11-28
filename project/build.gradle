@@ -56,3 +56,7 @@ jlink {
 jlinkZip {
   group = 'distribution'
 }
+
+//distZip {
+//  archiveName 'SSH-Fridge-Contents-Tracker.zip'
+//}
