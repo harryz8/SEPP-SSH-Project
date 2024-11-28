@@ -2,7 +2,7 @@
 
 ## Requirements and Design
 
-See [EDR](./SSH_EDR.pdf).
+See the original [EDR](./SSH_EDR.pdf). Any subsequent changes made will be outlined in the repo documentation.
 
 ## Implementation and Unit Testing
 
