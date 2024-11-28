@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4cb5701a-ef3d-4057-942a-de29c9af81c6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +48,54 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="SSH_Fridge_Contents_Tracker" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SSH_Fridge_Contents_Tracker" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build setup" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SSH_Fridge_Contents_Tracker" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="distribution" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SSH_Fridge_Contents_Tracker" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="documentation" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SSH_Fridge_Contents_Tracker" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="help" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SSH_Fridge_Contents_Tracker" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SSH_Fridge_Contents_Tracker" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="verification" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SSH_Fridge_Contents_Tracker" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SSH_Fridge_Contents_Tracker" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
               </path>
             </expand>
             <select />
@@ -73,6 +123,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.Build SSH_Fridge_Contents_Tracker.executor": "Run",
@@ -101,6 +152,35 @@
     "project.structure.side.proportion": "0.5103448",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
+=======
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build SSH_Fridge_Contents_Tracker.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MainApplicationTests (1).executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MainApplicationTests.demoTestMethod.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MainApplicationTests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SSH_Fridge_Contents_Tracker [:com.sshgroup.ssh_fridge_contents_tracker.HelloApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SSH_Fridge_Contents_Tracker [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.project [:com.sshgroup.ssh_fridge_contents_tracker.HelloApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.project [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.project [test].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Khaled&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;23&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/mnt/c/JavaFX SDK 21/javafx-sdk-21.0.2/lib&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.5103448&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+>>>>>>> d23448b (initial recipe class)
   }
 }</component>
   <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
@@ -111,7 +191,11 @@
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" show_stripe_button="false" />
       <window_info id="Learn" show_stripe_button="false" />
+<<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20746389" />
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18008327" />
+>>>>>>> d23448b (initial recipe class)
       <window_info id="Commit" order="1" weight="0.25" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
@@ -122,17 +206,26 @@
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Problems" order="1" />
       <window_info anchor="bottom" id="Problems View" order="2" weight="0.17839196" />
+<<<<<<< HEAD
       <window_info active="true" anchor="bottom" id="Terminal" order="3" visible="true" weight="0.70709217" />
       <window_info anchor="bottom" id="Run" order="4" weight="0.32978725" />
+=======
+      <window_info anchor="bottom" id="Terminal" order="3" weight="0.30876493" />
+      <window_info active="true" anchor="bottom" id="Run" order="4" visible="true" weight="0.055685814" />
+>>>>>>> d23448b (initial recipe class)
       <window_info anchor="bottom" id="Build" order="5" weight="0.33001328" />
       <window_info anchor="bottom" id="Services" order="6" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.33001328" />
       <window_info anchor="right" id="Endpoints" show_stripe_button="false" />
       <window_info anchor="right" id="Coverage" show_stripe_button="false" side_tool="true" />
-      <window_info anchor="right" content_ui="combo" id="Notifications" order="0" weight="0.25" />
+      <window_info anchor="right" id="Notifications" order="0" weight="0.17800137" />
       <window_info anchor="right" id="AIAssistant" order="1" weight="0.25" />
       <window_info anchor="right" id="Database" order="2" weight="0.25" />
+<<<<<<< HEAD
       <window_info anchor="right" id="Gradle" order="3" weight="0.32045278" />
+=======
+      <window_info anchor="right" id="Gradle" order="3" weight="0.17800137" />
+>>>>>>> d23448b (initial recipe class)
       <window_info anchor="right" id="Maven" order="4" weight="0.25" />
     </layout>
   </component>
@@ -198,8 +291,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.38" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.38" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.12" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.12" />
       </set>
     </attachedChunks>
   </component>
@@ -219,8 +312,13 @@
       <workItem from="1732291266251" duration="2652000" />
       <workItem from="1732704688536" duration="1456000" />
       <workItem from="1732713244884" duration="176000" />
+<<<<<<< HEAD
       <workItem from="1732725805092" duration="1951000" />
       <workItem from="1732747394079" duration="607000" />
+=======
+      <workItem from="1732720660402" duration="304000" />
+      <workItem from="1732747728777" duration="1924000" />
+>>>>>>> d23448b (initial recipe class)
     </task>
     <servers />
   </component>
