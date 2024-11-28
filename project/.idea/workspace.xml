@@ -102,7 +102,7 @@
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
   }
-}]]></component>
+}</component>
   <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
     <layout>
       <window_info id="Bookmarks" show_stripe_button="false" side_tool="true" />
@@ -143,7 +143,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.project [test]">
+  <component name="RunManager" selected="Gradle.project [run]">
     <configuration name="project [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -190,8 +190,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.project [test]" />
         <item itemvalue="Gradle.project [run]" />
+        <item itemvalue="Gradle.project [test]" />
       </list>
     </recent_temporary>
   </component>
@@ -219,6 +219,8 @@
       <workItem from="1732291266251" duration="2652000" />
       <workItem from="1732704688536" duration="1456000" />
       <workItem from="1732713244884" duration="176000" />
+      <workItem from="1732725805092" duration="1951000" />
+      <workItem from="1732747394079" duration="607000" />
     </task>
     <servers />
   </component>
