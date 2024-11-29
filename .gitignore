@@ -4,6 +4,14 @@ project/.gradle
 TODO.md
 !**/src/test/**/build/
 Dockerfile
+project/build/classes
+project/build/generated
+project/build/libs
+project/build/reports
+project/build/resources
+project/build/scripts
+project/build/test-results
+project/build/tmp
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
