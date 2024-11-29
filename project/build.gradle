@@ -7,7 +7,7 @@ plugins {
 }
 
 group 'com.SSHGroup'
-version '1.0-SNAPSHOT'
+// version '1.0-SNAPSHOT'
 
 repositories {
   mavenCentral()
@@ -26,7 +26,7 @@ tasks.withType(JavaCompile) {
 
 application {
   mainModule = 'com.sshgroup.ssh_fridge_contents_tracker'
-  mainClass = 'com.sshgroup.ssh_fridge_contents_tracker.MainApplication'
+  mainClass = 'com.sshgroup.ssh_fridge_contents_tracker.WebScraper'
 }
 
 javafx {
