@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.sshgroup.ssh_fridge_contents_tracker.MainApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-29T12:03:40" hostname="Prestige" time="0.01">
-  <properties/>
-  <testcase name="testJUnitIsWorking()" classname="com.sshgroup.ssh_fridge_contents_tracker.MainApplicationTests" time="0.01"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

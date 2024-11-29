@@ -18,10 +18,10 @@ project/build/tmp
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
-/project/.idea/modules.xml
-/project/.idea/jarRepositories.xml
-/project/.idea/compiler.xml
-/project/.idea/libraries/
+./project/.idea/modules.xml
+./project/.idea/jarRepositories.xml
+./project/.idea/compiler.xml
+./project/.idea/libraries/
 *.iws
 *.iml
 *.ipr
