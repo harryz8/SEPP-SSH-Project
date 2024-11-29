@@ -36,7 +36,7 @@ set APP_HOME=%DIRNAME%..
 for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
 
 @rem Add default JVM options here. You can also use JAVA_OPTS and SSH_FRIDGE_CONTENTS_TRACKER_OPTS to pass JVM options to this script.
-set DEFAULT_JVM_OPTS="--module-path" "%APP_HOME%\lib" "--module" "com.sshgroup.ssh_fridge_contents_tracker/com.sshgroup.ssh_fridge_contents_tracker.MainApplication"
+set DEFAULT_JVM_OPTS="--module-path" "%APP_HOME%\lib" "--module" "com.sshgroup.ssh_fridge_contents_tracker/com.sshgroup.ssh_fridge_contents_tracker.WebScraper"
 
 @rem Find java.exe
 if defined JAVA_HOME goto findJavaFromJavaHome
