@@ -45,6 +45,7 @@ public class RecipeToolkit {
                     throw new NoItemsException("Ocado Scraper returned valid no results");
                 }
                 ArrayList<String> LIs = WebScraper.getUnorderedListItems(element);
+//                System.out.println("LIs size: "+LIs.size());
                 for (String li : LIs) {
                     String li2 = null;
                     li2 = WebScraper.getElementByID(li, "div", "fop-item", "class");
@@ -56,10 +57,12 @@ public class RecipeToolkit {
                     }
                     String linkElement = WebScraper.getElement(li2, "a");
                     if (linkElement == null) {
+//                        System.out.println("linkElement NULL; item: "+li2);
                         continue;
                     }
                     String link = WebScraper.getParameterValue(linkElement, "href");
                     if (link == null) {
+//                        System.out.println("link NULL; item: "+linkElement);
                         continue;
                     }
                     try {
@@ -81,10 +84,10 @@ public class RecipeToolkit {
             if (quantityNeeded > 0) {
                 ocadoItems.removeIf(s -> s.getQuantity() < quantityNeeded);
             }
-            for (PriceQuantity eachItem : ocadoItems) {
-                System.out.println(eachItem.toString());
-            }
-            System.out.println(ocadoItems.size());
+//            for (PriceQuantity eachItem : ocadoItems) {
+//                System.out.println(eachItem.toString());
+//            }
+//            System.out.println(ocadoItems.size());
             PriceQuantity minOcado = PriceQuantity.getMinimumPrice((ArrayList<PriceQuantity>) ocadoItems);
             if (minOcado == null) {
                 return -2;
