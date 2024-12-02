@@ -1,9 +1,13 @@
 package com.sshgroup.ssh_fridge_contents_tracker;
 
+/**
+ * A class to hold the first and last positions of a substring in a string
+ */
 public class StringLocation {
-    int firstPos;
-    int lastPos;
+    private int firstPos;
+    private int lastPos;
     String subString;
+
     public StringLocation(String subString, int firstPos, int lastPos) {
         this.subString = subString;
         this.firstPos = firstPos;
