@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"com.sshgroup.ssh_fridge_contents_tracker","l":"com.sshgroup.ssh_fridge_contents_tracker"}];updateSearchResults();
