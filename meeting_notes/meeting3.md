@@ -15,6 +15,11 @@ I have made a table  for all entities that we need. Then I have modified it to s
 
 I have begun working on the basics of the form where users can add new recipes to the recipe database. To this point I have created basic variables to store the name and instructions of each recipe. I have also created ArrayLists to store the ingredients for each new recipe, there is one for the ingredient names and one for the amount required. I am currently using a scanner to take the user's input for the recipe. I plan on using this meeting to discuss the implementation of the database with Khaled to determine how I should go about adding the collected data to the tables. 
 
+
+### Phoebe
+
+I have made two methods used for sorting the list of recipes to be displayed to the user. The recipes can be either filtered by category or sorted by the price of the remaining items. I have used undefined methods in order to query the database but I plan to talk with Khaled to use the methods he has created in order to fully implement my methods
+
 ## Meeting Notes
 
 
