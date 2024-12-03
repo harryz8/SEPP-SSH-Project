@@ -7,7 +7,7 @@ public class RecipeToolkit {
         // TODO: implement here
         return recipeList;
     }
-    public static ArrayList<Recipe> filterByCategory(ArrayList<Recipe> recipeList, Categories category) {
+    public static ArrayList<Recipe> filterByCategory(ArrayList<Recipe> recipeList, Category category) {
         // TODO: implement here
         return recipeList;
     }
