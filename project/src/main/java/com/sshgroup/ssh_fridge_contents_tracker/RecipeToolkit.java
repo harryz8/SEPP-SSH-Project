@@ -31,15 +31,16 @@ public class RecipeToolkit {
             }
         }
         // now that the costs for each recipe are assigned we sort the list based on these costs
+        // makes a list of mapped entries with Recipe as the key and the cost as the value. Sort by the value
         List<Map.Entry<Recipe, Double>> sortedCosts = new ArrayList<>(costsForRecipes.entrySet());
         sortedCosts.sort(Map.Entry.comparingByValue());
 
-        // Then add the sorted recipes
+        // Then add the sorted recipes to a new list
         ArrayList<Recipe> sortedList = new ArrayList<>();
         for(Map.Entry<Recipe, Double> entry : sortedCosts){
             sortedList.add(entry.getKey());
         }
-        return recipeList;
+        return sortedList;
     }
 
     /**
