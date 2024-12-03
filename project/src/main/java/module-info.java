@@ -4,6 +4,9 @@ module com.sshgroup.ssh_fridge_contents_tracker {
     requires java.sql;
     requires jakarta.persistence;
     requires jdk.jfr;
+    requires jdk.unsupported.desktop;
+    requires java.rmi;
+    requires org.hibernate.orm.core;
 
 
     opens com.sshgroup.ssh_fridge_contents_tracker to javafx.fxml;

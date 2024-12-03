@@ -1,16 +1,27 @@
 project/.gradle
-build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 TODO.md
 !**/src/test/**/build/
 Dockerfile
+project/build/classes
+project/build/generated
+project/build/libs
+project/build/reports
+project/build/resources
+project/build/scripts
+project/build/test-results
+project/build/tmp
 
 ### IntelliJ IDEA ###
-../.idea/modules.xml
-../.idea/jarRepositories.xml
-../.idea/compiler.xml
-../.idea/libraries/
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+./project/.idea/modules.xml
+./project/.idea/jarRepositories.xml
+./project/.idea/compiler.xml
+./project/.idea/libraries/
 *.iws
 *.iml
 *.ipr

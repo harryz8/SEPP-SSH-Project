@@ -6,6 +6,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 
 public class MainApplication extends Application {
     @Override
@@ -17,7 +20,12 @@ public class MainApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
-        launch();
+    public static void main(String[] args) throws MalformedURLException {
+        if ((args.length > 0) && (args[0].toLowerCase().equals("i"))) {
+            launch();
+        }
+        else {
+            System.out.println("Command line mode goes here");
+        }
     }
 }

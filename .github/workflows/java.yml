@@ -54,5 +54,5 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          path: project/build/distributions/SSH-Fridge-Contents-Tracker.zip
+          path: project/build/distributions/SSH_Fridge_Contents_Tracker-1.0.zip
           name: SSH-Fridge-Contents-Tracker-java-${{ matrix.java-version }}
