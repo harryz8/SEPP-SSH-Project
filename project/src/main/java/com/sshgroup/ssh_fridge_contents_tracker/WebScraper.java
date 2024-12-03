@@ -101,7 +101,7 @@ public class WebScraper {
      * @param outerElementIDParameterName the parameter that holds the unique identifier for the element
      * @return an arrayList of strings of each element of type `innerElementTagType` from in the outer element
      */
-    public static ArrayList<String> getMultipleElementsFromElementWithID(String source, String outerElementTagType, String outerElementID, String outerElementIDParameterName, String innerElementTagType) {
+    public static ArrayList<String> getMultipleElementsFromElement(String source, String outerElementTagType, String outerElementID, String outerElementIDParameterName, String innerElementTagType) {
         if (source == null || outerElementTagType == null || outerElementID == null || outerElementIDParameterName == null || innerElementTagType == null || innerElementTagType.isEmpty() || outerElementID.isEmpty() || outerElementIDParameterName.isEmpty() || outerElementTagType.isEmpty() || source.isEmpty()) {
             return null;
         }
