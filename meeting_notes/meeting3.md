@@ -9,7 +9,7 @@ I have made changes to the EDR in order to make my module work, as I found that 
 
 ### Khaled 
 
-I have made a table  for all entities that we need. Then I have modified it to separated 5 tables but linked to each other where they should, using many to one.
+I have begun doing the recipe datebase skeleton set using the Hibernate. I have made a table for all entities that we need. Then I have modified it to separated 5 tables but linked to each other where they should, using many to one. I set all classes for each entity, get() and set()
 
 ### Tom
 
