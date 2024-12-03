@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4cb5701a-ef3d-4057-942a-de29c9af81c6" name="Changes" comment="Creating Java Class">
+    <list default="true" id="4cb5701a-ef3d-4057-942a-de29c9af81c6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sshgroup/ssh_fridge_contents_tracker/RecipeCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sshgroup/ssh_fridge_contents_tracker/RecipeCreator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +111,7 @@
       <window_info id="Pull Requests" show_stripe_button="false" />
       <window_info id="Learn" show_stripe_button="false" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.17279942" />
-      <window_info active="true" id="Commit" order="1" visible="true" weight="0.17279942" />
+      <window_info id="Commit" order="1" weight="0.17332551" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" show_stripe_button="false" />
@@ -119,7 +120,7 @@
       <window_info anchor="bottom" id="File Transfer" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Problems" order="1" />
-      <window_info anchor="bottom" id="Problems View" order="2" weight="0.17839196" />
+      <window_info active="true" anchor="bottom" id="Problems View" order="2" visible="true" weight="0.3295678" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.30876493" />
       <window_info active="true" anchor="bottom" id="Run" order="4" visible="true" weight="0.31452405" />
       <window_info anchor="bottom" id="Build" order="5" weight="0.33001328" />
@@ -130,7 +131,7 @@
       <window_info anchor="right" content_ui="combo" id="Notifications" order="0" weight="0.25" />
       <window_info anchor="right" id="AIAssistant" order="1" weight="0.25" />
       <window_info anchor="right" id="Database" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="Gradle" order="3" visible="true" weight="0.1605339" />
+      <window_info anchor="right" id="Gradle" order="3" weight="0.26145712" />
       <window_info anchor="right" id="Maven" order="4" weight="0.25" />
     </layout>
   </component>
@@ -210,7 +211,8 @@
       <workItem from="1732704688536" duration="1456000" />
       <workItem from="1732713244884" duration="176000" />
       <workItem from="1732721527982" duration="788000" />
-      <workItem from="1733154061299" duration="598000" />
+      <workItem from="1733154061299" duration="1916000" />
+      <workItem from="1733224869823" duration="593000" />
     </task>
     <task id="LOCAL-00001" summary="Creating Java Class">
       <option name="closed" value="true" />
@@ -220,7 +222,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733154367332</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Creating Java Class">
+      <option name="closed" value="true" />
+      <created>1733154781085</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1733154781085</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
