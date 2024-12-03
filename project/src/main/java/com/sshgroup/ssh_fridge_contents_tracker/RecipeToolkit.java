@@ -2,9 +2,6 @@ package com.sshgroup.ssh_fridge_contents_tracker;
 
 import org.hibernate.SessionFactory;
 
-import java.lang.reflect.Array;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,14 +12,13 @@ public class RecipeToolkit {
     SessionFactory session = DatabaseAccess.setup();
     DatabaseAccess dbAccess = new DatabaseAccess();
 
-    public ArrayList<Recipe> sortByPriceOfRemainingItems(ArrayList<Recipe> recipeList) {
-        ArrayList<Ingredients> ingList = new ArrayList<>();
+    public static ArrayList<Recipe> sortByPriceOfRemainingItems(ArrayList<Recipe> recipeList) {
+        ArrayList<Ingredient> ingList = new ArrayList<>();
         // 2d list for recipes and their costs
         Map<Recipe, Double> costsForRecipes = new HashMap<>();
         // Iterate through the recipe list
-        for (Recipe r : recipeList) {
+        for (Recipe r : recipeList){
             double temp = 0.0;
-            Integer recipeID = r.getId();
             // get list of ingredients and loop through
             ingList = r.getIngredientList();
             for (Ingredient i : ingList){
@@ -53,10 +49,15 @@ public class RecipeToolkit {
         return sortedList;
     }
     public static ArrayList<Recipe> filterByCategory(ArrayList<Recipe> recipeList, Category category) {
-        // TODO: implement here
-        return recipeList;
-    }
-
+        // declare new list
+        ArrayList<Recipe> newList = new ArrayList<>();
+        // loop through original list and only add to the new list if the category matches
+        for(Recipe r : recipeList){
+            if (Recipe.getCategory(r).equals(category.getCategory_id())){
+                newList.add(r);
+            }
+        }
+        return newList;
     /**
      * A function that takes the name of an ingredient needed and the minimum quantity needed and uses webscraping techniques to find the cheapest item with the required quantity and returns the price of that item
      * @param ingredientName a string of the name of the ingredient required to find the price for
