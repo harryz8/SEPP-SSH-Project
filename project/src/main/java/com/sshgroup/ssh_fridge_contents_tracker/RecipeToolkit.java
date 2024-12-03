@@ -1,26 +1,44 @@
 package com.sshgroup.ssh_fridge_contents_tracker;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-
+import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import static org.hibernate.cfg.JdbcSettings.*;
-import static org.hibernate.cfg.JdbcSettings.HIGHLIGHT_SQL;
-
-/**
- * A class of static methods related to filtering a list of {@link com.sshgroup.ssh_fridge_contents_tracker.Recipe}
- */
 public class RecipeToolkit {
-
     public static ArrayList<Recipe> sortByPriceOfRemainingItems(ArrayList<Recipe> recipeList) {
-        // TODO: implement here
-        return recipeList;
-    }
-    public static ArrayList<Recipe> filterByCategory(ArrayList<Recipe> recipeList, Category category) {
-        // TODO: implement here
+        ArrayList<Ingredient> ingList = new ArrayList<>();
+        // 2d list for recipes and their costs
+        Map<Recipe, Double> costsForRecipes = new HashMap<>();
+        // Iterate through the recipe list
+        for (Recipe r : recipeList){
+            double temp = 0.0;
+            // get list of ingredients and loop through
+            ingList = r.getIngredientList();
+            for (Ingredient i : ingList){
+                // get quantity needed and quantity have. if have < needed then add the cost of that ingredient to temp
+                int need = r.getQuantity(i.getID());
+                int have = i.getQuantity();
+                if (need <= have){
+                    temp = 0.0;
+                } else{
+                    temp += i.getCost();
+                }
+                costsForRecipes.put(r, temp);
+            }
+        }
+        // now that the costs for each recipe are assigned we sort the list based on these costs
+        List<Map.Entry<Recipe, Double>> sortedCosts = new ArrayList<>(costsForRecipes.entrySet());
+        sortedCosts.sort(Map.Entry.comparingByValue());
+
+        // Then add the sorted recipes
+        ArrayList<Recipe> sortedList = new ArrayList<>();
+        for(Map.Entry<Recipe, Double> entry : sortedCosts){
+            sortedList.add(entry.getKey());
+        }
         return recipeList;
     }
 
@@ -33,7 +51,7 @@ public class RecipeToolkit {
     public static PriceQuantity getCheapestIngredient(String ingredientName, double quantityNeeded) {
         PriceQuantity minItem = CacheMap.cache.get(ingredientName, String.valueOf(quantityNeeded));
         if (minItem != null) {
-//            System.out.println("Yay!");
+            // System.out.println("Yay!");
             return minItem;
         }
         ArrayList<PriceQuantity> ocadoItems = new ArrayList<>();

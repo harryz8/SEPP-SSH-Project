@@ -1,0 +1,33 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f0067620dca, pid=633304, tid=633348
+#
+# JRE version: OpenJDK Runtime Environment (21.0.5+11) (build 21.0.5+11-Ubuntu-1ubuntu122.04)
+# Java VM: OpenJDK 64-Bit Server VM (21.0.5+11-Ubuntu-1ubuntu122.04, mixed mode, tiered, compressed oops, compressed class ptrs, g1 gc, linux-amd64)
+# Problematic frame:
+# C  [libigd12dxva64.so+0x420dca]
+#
+# Core dump will be written. Default location: Core dumps may be processed with "/wsl-capture-crash %t %E %p %s" (or dumping to /home/harry/Documents/Java/SEPP_SSH_Project/SSH_Fridge_Contents_Tracker/project/core.633304)
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugs.launchpad.net/ubuntu/+source/openjdk-21
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: --module-path=/home/harry/Documents/Java/SEPP_SSH_Project/SSH_Fridge_Contents_Tracker/project/build/libs/SSH_Fridge_Contents_Tracker-1.0.jar:/home/harry/.gradle/caches/modules-2/files-2.1/org.postgresql/postgresql/42.7.4/264310fd7b2cd76738787dc0b9f7ea2e3b11adc1/postgresql-42.7.4.jar:/home/harry/.gradle/caches/modules-2/files-2.1/org.hibernate.orm/hibernate-core/6.6.3.Final/d32d7ef93bb2ecbef8738cda4ead5ee6fa19f5c1/hibernate-core-6.6.3.Final.jar:/home/harry/.gradle/caches/modules-2/files-2.1/jakarta.transaction/jakarta.transaction-api/2.0.1/51a520e3fae406abb84e2e1148e6746ce3f80a1a/jakarta.transaction-api-2.0.1.jar:/home/harry/.gradle/caches/modules-2/files-2.1/jakarta.enterprise/jakarta.enterprise.cdi-api/4.1.0/fed9518709d33252bfe0817fe61ad4dfd1b2e848/jakarta.enterprise.cdi-api-4.1.0.jar:/home/harry/.gradle/caches/modules-2/files-2.1/org.jboss.logging/jboss-logging/3.4.1.Final/40fd4d696c55793e996d1ff3c475833f836c2498/jboss-logging-3.4.1.Final.jar:/home/harry/.gradle/caches/modules-2/files-2.1/com.fasterxml/classmate/1.7.0/e98374da1f2143ac8e6e0a95036994bb19137a3/classmate-1.7.0.jar:/home/harry/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/4.0.2/e4e4e0c5b0d42054d00dc4023901572a60d368c7/jaxb-runtime-4.0.2.jar:/home/harry/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-core/4.0.2/8c29249f6c10f4ee08967783831580b0f5c5360/jaxb-core-4.0.2.jar:/home/harry/.gradle/caches/modules-2/files-2.1/jakarta.xml.bind/jakarta.xml.bind-api/4.0.2/6cd5a999b834b63238005b7144136379dc36cad2/jakarta.xml.bind-api-4.0.2.jar:/home/harry/.gradle/caches/modules-2/files-2.1/org.hibernate.common/hibernate-commons-annotations/7.0.3.Final/e183c4be8bb41d12e9f19b374e00c34a0a85f439/hibernate-commons-annotations-7.0.3.Final.jar:/home/harry/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy/1.15.10/635c873fadd853c084f84fdc3cbd58c5dd8537f9/byte-buddy-1.15.10.jar:/home/harry/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-fxml/17.0.8/d6b88fa83547005767445d4b4d57a6--patch-module=com.sshgroup.ssh_fridge_contents_tracker=/home/harry/Documents/Java/SEPP_SSH_Project/SSH_Fridge_Contents_Tracker/project/build/resources/main -Dfile.encoding=UTF-8 -Duser.country -Duser.language=en -Duser.variant -Djdk.module.main=com.sshgroup.ssh_fridge_contents_tracker com.sshgroup.ssh_fridge_contents_tracker/com.sshgroup.ssh_fridge_contents_tracker.MainApplication
+
+Host: 13th Gen Intel(R) Core(TM) i5-13500H, 16 cores, 7G, Ubuntu 22.04.5 LTS
+Time: Wed Dec 11 16:14:16 2024 GMT elapsed time: 8.411382 seconds (0d 0h 0m 8s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f010441e750):  JavaThread "QuantumRenderer-0" [_thread_in_native, id=633348, stack(0x00007f00d9e69000,0x00007f00d9f69000) (1024K)]
+
+Stack: [0x00007f00d9e69000,0x00007f00d9f69000],  sp=0x00007f00d9f65ba0,  free space=1010k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [libigd12dxva64.so+0x420dca]
+C  [libigd12um64xel.so+0x45aac]
