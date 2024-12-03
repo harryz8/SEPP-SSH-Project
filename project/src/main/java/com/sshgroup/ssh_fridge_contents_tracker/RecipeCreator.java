@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class RecipeCreator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Hello");
 
         System.out.print("Enter the recipe name: ");
         String recipe_name = scanner.nextLine();
