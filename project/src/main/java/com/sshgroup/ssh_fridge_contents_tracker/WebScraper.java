@@ -51,35 +51,37 @@ public class WebScraper {
     }
 
     /**
-     * Gets all items of an unordered list
-     * @param source the html string containing the unordered list
-     * @return an arrayList of strings of each <li></li>
+     * Gets all elements of a tag type in an element of a tag type
+     * @param source the html string containing the `outerElementTagType` element
+     * @param innerElementTagType the string type of the inner tags
+     * @param outerElementTagType the string tpye of the outer tag
+     * @return an arrayList of strings of each element of type `innerElementTagType` from in the outer element
      */
-    public static ArrayList<String> getUnorderedListItems(String source) {
-        if (source == null || source.isEmpty()) {
+    public static ArrayList<String> getMultipleElementsFromElement(String source, String outerElementTagType, String innerElementTagType) {
+        if (source == null || outerElementTagType == null || innerElementTagType == null || outerElementTagType.isEmpty() || innerElementTagType.isEmpty() || source.isEmpty()) {
             return null;
         }
-        // finds the start of the unordered list
-        StringLocation firstUl = StringToolkit.getPositions(source, "<ul");
+        // finds the start of the outer element
+        StringLocation firstUl = StringToolkit.getPositions(source, "<"+outerElementTagType);
         if (firstUl == null) {
             return null;
         }
         if (firstUl.getLastPos() >= source.length()) {
             return null;
         }
-        // find the end of the unordered list
+        // find the end of the outer element
         source = source.substring(firstUl.getLastPos());
-        StringLocation lastUl = StringToolkit.getPositions(source, "</ul>");
+        StringLocation lastUl = StringToolkit.getPositions(source, "</"+outerElementTagType+">");
         if (lastUl == null) {
             return null;
         }
         source = source.substring(firstUl.getLastPos()+1, lastUl.getFirstPos());
-        // find all the li elements in the ul
+        // find all the elements of type innerElementTagType in the outer element
         ArrayList<String> retArr = new ArrayList<>();
         int lastInt = 0;
         while (lastInt < source.length() && !(source.isEmpty())) {
-            StringLocation first = StringToolkit.getPositions(source, "<li");
-            StringLocation last = StringToolkit.getPositions(source, "</li>");
+            StringLocation first = StringToolkit.getPositions(source, "<"+innerElementTagType);
+            StringLocation last = StringToolkit.getPositions(source, "</"+innerElementTagType+">");
             if (first == null || last == null) {
                 break;
             }
@@ -88,6 +90,66 @@ public class WebScraper {
             source = source.substring(last.getLastPos()+1);
         }
         return retArr;
+    }
+
+    /**
+     * Gets all elements of a tag type in an element of a tag type with the specified id in the specified parameter
+     * @param source the html string containing the `outerElementTagType` element
+     * @param innerElementTagType the string type of the inner tags
+     * @param outerElementTagType the string tpye of the outer tag
+     * @param outerElementID the string id corresponding to the parameter defined in `outerElementIDParameterName`
+     * @param outerElementIDParameterName the parameter that holds the unique identifier for the element
+     * @return an arrayList of strings of each element of type `innerElementTagType` from in the outer element
+     */
+    public static ArrayList<String> getMultipleElementsFromElementWithID(String source, String outerElementTagType, String outerElementID, String outerElementIDParameterName, String innerElementTagType) {
+        if (source == null || outerElementTagType == null || outerElementID == null || outerElementIDParameterName == null || innerElementTagType == null || innerElementTagType.isEmpty() || outerElementID.isEmpty() || outerElementIDParameterName.isEmpty() || outerElementTagType.isEmpty() || source.isEmpty()) {
+            return null;
+        }
+        String newSource = getElementByID(source, outerElementTagType, outerElementID, outerElementIDParameterName);
+        if (newSource == null || newSource.isEmpty()) {
+            return null;
+        }
+        return getMultipleElementsFromElement(newSource, outerElementTagType, innerElementTagType);
+    }
+    /**
+     * Gets all items of an unordered list
+     * @param source the html string containing the unordered list
+     * @return an arrayList of strings of each <li></li>
+     */
+    public static ArrayList<String> getUnorderedListItems(String source) {
+        if (source == null || source.isEmpty()) {
+            return null;
+        }
+        return getMultipleElementsFromElement(source, "ul", "li");
+//        // finds the start of the unordered list
+//        StringLocation firstUl = StringToolkit.getPositions(source, "<ul");
+//        if (firstUl == null) {
+//            return null;
+//        }
+//        if (firstUl.getLastPos() >= source.length()) {
+//            return null;
+//        }
+//        // find the end of the unordered list
+//        source = source.substring(firstUl.getLastPos());
+//        StringLocation lastUl = StringToolkit.getPositions(source, "</ul>");
+//        if (lastUl == null) {
+//            return null;
+//        }
+//        source = source.substring(firstUl.getLastPos()+1, lastUl.getFirstPos());
+//        // find all the li elements in the ul
+//        ArrayList<String> retArr = new ArrayList<>();
+//        int lastInt = 0;
+//        while (lastInt < source.length() && !(source.isEmpty())) {
+//            StringLocation first = StringToolkit.getPositions(source, "<li");
+//            StringLocation last = StringToolkit.getPositions(source, "</li>");
+//            if (first == null || last == null) {
+//                break;
+//            }
+//            lastInt = last.getLastPos();
+//            retArr.add(source.substring(first.getFirstPos(), last.getLastPos()+1));
+//            source = source.substring(last.getLastPos()+1);
+//        }
+//        return retArr;
     }
 
     /**

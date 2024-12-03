@@ -26,7 +26,7 @@ tasks.withType(JavaCompile) {
 
 application {
   mainModule = 'com.sshgroup.ssh_fridge_contents_tracker'
-  mainClass = 'com.sshgroup.ssh_fridge_contents_tracker.WebScraper'
+  mainClass = 'com.sshgroup.ssh_fridge_contents_tracker.MainApplication'
 }
 
 javafx {
