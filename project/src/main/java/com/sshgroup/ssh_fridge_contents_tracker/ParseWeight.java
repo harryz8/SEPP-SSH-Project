@@ -1,5 +1,8 @@
 package com.sshgroup.ssh_fridge_contents_tracker;
 
+/**
+ * A class containing a static function used to get the weight from a string containing the weight
+ */
 public class ParseWeight {
 
     /**

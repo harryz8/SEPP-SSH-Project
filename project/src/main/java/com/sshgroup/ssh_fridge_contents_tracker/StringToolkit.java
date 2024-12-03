@@ -1,6 +1,10 @@
 package com.sshgroup.ssh_fridge_contents_tracker;
 
+/**
+ * A class that contains static methods which can be used on strings
+ */
 public class StringToolkit {
+
     /**
      * takes a large string and a string to find within it and returns an object that contains the first and last positions of the substring in the larger string.
      * @param wholeString the string to find the other in

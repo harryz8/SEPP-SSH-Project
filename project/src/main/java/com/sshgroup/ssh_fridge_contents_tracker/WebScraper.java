@@ -1,19 +1,20 @@
 package com.sshgroup.ssh_fridge_contents_tracker;
 
-import jdk.swing.interop.SwingInterOpUtils;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * A class which contains object methods that get html code from a given URL and static methods which can be used to navigate that html code
+ */
 public class WebScraper {
-    protected String webpageHtml = "";
 
-    public static void main(String[] args) {
-
-    }
+    /**
+     * Holds the html scraped after the constructor is run
+     */
+    String webpageHtml;
 
     /**
      * takes the html of the page at the url and stores it in the field webpageHtml

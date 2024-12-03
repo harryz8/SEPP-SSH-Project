@@ -3,8 +3,17 @@ package com.sshgroup.ssh_fridge_contents_tracker;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+/**
+ * A class for Ocado items that takes its link and gets its price and quantity (if applicable)
+ */
 public class OcadoPriceQuantity extends PriceQuantity {
 
+    /**
+     * The constructor. It takes the link and uses it to scrape the price and quantity (if applicable) of the item from the Ocado website. Can throw errors
+     * @param link the url of the item's webpage on Ocado
+     * @throws MalformedURLException when the URL is not acceptable
+     * @throws ItemNotFoundException when the URL does not link to an item, or the item has no accessable price element
+     */
     public OcadoPriceQuantity(String link) throws MalformedURLException, ItemNotFoundException {
         setLink(link);
         // find the price and if possible weight of the item
