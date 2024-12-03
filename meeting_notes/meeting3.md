@@ -9,7 +9,11 @@ I have made changes to the EDR in order to make my module work, as I found that 
 
 ### Khaled 
 
-I have made a table  for all entities that we need. Then I have modified it to separated 5 talbles but linked to each other where they should using many to one.
+I have made a table  for all entities that we need. Then I have modified it to separated 5 tables but linked to each other where they should using many to one.
+
+### Tom
+
+I have begun working on the basics of the form where users can add new recipes to the recipe database. To this point I have created basic variables to store the name and instructions of each recipe. I have also created ArrayLists to store the ingredients for each new recipe, there is one for the ingredient names and one for the amount required. I am currently using a scanner to take the user's input for the recipe. I plan on using this meeting to discuss the implementation of the database with Khaled to determine how I should go about adding the collected data to the tables. 
 
 ## Meeting Notes
 
