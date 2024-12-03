@@ -21,6 +21,11 @@ public class MainApplication extends Application {
     }
 
     public static void main(String[] args) throws MalformedURLException {
-        launch();
+        if ((args.length > 0) && (args[0].toLowerCase().equals("i"))) {
+            launch();
+        }
+        else {
+            System.out.println("Command line mode goes here");
+        }
     }
 }
