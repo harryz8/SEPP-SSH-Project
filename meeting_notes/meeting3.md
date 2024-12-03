@@ -9,7 +9,7 @@ I have made changes to the EDR in order to make my module work, as I found that 
 
 ### Khaled 
 
-I have made a table  for all entities that we need. Then I have modified it to separated 5 tables but linked to each other where they should using many to one.
+I have made a table  for all entities that we need. Then I have modified it to separated 5 tables but linked to each other where they should, using many to one.
 
 ### Tom
 
