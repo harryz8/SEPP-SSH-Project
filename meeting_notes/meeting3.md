@@ -22,5 +22,6 @@ I have made two methods used for sorting the list of recipes to be displayed to 
 
 ## Meeting Notes
 
+- Need to write unit tests for every method made
 
 
