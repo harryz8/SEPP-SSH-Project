@@ -9,4 +9,4 @@
 3. We will integrate our code and produce a working command-line prototype _by the end of this meeting_.
 4. We will complete testing on our issues and also write up a testing plan together. Testing will then be deligated.
 5. We will write the threats plan together if we decide its necessary.
-6. We will plan how to complete the report, and make a start. This is the number 2 priorty after this meeeting. (Harry will suggest to use [google docs](https://docs.google.com/document/d/1cL2LFy0RtviF78Xvktd1NU0f5wFtM9UwY2InLC10ANA/edit?usp=sharing) for better collaberative work and built in version control).
+6. We will plan how to complete the report, and make a start. This is the number 2 priorty after this meeeting. (Harry will suggest to use [google docs](https://docs.google.com/document/d/1cL2LFy0RtviF78Xvktd1NU0f5wFtM9UwY2InLC10ANA/edit?usp=sharing) for better collaberative work and built in version history).
