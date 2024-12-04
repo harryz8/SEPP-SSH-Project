@@ -1,6 +1,6 @@
 # Changes to the EDR
 
-## Webscraper-Database Integration
+## Remove Webscraper-Database Integration
 
 **Suggestion:**
 
