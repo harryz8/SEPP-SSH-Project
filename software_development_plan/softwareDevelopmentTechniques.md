@@ -61,3 +61,7 @@ We will use a GitHub workflow to automate continuous integration.
 Do we need to use containerisation?
 
 Maybe we should write a container that manages the database so that when someone installs it through docker, the database doesn't have to be set up maually, and it hosts it on a port.
+
+## Observability
+
+## Orchestration
