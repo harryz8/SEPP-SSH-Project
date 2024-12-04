@@ -58,9 +58,7 @@ We will use a GitHub workflow to automate continuous integration.
 
 ## Containerisation
 
-Do we need to use containerisation?
-
-Maybe we should write a container that manages the database so that when someone installs it through docker, the database doesn't have to be set up maually, and it hosts it on a port.
+We are going to use containerisation, because it allows the postgres database to be bundled with the rest of the program when distributing and is useful when using Hybernate.
 
 ## Observability
 
