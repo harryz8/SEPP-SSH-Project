@@ -83,4 +83,17 @@ public class MainApplicationTests {
         double minOcadoPrice = RecipeToolkit.getCheapestPrice(ingredientName, quantityNeeded);
         assertEquals(0.45, minOcadoPrice);
     }
+    @Test
+    void testGetWebpageHTML() {
+        WebScraper ws = new WebScraper(null);
+        assertEquals(null, ws.getWebpageHtml());
+        try {
+            URL url = new URL("https://www.joerreia.sod/"); //a nonsense URL link
+            ws = new WebScraper(url);
+            assertEquals(null, ws.getWebpageHtml());
+        }
+        catch (MalformedURLException e) {
+            System.out.println("Error: "+e.toString());
+        }
+    }
 }

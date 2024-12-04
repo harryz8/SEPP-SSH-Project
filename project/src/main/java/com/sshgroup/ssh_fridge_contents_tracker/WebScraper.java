@@ -21,24 +21,28 @@ public class WebScraper {
      * @param url the link to the webpage
      */
     public WebScraper(URL url) {
-        //Accepts any cookies
-        CookieHandler.setDefault(new CookieManager(null, CookiePolicy.ACCEPT_ALL));
-        try {
-            StringBuilder html = new StringBuilder();
-            String inputLine;
-            //Opens a connection to the url
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("GET");
-            con.connect();
-            //Reads from the connection until it's done
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            while((inputLine = in.readLine()) != null) {
-                html.append(inputLine);
-            }
-            this.webpageHtml = html.toString();
+        if (url == null) {
+            webpageHtml = null;
         }
-        catch (IOException e) {
-            System.out.println(e.toString());
+        else {
+            //Accepts any cookies
+            CookieHandler.setDefault(new CookieManager(null, CookiePolicy.ACCEPT_ALL));
+            try {
+                StringBuilder html = new StringBuilder();
+                String inputLine;
+                //Opens a connection to the url
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                con.setRequestMethod("GET");
+                con.connect();
+                //Reads from the connection until it's done
+                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                while ((inputLine = in.readLine()) != null) {
+                    html.append(inputLine);
+                }
+                this.webpageHtml = html.toString();
+            } catch (IOException e) {
+                System.out.println(e.toString());
+            }
         }
     }
 
@@ -121,35 +125,6 @@ public class WebScraper {
             return null;
         }
         return getMultipleElementsFromElement(source, "ul", "li");
-//        // finds the start of the unordered list
-//        StringLocation firstUl = StringToolkit.getPositions(source, "<ul");
-//        if (firstUl == null) {
-//            return null;
-//        }
-//        if (firstUl.getLastPos() >= source.length()) {
-//            return null;
-//        }
-//        // find the end of the unordered list
-//        source = source.substring(firstUl.getLastPos());
-//        StringLocation lastUl = StringToolkit.getPositions(source, "</ul>");
-//        if (lastUl == null) {
-//            return null;
-//        }
-//        source = source.substring(firstUl.getLastPos()+1, lastUl.getFirstPos());
-//        // find all the li elements in the ul
-//        ArrayList<String> retArr = new ArrayList<>();
-//        int lastInt = 0;
-//        while (lastInt < source.length() && !(source.isEmpty())) {
-//            StringLocation first = StringToolkit.getPositions(source, "<li");
-//            StringLocation last = StringToolkit.getPositions(source, "</li>");
-//            if (first == null || last == null) {
-//                break;
-//            }
-//            lastInt = last.getLastPos();
-//            retArr.add(source.substring(first.getFirstPos(), last.getLastPos()+1));
-//            source = source.substring(last.getLastPos()+1);
-//        }
-//        return retArr;
     }
 
     /**
