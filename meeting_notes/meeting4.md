@@ -8,6 +8,9 @@ I need to apologise as I have again changed my mind on how scraped prices are ha
 ### Tom
 I began by sorting merge conflicts as my branch was not fully up to date when I committed my changes. After sorting this, I made good progress on the implementation of my recipe creator. I hope to complete this feature within the next day or two to ensure that it can be fully implemented into the program and so that we can begin work on our write-up.
 
+### Phoebe
+I have merged my branch with main in order to get my branch up to date. I have began using these merged files in order to make sure my previously made methods work fully with the rest of the implementation. I have also began to plan the implementation of a simulation for the camera which I aim to complete in the next few days
+
 ## What we will achieve in this meeting
 
 1. Write about and review changes to the EDR
