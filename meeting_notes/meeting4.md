@@ -6,7 +6,7 @@
 I need to apologise as I have again changed my mind on how scraped prices are handled. However all changes are self-contained within my methods and so this will have no impact on others' issues. I have settled on having my own database independent of the other to manage them. I think this is simplest as then connections beween recipes and the minimum ingredient prices can be handled in the Java code. I have begun to work on this but it cannot be finished until the Hybernate database is linked to postgres through docker. I also must apologise for being behind in my unit testing.
 
 ### Tom
-I began by sorting merge conflicts as my branch was not fully up to date when I committed my changes. After sorting this I made good progress on the full implementation of my recipe creator. I hope to complete this section within the next day or two to ensure that it can be fully implemented into the program.
+I began by sorting merge conflicts as my branch was not fully up to date when I committed my changes. After sorting this, I made good progress on the implementation of my recipe creator. I hope to complete this feature within the next day or two to ensure that it can be fully implemented into the program and so that we can begin work on our write-up.
 
 ## What we will achieve in this meeting
 
