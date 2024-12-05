@@ -3,9 +3,28 @@ package com.sshgroup.ssh_fridge_contents_tracker;
 import java.util.ArrayList;
 
 /**
- * A class that cannot be used to create objects; is used as a template for extending classes
+ * A class that holds a string link, a double price and a double quantity together
  */
-abstract class PriceQuantity implements Comparable<PriceQuantity> {
+class PriceQuantity implements Comparable<PriceQuantity> {
+
+    /**
+     * Empty constructor for PriceQuantity
+     */
+    public PriceQuantity() {
+
+    }
+
+    /**
+     * Constructor for {@link #PriceQuantity}
+     * @param link the link to the item on the web
+     * @param price the price of the item at the {@link #link}
+     * @param quantity the quantity of the item at the {@link #link}. If quantity is not applicable, set it as 0
+     */
+    public PriceQuantity(String link, double price, double quantity) {
+        this.link = link;
+        this.price = price;
+        this.quantity = quantity;
+    }
 
     /**
      * The price of the item at the {@link #link}

@@ -4,9 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -69,19 +66,46 @@ public class MainApplicationTests {
         String incElement = "<div class=\"test\"><p>Hello HTML</p><a href=\"Alink.com\">Some Link</a></div>";
         String element = WebScraper.getElement(incElement, "a");
         assertEquals("<a href=\"Alink.com\">Some Link</a>", element);
+        element = WebScraper.getElement(incElement, "j");
+        assertEquals(null, element);
+        element = WebScraper.getElement(incElement, null);
+        assertEquals(null, element);
+        element = WebScraper.getElement("", "a");
+        assertEquals(null, element);
+        element = WebScraper.getElement(null, "a");
+        assertEquals(null, element);
+        element = WebScraper.getElement(incElement, "");
+        assertEquals(null, element);
+        element = WebScraper.getElement("", "");
+        assertEquals(null, element);
+        element = WebScraper.getElement(null, null);
+        assertEquals(null, element);
     }
     @Test
     void getParameterTest() {
         String incElement = "<div class=\"test\"><p>Hello HTML</p><a href=\"Alink.com\">Some Link</a></div>";
         String element = WebScraper.getParameterValue(incElement, "class");
         assertEquals("test", element);
+        element = WebScraper.getParameterValue(incElement, "href");
+        assertEquals("Alink.com", element);
+        element = WebScraper.getParameterValue(incElement, "text");
+        assertEquals(null, element);
+        incElement = "<div class=\"test\" id=\"one\"><p>Hello HTML</p><a href=\"Alink.com\">Some Link</a></div>";
+        element = WebScraper.getParameterValue(incElement, "class");
+        assertEquals("test", element);
+        element = WebScraper.getParameterValue(incElement, "id");
+        assertEquals("one", element);
+        incElement = "<div class=\"test\" id=1><p>Hello HTML</p><a href=\"Alink.com\">Some Link</a></div>";
+        element = WebScraper.getParameterValue(incElement, "id");
+        assertEquals(null, element);
     }
     @Test
     void testOcadoPriceQuantityComparitorImplementation() {
         double quantityNeeded = 100.5;
         String ingredientName = "flour";
-        double minOcadoPrice = RecipeToolkit.getCheapestPrice(ingredientName, quantityNeeded);
-        assertEquals(0.45, minOcadoPrice);
+        CacheMap.cache.load();
+        PriceQuantity minOcadoPrice = RecipeToolkit.getCheapestIngredient(ingredientName, quantityNeeded);
+        assertEquals(0.45, minOcadoPrice.getPrice());
     }
     @Test
     void testGetWebpageHTML() {
