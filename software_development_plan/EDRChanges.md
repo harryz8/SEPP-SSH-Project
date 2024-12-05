@@ -5,7 +5,7 @@
 **Suggestion:**
 
 I think that the price of ingredient returned from the webscraper should not be stored in the database.
-The webscraper should be run every time a price needs to be determined for ordering instead, despite the running-time implications.
+There should be a separate database for the web-scraped prices instead, and then when the webscraping method is called, the smallest price returned for an item name and quantity can be stored in my new databse, or if already in the database, read from there.
 
 **Motivation:**
 
