@@ -19,3 +19,16 @@ I have merged my branch with main in order to get my branch up to date. I have b
 4. We will complete testing on our issues and also write up a testing plan together. Testing will then be deligated.
 5. We will write the threats plan together if we decide its necessary.
 6. We will plan how to complete the report, and make a start. This is the number 2 priorty after this meeeting. (Harry will suggest to use [google docs](https://docs.google.com/document/d/1cL2LFy0RtviF78Xvktd1NU0f5wFtM9UwY2InLC10ANA/edit?usp=sharing) for better collaberative work and built in version history).
+
+## What we achieved in this meeting
+
+1. We all decided which sections of the software engineering techniques we will focus on.
+2. We discussed and agreed on the changes to be made to the EDR.
+3. We discussed and finished writing about the testing we have completed and which we will complete.
+
+## Goals to achieve by our next meeting
+
+1. We should all complete our sections of the project so that we can fully implement the program in the next meeting.
+2. We should all ensure that our sections of the software engineering techniques and implemented and written up on.
+3. We should begin writing our report on the Google Docs file.
+4. Ensure all units pass. 
