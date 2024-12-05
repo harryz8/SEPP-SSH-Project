@@ -11,6 +11,11 @@ I began by sorting merge conflicts as my branch was not fully up to date when I 
 ### Phoebe
 I have merged my branch with main in order to get my branch up to date. I have began using these merged files in order to make sure my previously made methods work fully with the rest of the implementation. I have also began to plan the implementation of a simulation for the camera which I aim to complete in the next few days
 
+### Khaled 
+I have fixen an issue in one of the tables
+
+
+
 ## What we will achieve in this meeting
 
 1. Write about and review changes to the EDR
