@@ -12,7 +12,7 @@ We will use GitHub's [kanban](https://github.com/users/harryz8/projects/1) to ke
 
 ### Manual Tests
 
-We will carry out manual tests on a function during it's development.
+We will carry out manual tests on a function during its development.
 
 ### Unit Tests
 
@@ -26,20 +26,16 @@ We plan to:
 
 ### Integration Tests
 
-During meetings, we will test integration of issues completed during the previous half-week.
-
-### Property Based Tests
+We will write JUnit tests for functions that integrate others, when we are checking the integration of separately developed sections.
 
 ### Formal Verification
+
+We don't think that this type of testing is applicable to this project as most of our functions have side effects and are not mathematically pure.
 
 ### A/B Tests
 
 We will run intensive testing through a beta release to a select percentage of users until enough
 feedback is collected. If required, tweaks to the program will be made.
-
-### Integration Tests
-
-### Other Types of tests go here
 
 ## Build Tools
 
@@ -50,7 +46,7 @@ We are going to use Gradle as our build tool.
 - JavaFX
 - JUnit
 - org.postgresql:postgresql:42.6.0
-- org.hibernate. ⬅️ not finised, see lecture notes
+- org.hibernate.orm:hibernate-core:6.6.3.Final
 
 ## Continuous Integration
 
