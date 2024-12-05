@@ -6,11 +6,13 @@
 
 [Schedule](./schedule.md)
 
+[Database](./database.md)
+
+[Threats Model](./threats.md)
+
 ## Directories
 
 [Project](./project)
-
-[Database](./database)
 
 [Report](./report)
 

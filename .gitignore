@@ -3,7 +3,6 @@ project/.gradle
 !**/src/main/**/build/
 TODO.md
 !**/src/test/**/build/
-Dockerfile
 project/build/classes
 project/build/generated
 project/build/libs
@@ -12,6 +11,8 @@ project/build/resources
 project/build/scripts
 project/build/test-results
 project/build/tmp
+.idea
+project/.idea
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
