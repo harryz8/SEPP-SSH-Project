@@ -18,7 +18,7 @@ The price obtained from the web-scraper is specific to the quantity used in one 
 
 **Acceptance Status:**
 
-Provisionally Accepted
+Accepted
 
 ## Remove Composite Keys
 
@@ -36,4 +36,4 @@ Minimal outside the database, as these tables are just for linking tables either
 
 **Acceptance Status:**
 
-Provisionally Accepted
+Accepted
