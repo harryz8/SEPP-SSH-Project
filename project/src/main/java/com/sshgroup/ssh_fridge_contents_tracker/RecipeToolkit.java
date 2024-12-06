@@ -1,10 +1,14 @@
 package com.sshgroup.ssh_fridge_contents_tracker;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+
+import static org.hibernate.cfg.JdbcSettings.*;
+import static org.hibernate.cfg.JdbcSettings.HIGHLIGHT_SQL;
 
 /**
  * A class of static methods related to filtering a list of {@link com.sshgroup.ssh_fridge_contents_tracker.Recipe}

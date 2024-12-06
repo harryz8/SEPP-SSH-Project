@@ -28,7 +28,7 @@ public class MainApplication extends Application {
 
     @Override
     public void stop() throws Exception {
-        //CacheMap.cache.sessionFactory.close();
+        //CacheMap.cache.close();
         super.stop();
     }
 

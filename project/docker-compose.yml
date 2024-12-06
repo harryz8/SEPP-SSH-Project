@@ -5,4 +5,4 @@ services:
     environment:
       - POSTGRES_PASSWORD=SSHproject
     ports:
-      - 5432:5432
+      - 1234:1234
