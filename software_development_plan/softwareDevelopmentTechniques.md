@@ -54,7 +54,7 @@ We will use a GitHub workflow to automate continuous integration.
 
 ## Containerisation
 
-We are going to use containerisation, because it allows the postgres database to be bundled with the rest of the program when distributing and is useful when using Hybernate.
+We are going to use containerisation, because it allows the postgres database to be bundled with the rest of the program when distributing and is useful when using the Hibernate module.
 
 ## Observability
 
