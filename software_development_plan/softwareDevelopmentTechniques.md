@@ -26,7 +26,7 @@ We plan to:
 
 ### Integration Tests
 
-We will write JUnit tests for functions that integrate others, when we are checking the integration of separately developed sections.
+I suggest that we do the Integration tests in python?
 
 ### Formal Verification
 
