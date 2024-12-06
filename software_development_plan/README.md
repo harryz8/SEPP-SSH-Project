@@ -16,7 +16,9 @@ We will use the Kanban found [here](https://github.com/users/harryz8/projects/1/
 
 ## Integration and System Testing
 
-### Integration
+### Integration Testing
+
+[Here](./softwareDevelopmentTechniques.md#Integration-Tests).
 
 ### System Testing
 

@@ -26,7 +26,7 @@ We plan to:
 
 ### Integration Tests
 
-We will write JUnit tests for functions that integrate others, when we are checking the integration of separately developed sections.
+I suggest that we do the Integration tests in python?
 
 ### Formal Verification
 
@@ -54,7 +54,7 @@ We will use a GitHub workflow to automate continuous integration.
 
 ## Containerisation
 
-We are going to use containerisation, because it allows the postgres database to be bundled with the rest of the program when distributing and is useful when using Hybernate.
+We are going to use containerisation, because it allows the postgres database to be bundled with the rest of the program when distributing and is useful when using the Hibernate module.
 
 ## Observability
 
