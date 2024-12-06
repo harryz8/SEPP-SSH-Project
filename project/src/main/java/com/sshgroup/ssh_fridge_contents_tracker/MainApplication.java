@@ -26,6 +26,19 @@ public class MainApplication extends Application {
         }
         else {
             System.out.println("Command line mode goes here");
+            Loading loading = new Loading();
+            Thread loadingThread = new Thread(loading);
+            loadingThread.start();
+            //===========Do Stuff Here Whilst User Is Waiting===================
+            try {
+                Thread.sleep(10000);
+            }
+            catch (InterruptedException e) {
+                System.out.println("Main thread interrupted: "+ e.toString());
+            }
+            //===========Stop The Loading Symbol================================
+            loadingThread.interrupt();
+            System.exit(0);
         }
     }
 }
