@@ -12,7 +12,7 @@ I began by sorting merge conflicts as my branch was not fully up to date when I 
 I have merged my branch with main in order to get my branch up to date. I have began using these merged files in order to make sure my previously made methods work fully with the rest of the implementation. I have also began to plan the implementation of a simulation for the camera which I aim to complete in the next few days
 
 ### Khaled 
-I have fixen an issue in one of the tables
+I have fixed one of the tables/classes, that was the Recipe_Category class were a forgot to make it as a table, I did not add the @Entity and the @Table tags. I have looked at contents explaning the docker and contraisation. Harry and I worked in the meeting to set the docker file to the project where it's been modified after many strange errors we faced 
 
 
 
