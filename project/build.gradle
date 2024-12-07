@@ -48,6 +48,7 @@ dependencies {
   implementation("com.fasterxml:classmate:1.7.0")
   implementation("jakarta.xml.bind:jakarta.xml.bind-api:4.0.2")
   implementation("org.hibernate.common:hibernate-commons-annotations:7.0.3.Final")
+  implementation("net.bytebuddy:byte-buddy:1.15.10");
 }
 
 test {

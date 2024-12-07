@@ -23,6 +23,7 @@ public class Loading implements Runnable {
         }
         catch (InterruptedException e) {
             System.out.println("\r                                    ");
+            System.out.println();
             Thread.currentThread().interrupt();
             return;
         }

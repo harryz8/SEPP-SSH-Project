@@ -49,8 +49,13 @@ public class MainApplication extends Application {
             catch (InterruptedException e) {
                 System.out.println("Main thread interrupted: "+ e.toString());
             }
+//            double quantityNeeded = 1;
+//            String ingredientName = "milk";
+//            CacheMap.cache.load();
+//            PriceQuantity minOcadoPrice = RecipeToolkit.getCheapestIngredient(ingredientName, quantityNeeded);
             //===========Stop The Loading Symbol================================
             loadingThread.interrupt();
+//            System.out.println("Min Price: £"+minOcadoPrice.getPrice());
             System.exit(0);
         }
     }
