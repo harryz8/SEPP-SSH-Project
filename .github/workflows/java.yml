@@ -28,6 +28,7 @@ jobs:
 
       - name: "Build project"
         working-directory: ./project
+        run: docker-compose up
         run: ./gradlew build
 
   publish-job:
