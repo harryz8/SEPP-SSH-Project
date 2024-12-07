@@ -1,6 +1,11 @@
 package com.sshgroup.ssh_fridge_contents_tracker;
 
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+import jakarta.persistence.criteria.Root;
 import java.io.*;
 import java.util.*;
 
@@ -29,15 +34,27 @@ public class CacheMap extends HashMap<String, PriceQuantity> {
      * populates this class with mappings stored in the file, but only if the file is less than 7 days old.
      */
     public void load() {
-//        //get all from hybernate
-//        Date today = new Date();
-//        long sevenDays = (today.getTime()) + ((1000*60*60*24)*7);
-//        List<CacheTable> cacheItems = DatabaseAccess.setup().getCurrentSession().createQuery("SELECT name_and_quantity_string, price_quantity FROM CacheTable WHERE date_updated<" + String.valueOf(sevenDays), CacheTable.class).getResultList();
-//        for (CacheTable each : cacheItems) {
-//            String[] priceQuantityList = each.getPrice_quantity().split("\\|");
-//            PriceQuantity eachPQ = new PriceQuantity(priceQuantityList[1].strip(), Double.parseDouble(priceQuantityList[2].strip()), Double.parseDouble(priceQuantityList[3].strip()));
-//            this.put(each.getName_and_quantity_string(), eachPQ);
-//        }
+        //get all from hybernate
+        Date today = new Date();
+        long sevenDays = (today.getTime()) + ((1000*60*60*24)*7);
+        Session session = DatabaseAccess.setup().openSession();
+        Transaction tr = session.beginTransaction();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<CacheTable> cacheItemsQuery = criteriaBuilder.createQuery(CacheTable.class);
+        Root<CacheTable> rootCacheItems = cacheItemsQuery.from(CacheTable.class);
+        CriteriaQuery<CacheTable> allCacheItems = cacheItemsQuery.select(rootCacheItems);
+        TypedQuery<CacheTable> allCacheItemsQuery = session.createQuery(allCacheItems);
+        // List<CacheTable> cacheItems = session.createQuery("SELECT name_and_quantity_string, price_quantity FROM CacheTable WHERE date_updated<" + String.valueOf(sevenDays), CacheTable.class).getResultList();
+        tr.commit();
+        List<CacheTable> cacheItems = allCacheItemsQuery.getResultList();
+        session.close();
+        for (CacheTable each : cacheItems) {
+            if (each.getDate_updated() < sevenDays) {
+                String[] priceQuantityList = each.getPrice_quantity().split("\\|");
+                PriceQuantity eachPQ = new PriceQuantity(priceQuantityList[1].strip(), Double.parseDouble(priceQuantityList[2].strip()), Double.parseDouble(priceQuantityList[3].strip()));
+                this.put(each.getName_and_quantity_string(), eachPQ);
+            }
+        }
     }
 
     /**
@@ -46,7 +63,7 @@ public class CacheMap extends HashMap<String, PriceQuantity> {
     public void saveAll() {
         Date today = new Date();
         for (Map.Entry<String, PriceQuantity> each : this.entrySet()) {
-            DatabaseAccess.setup().inTransaction(session -> session.persist(new CacheTable(each.getKey(), each.getValue().toString(), today.getTime())));
+            DatabaseAccess.setup().inTransaction(session -> session.persist(new CacheTable(this.size()+1, each.getKey(), each.getValue().toString(), today.getTime())));
         }
     }
 
@@ -60,7 +77,7 @@ public class CacheMap extends HashMap<String, PriceQuantity> {
     public PriceQuantity put(String itemName, String itemQuantity, PriceQuantity value1) {
         Date today = new Date();
         String key1 = itemName+" | "+itemQuantity;
-        DatabaseAccess.setup().inTransaction(session -> session.persist(new CacheTable(key1, value1.toString(), today.getTime())));
+        DatabaseAccess.setup().inTransaction(session -> session.persist(new CacheTable(this.size()+1, key1, value1.toString(), today.getTime())));
         return super.put(key1, value1);
     }
 

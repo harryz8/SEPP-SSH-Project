@@ -101,12 +101,15 @@ public class MainApplicationTests {
         assertEquals(null, element);
     }
     @Test
-    @Disabled
     void testOcadoPriceQuantityComparitorImplementation() {
+        Loading loading = new Loading();
+        Thread loadingThread = new Thread(loading);
+        loadingThread.start();
         double quantityNeeded = 100.5;
-        String ingredientName = "flour";
-        //CacheMap.cache.load();
+        String ingredientName = "sugar";
+        CacheMap.cache.load();
         PriceQuantity minOcadoPrice = RecipeToolkit.getCheapestIngredient(ingredientName, quantityNeeded);
+        loadingThread.interrupt();
         assertEquals(0.45, minOcadoPrice.getPrice());
     }
     @Test

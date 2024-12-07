@@ -43,14 +43,19 @@ public class MainApplication extends Application {
             Thread loadingThread = new Thread(loading);
             loadingThread.start();
             //===========Do Stuff Here Whilst User Is Waiting===================
-            try {
-                Thread.sleep(10000);
-            }
-            catch (InterruptedException e) {
-                System.out.println("Main thread interrupted: "+ e.toString());
-            }
+//            try {
+//                Thread.sleep(10000);
+//            }
+//            catch (InterruptedException e) {
+//                System.out.println("Main thread interrupted: "+ e.toString());
+//            }
+            double quantityNeeded = 1;
+            String ingredientName = "milk";
+            CacheMap.cache.load();
+            PriceQuantity minOcadoPrice = RecipeToolkit.getCheapestIngredient(ingredientName, quantityNeeded);
             //===========Stop The Loading Symbol================================
             loadingThread.interrupt();
+            System.out.println("Min Price: £"+minOcadoPrice.getPrice());
             System.exit(0);
         }
     }

@@ -5,6 +5,6 @@ services:
     ports:
       - "5435:5432"
     environment:
-      - POSTGRES_USER=harry
+      - POSTGRES_USER=group
       - POSTGRES_PASSWORD=example
       - POSTGRES_DB=ssh

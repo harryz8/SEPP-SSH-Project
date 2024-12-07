@@ -12,7 +12,7 @@ import java.util.Date;
 @Table(name = "ingredients_table")
 public class Ingredients {
     @Id
-    long ingredients_id;
+    int ingredients_id;
 
     @Column
     private String ingredients_name;
@@ -26,14 +26,14 @@ public class Ingredients {
 
     }
 
-    public Ingredients( long ingredients_id, String ingredients, int quantity_available, int cost_per_kg) {
+    public Ingredients( int ingredients_id, String ingredients, int quantity_available, int cost_per_kg) {
 
         this.ingredients_id = ingredients_id;
         this.quantity_available = quantity_available;
         this.cost_per_kg = cost_per_kg;
 
     }
-    public long getIngredients_id() {
+    public int getIngredients_id() {
         return ingredients_id;
     }
 
