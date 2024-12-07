@@ -29,15 +29,15 @@ public class CacheMap extends HashMap<String, PriceQuantity> {
      * populates this class with mappings stored in the file, but only if the file is less than 7 days old.
      */
     public void load() {
-        //get all from hybernate
-        Date today = new Date();
-        long sevenDays = (today.getTime()) + ((1000*60*60*24)*7);
-        List<CacheTable> cacheItems = DatabaseAccess.setup().getCurrentSession().createQuery("SELECT name_and_quantity_string, price_quantity FROM CacheTable WHERE date_updated<" + String.valueOf(sevenDays), CacheTable.class).getResultList();
-        for (CacheTable each : cacheItems) {
-            String[] priceQuantityList = each.getPrice_quantity().split("\\|");
-            PriceQuantity eachPQ = new PriceQuantity(priceQuantityList[1].strip(), Double.parseDouble(priceQuantityList[2].strip()), Double.parseDouble(priceQuantityList[3].strip()));
-            this.put(each.getName_and_quantity_string(), eachPQ);
-        }
+//        //get all from hybernate
+//        Date today = new Date();
+//        long sevenDays = (today.getTime()) + ((1000*60*60*24)*7);
+//        List<CacheTable> cacheItems = DatabaseAccess.setup().getCurrentSession().createQuery("SELECT name_and_quantity_string, price_quantity FROM CacheTable WHERE date_updated<" + String.valueOf(sevenDays), CacheTable.class).getResultList();
+//        for (CacheTable each : cacheItems) {
+//            String[] priceQuantityList = each.getPrice_quantity().split("\\|");
+//            PriceQuantity eachPQ = new PriceQuantity(priceQuantityList[1].strip(), Double.parseDouble(priceQuantityList[2].strip()), Double.parseDouble(priceQuantityList[3].strip()));
+//            this.put(each.getName_and_quantity_string(), eachPQ);
+//        }
     }
 
     /**

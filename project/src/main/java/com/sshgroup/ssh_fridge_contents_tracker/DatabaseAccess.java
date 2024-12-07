@@ -16,23 +16,33 @@ import static org.hibernate.cfg.JdbcSettings.HIGHLIGHT_SQL;
 public class DatabaseAccess {
     private static SessionFactory sessionFactory;
     public static SessionFactory setup() {
-        sessionFactory = new Configuration()
-                .addAnnotatedClass(Ingredients.class)
-                .addAnnotatedClass(Recipe.class)
-                .addAnnotatedClass(Recipe_Category.class)
-                .addAnnotatedClass(Category.class)
-                .addAnnotatedClass(Recipe_Ingredients.class)
-                .addAnnotatedClass(CacheTable.class)
-                .setProperty(JAKARTA_JDBC_URL, "jdbc:postgresql://localhost:1234/")
-                .setProperty(JAKARTA_JDBC_USER, "postgres")
-                .setProperty(JAKARTA_JDBC_PASSWORD, "SSHproject")
-                .setProperty(SHOW_SQL, "true")
-                .setProperty(FORMAT_SQL, "true")
-                .setProperty(HIGHLIGHT_SQL, "true")
-                .buildSessionFactory();
+        try {
+            Class.forName("org.postgresql.Driver");
+            sessionFactory = new Configuration()
+                    .addAnnotatedClass(Ingredients.class)
+                    .addAnnotatedClass(CacheTable.class)
+                    .addAnnotatedClass(Ingredients.class)
+                    .addAnnotatedClass(Recipe.class)
+                    .addAnnotatedClass(Recipe_Category.class)
+                    .addAnnotatedClass(Category.class)
+                    .addAnnotatedClass(Recipe_Ingredients.class)
+                    .setProperty(JAKARTA_JDBC_URL, "jdbc:postgresql://localhost:5435/ssh")
+                    .setProperty(JAKARTA_JDBC_USER, "harry")
+                    .setProperty(JAKARTA_JDBC_PASSWORD, "example")
+                    .setProperty(SHOW_SQL, "true")
+                    .setProperty(FORMAT_SQL, "true")
+                    .setProperty(HIGHLIGHT_SQL, "true")
+                    .buildSessionFactory();
+            /*
+                    .setProperty(DIALECT, "org.hibernate.dialect.PostgreSQLDialect")
+                    .setProperty(DRIVER, "org.postgresql.Driver")
+             */
 
-        sessionFactory.getSchemaManager().exportMappedObjects(true);
-
+            sessionFactory.getSchemaManager().exportMappedObjects(true);
+        }
+        catch (ClassNotFoundException e) {
+            System.out.println("Error: "+e.toString());
+        }
         return sessionFactory;
     }
 }
