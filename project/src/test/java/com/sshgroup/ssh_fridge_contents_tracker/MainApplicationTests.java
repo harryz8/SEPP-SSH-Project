@@ -106,7 +106,7 @@ public class MainApplicationTests {
         Thread loadingThread = new Thread(loading);
         loadingThread.start();
         double quantityNeeded = 100.5;
-        String ingredientName = "sugar";
+        String ingredientName = "flour";
         CacheMap.cache.load();
         PriceQuantity minOcadoPrice = RecipeToolkit.getCheapestIngredient(ingredientName, quantityNeeded);
         loadingThread.interrupt();
