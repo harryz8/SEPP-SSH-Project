@@ -2,7 +2,9 @@ services:
 
   postgres:
     image: postgres:latest
-    environment:
-      - POSTGRES_PASSWORD=SSHproject
     ports:
-      - 5432:5432
+      - "5435:5432"
+    environment:
+      - POSTGRES_USER=harry
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_DB=ssh

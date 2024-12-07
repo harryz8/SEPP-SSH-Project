@@ -1,8 +1,14 @@
 package com.sshgroup.ssh_fridge_contents_tracker;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+
+import static org.hibernate.cfg.JdbcSettings.*;
+import static org.hibernate.cfg.JdbcSettings.HIGHLIGHT_SQL;
 
 /**
  * A class of static methods related to filtering a list of {@link com.sshgroup.ssh_fridge_contents_tracker.Recipe}
@@ -22,9 +28,13 @@ public class RecipeToolkit {
      * A function that takes the name of an ingredient needed and the minimum quantity needed and uses webscraping techniques to find the cheapest item with the required quantity and returns the price of that item
      * @param ingredientName a string of the name of the ingredient required to find the price for
      * @param quantityNeeded the minimum quantity of the ingredient required. If item does not have a specified quantity, pass -1
-     * @return a double of the price of the cheapest specified ingredient that is greater than the quantity needed. A negative number will be returned in the error case
+     * @return the {@link com.sshgroup.ssh_fridge_contents_tracker.PriceQuantity} of the cheapest specified ingredient that is greater than the quantity needed. Null will be returned in the error case
      */
-    public static double getCheapestPrice(String ingredientName, double quantityNeeded) {
+    public static PriceQuantity getCheapestIngredient(String ingredientName, double quantityNeeded) {
+        PriceQuantity minItem = CacheMap.cache.get(ingredientName, String.valueOf(quantityNeeded));
+        if (minItem != null) {
+            return minItem;
+        }
         ArrayList<PriceQuantity> ocadoItems = new ArrayList<>();
         try {
             //Ocado Scraper
@@ -44,7 +54,6 @@ public class RecipeToolkit {
                     throw new NoItemsException("Ocado Scraper returned valid no results");
                 }
                 ArrayList<String> LIs = WebScraper.getUnorderedListItems(element);
-//                System.out.println("LIs size: "+LIs.size());
                 for (String li : LIs) {
                     String li2 = null;
                     li2 = WebScraper.getElementByID(li, "div", "fop-item", "class");
@@ -56,12 +65,10 @@ public class RecipeToolkit {
                     }
                     String linkElement = WebScraper.getElement(li2, "a");
                     if (linkElement == null) {
-//                        System.out.println("linkElement NULL; item: "+li2);
                         continue;
                     }
                     String link = WebScraper.getParameterValue(linkElement, "href");
                     if (link == null) {
-//                        System.out.println("link NULL; item: "+linkElement);
                         continue;
                     }
                     try {
@@ -83,19 +90,16 @@ public class RecipeToolkit {
             if (quantityNeeded > 0) {
                 ocadoItems.removeIf(s -> s.getQuantity() < quantityNeeded);
             }
-//            for (PriceQuantity eachItem : ocadoItems) {
-//                System.out.println(eachItem.toString());
-//            }
-//            System.out.println(ocadoItems.size());
             PriceQuantity minOcado = PriceQuantity.getMinimumPrice((ArrayList<PriceQuantity>) ocadoItems);
             if (minOcado == null) {
-                return -2;
+                return null;
             }
-            return minOcado.getPrice();
+            CacheMap.cache.put(ingredientName, String.valueOf(quantityNeeded), minOcado);
+            return minOcado;
         }
         catch (MalformedURLException e) {
             System.out.println("Unable to connect to web store. Error: "+e.toString());
-            return -2;
+            return null;
         }
     }
 }

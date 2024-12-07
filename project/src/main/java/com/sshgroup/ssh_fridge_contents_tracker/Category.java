@@ -1,11 +1,8 @@
 package com.sshgroup.ssh_fridge_contents_tracker;
-//import com.fasterxml.jackson.annotation.JsonCreator;
-//import com.fasterxml.jackson.annotation.JsonProperty;
-//import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 import jakarta.persistence.*;
 
-import java.util.Date;
 @Entity
 @Table(name = "category_table")
 public class Category {

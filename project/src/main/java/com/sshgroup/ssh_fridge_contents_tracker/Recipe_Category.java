@@ -9,7 +9,6 @@ import java.util.Date;
 
 @Entity
 @Table(name = "recipe_category_table")
-
 public class Recipe_Category {
     @Id
     int recipe_category_id;
