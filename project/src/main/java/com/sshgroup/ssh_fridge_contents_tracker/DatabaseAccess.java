@@ -72,6 +72,44 @@ public class DatabaseAccess {
         return cacheItems;
     }
 
+    public Integer recipeGetQuantity(Integer ingredient_id, Integer recipe_id){
+        Integer quantityNeed = null;
+        try (Session session = sessionFactory.openSession()){
+            String hql = "SELECT rec_ing.quantity_needed FROM com.sshgroup.ssh_fridge_contents_tracker.Recipe_Ingredients rec_ing WHERE recipe_id =:rID AND ingredients_id = :iID";
+            Query query = session.createQuery(hql);
+            query.setParameter("rID", recipe_id);
+            query.setParameter("iID", ingredient_id);
+            List<Integer> result = query.list();
+
+            if(!result.isEmpty()){
+                quantityNeed = result.get(0);
+            }
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+        return quantityNeed;
+    }
+
+    public Integer ingredientsGetQuantity(Integer ingredient_id){
+        Integer ingredientHave = null;
+        try(Session session = sessionFactory.openSession()){
+            String hql = "SELECT ing.quantity_available FROM com.sshgroup.ssh_fridge_contents_tracker.Ingredients ing WHERE ingredient_id =:iID";
+            Query query = session.createQuery(hql);
+            query.setParameter("iID", ingredient_id);
+            List<Integer> result = query.list();
+
+            if(!result.isEmpty()){
+                ingredientHave = result.get(0);
+            }
+        } catch (Exception e){
+            System.out.println(e.toString());
+        }
+
+        return ingredientHave;
+
+    }
+
+
     public Integer ingredientsGetQuantity(Integer ingredient_id){
         Integer ingredientHave = null;
         try(Session session = sessionFactory.openSession()){
