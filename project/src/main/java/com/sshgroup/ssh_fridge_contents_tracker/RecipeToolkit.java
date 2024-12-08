@@ -9,8 +9,7 @@ import java.util.Map;
 
 public class RecipeToolkit {
 
-    SessionFactory session = DatabaseAccess.setup();
-    DatabaseAccess dbAccess = new DatabaseAccess();
+    SessionFactory session = DatabaseAccess.setup()
 
     public static ArrayList<Recipe> sortByPriceOfRemainingItems(ArrayList<Recipe> recipeList) {
         ArrayList<Ingredient> ingList = new ArrayList<>();
@@ -19,6 +18,7 @@ public class RecipeToolkit {
         // Iterate through the recipe list
         for (Recipe r : recipeList){
             double temp = 0.0;
+            Int recipeID = r.getID();
             // get list of ingredients and loop through
             ingList = r.getIngredientList();
             for (Ingredient i : ingList){
@@ -32,7 +32,6 @@ public class RecipeToolkit {
                     double cost = priceQ.getPrice();
                     temp += cost;
                     System.out.println("temp");
-
                 }
             }
             costsForRecipes.put(r, temp);
