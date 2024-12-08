@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Map;
 
 public class RecipeToolkit {
+
+    SessionFactory session = DatabaseAccess.setup()
+
     public static ArrayList<Recipe> sortByPriceOfRemainingItems(ArrayList<Recipe> recipeList) {
         ArrayList<Ingredient> ingList = new ArrayList<>();
         // 2d list for recipes and their costs
@@ -16,11 +19,12 @@ public class RecipeToolkit {
         // Iterate through the recipe list
         for (Recipe r : recipeList){
             double temp = 0.0;
+            Int recipeID = r.getID();
             // get list of ingredients and loop through
             ingList = r.getIngredientList();
             for (Ingredient i : ingList){
                 // get quantity needed and quantity have. if have < needed then add the cost of that ingredient to temp
-                int need = r.getQuantity(i.getID());
+                int need = DatabaseAccess.get(i.getID());
                 int have = i.getQuantity();
                 if (need <= have){
                     temp = 0.0;
