@@ -2,6 +2,7 @@ package com.sshgroup.ssh_fridge_contents_tracker;
 
 import org.hibernate.SessionFactory;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,19 +10,20 @@ import java.util.Map;
 
 public class RecipeToolkit {
 
-    SessionFactory session = DatabaseAccess.setup()
+    SessionFactory session = DatabaseAccess.setup();
+    DatabaseAccess dbAccess = new DatabaseAccess();
 
-    public static ArrayList<Recipe> sortByPriceOfRemainingItems(ArrayList<Recipe> recipeList) {
-        ArrayList<Ingredient> ingList = new ArrayList<>();
+    public ArrayList<Recipe> sortByPriceOfRemainingItems(ArrayList<Recipe> recipeList) {
+        ArrayList<Ingredients> ingList = new ArrayList<>();
         // 2d list for recipes and their costs
         Map<Recipe, Double> costsForRecipes = new HashMap<>();
         // Iterate through the recipe list
-        for (Recipe r : recipeList){
+        for (Recipe r : recipeList) {
             double temp = 0.0;
-            Int recipeID = r.getID();
+            Integer recipeID = r.getId();
             // get list of ingredients and loop through
-            ingList = r.getIngredientList();
-            for (Ingredient i : ingList){
+            ingList = new ArrayList<>();
+            for (Ingredients i : ingList) {
                 // get quantity needed and quantity have. if have < needed then add the cost of that ingredient to temp
                 int need = dbAccess.recipeGetQuantity(i, r);
                 int have = dbAccess.ingredientsGetQuantity(i.getIngredients_id());
@@ -47,6 +49,7 @@ public class RecipeToolkit {
         }
         return sortedList;
     }
+
     public static ArrayList<Recipe> filterByCategory(ArrayList<Recipe> recipeList, Category category) {
         // declare new list
         ArrayList<Recipe> newList = new ArrayList<>();
@@ -136,4 +139,5 @@ public class RecipeToolkit {
             return null;
         }
     }
+
 }
