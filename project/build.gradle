@@ -28,11 +28,14 @@ tasks.withType(JavaCompile) {
 apply plugin: 'docker-compose'
 
 dockerCompose.isRequiredBy(run)
+<<<<<<< HEAD
 dockerCompose.isRequiredBy(test)
 
 run{
   standardInput = System.in
 }
+=======
+>>>>>>> 41a8016 (added docker to gradle)
 
 application {
   mainModule = 'com.sshgroup.ssh_fridge_contents_tracker'
