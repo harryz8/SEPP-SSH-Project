@@ -28,6 +28,8 @@ We plan to:
 
 I suggest that we do the Integration tests in python?
 
+We are going to test the program as a whole using Python scripts that simulate different user inputs and verify outputs. We will also run unit tests each time two separately developed parts are integrated.
+
 ### Formal Verification
 
 We don't think that this type of testing is applicable to this project as most of our functions have side effects and are not mathematically pure.
