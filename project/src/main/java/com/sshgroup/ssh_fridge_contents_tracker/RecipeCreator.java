@@ -39,7 +39,6 @@ public class RecipeCreator {
                 amountNeeded.add(amount);
             }
 
-            // Perform database operations within a transaction
             try (Session session = sessionFactory.openSession()) {
                 session.beginTransaction();
 
@@ -54,18 +53,15 @@ public class RecipeCreator {
 
                     Ingredients ingredient = findIngredient(session, ingredientName);
                     if (ingredient == null) {
-                        // If ingredient doesn't exist, create a new one
                         ingredient = new Ingredients();
                         ingredient.setIngredients(ingredientName);
-                        ingredient.setQuantity(quantityNeeded); // Initialize with the amount needed
-                        ingredient.setCost_per_kg(0); // Default cost if unknown
+                        ingredient.setQuantity(quantityNeeded);
+                        ingredient.setCost_per_kg(0);
                         session.persist(ingredient);
                     } else {
-                        // Update the quantity if the ingredient exists
                         ingredient.setQuantity(ingredient.getQuantity() + quantityNeeded);
                     }
 
-                    // Create and persist Recipe_Ingredients entry
                     Recipe_Ingredients recipeIngredients = new Recipe_Ingredients();
                     recipeIngredients.setRecipe_id(recipe);
                     recipeIngredients.setIngredients_id(ingredient);
