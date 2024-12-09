@@ -17,6 +17,11 @@ import static org.hibernate.cfg.JdbcSettings.HIGHLIGHT_SQL;
 
 public class DatabaseAccess {
     private static SessionFactory sessionFactory;
+
+    /**
+     * Starts the session factory or returns the active one
+     * @return a sessionFactory
+     */
     public static SessionFactory setup() {
         if (sessionFactory == null) {
             try {
