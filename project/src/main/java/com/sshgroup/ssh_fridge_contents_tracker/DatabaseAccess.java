@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.type.Type;
 
@@ -63,6 +64,12 @@ public class DatabaseAccess {
         }
         return sessionFactory;
     }
+/*
+    public List<Ingredients> getIngredientList(Integer recipe_id){
+        List<Integer> ingList = null;
+        try (Session session  = sessionFactory.openSession()){
+            String hql = "SELECT Ingredient "
+        }
 
     public static List<CacheTable> getAllCacheTableRecords() {
         List<CacheTable> cacheItems;
@@ -72,6 +79,8 @@ public class DatabaseAccess {
         return cacheItems;
     }
 
+    }
+*/
     public Integer recipeGetQuantity(Integer ingredient_id, Integer recipe_id){
         Integer quantityNeed = null;
         try (Session session = sessionFactory.openSession()){
@@ -93,7 +102,7 @@ public class DatabaseAccess {
     public Integer ingredientsGetQuantity(Integer ingredient_id){
         Integer ingredientHave = null;
         try(Session session = sessionFactory.openSession()){
-            String hql = "SELECT ing.quantity_available FROM com.sshgroup.ssh_fridge_contents_tracker.Ingredients ing WHERE ingredient_id =:iID";
+            String hql = "SELECT ing.quantity_available FROM com.sshgroup.ssh_fridge_contents_tracker.Ingredients ing WHERE ingredients_id =:iID";
             Query query = session.createQuery(hql);
             query.setParameter("iID", ingredient_id);
             List<Integer> result = query.list();
