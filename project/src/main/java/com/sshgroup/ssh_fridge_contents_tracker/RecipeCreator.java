@@ -56,7 +56,6 @@ public class RecipeCreator {
                         ingredient = new Ingredients();
                         ingredient.setIngredients(ingredientName);
                         ingredient.setQuantity(quantityNeeded);
-                        ingredient.setCost_per_kg(0);
                         session.persist(ingredient);
                     } else {
                         ingredient.setQuantity(ingredient.getQuantity() + quantityNeeded);
@@ -66,7 +65,6 @@ public class RecipeCreator {
                     recipeIngredients.setRecipe_id(recipe);
                     recipeIngredients.setIngredients_id(ingredient);
                     recipeIngredients.setQuantity_needed(quantityNeeded);
-                    recipeIngredients.setTotal_cost(ingredient.getMin_cost() * quantityNeeded);
                     session.persist(recipeIngredients);
                 }
 
