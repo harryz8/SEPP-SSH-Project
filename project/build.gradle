@@ -4,6 +4,7 @@ plugins {
   id 'org.javamodularity.moduleplugin' version '1.8.12'
   id 'org.openjfx.javafxplugin' version '0.1.0'
   id 'org.beryx.jlink' version '2.25.0'
+  id("com.avast.gradle.docker-compose") version "0.17.11"
 }
 
 group 'com.SSHGroup'
@@ -23,6 +24,11 @@ targetCompatibility = '17'
 tasks.withType(JavaCompile) {
   options.encoding = 'UTF-8'
 }
+
+apply plugin: 'docker-compose'
+
+dockerCompose.isRequiredBy(run)
+dockerCompose.isRequiredBy(test)
 
 application {
   mainModule = 'com.sshgroup.ssh_fridge_contents_tracker'

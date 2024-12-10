@@ -30,12 +30,12 @@ public class WebScraper {
             try {
                 StringBuilder html = new StringBuilder();
                 String inputLine;
-                //Opens a connection to the url
+                //Creates a connection using the provided url
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod("GET");
                 con.connect();
-                //Reads from the connection until it's done
                 BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                //appends each line read to the string builder, returns null and so the while loop breaks when the end of the html file is reached
                 while ((inputLine = in.readLine()) != null) {
                     html.append(inputLine);
                 }
@@ -199,6 +199,9 @@ public class WebScraper {
             if (locOfOpenTriangle < 0) {
                 return -1;
             }
+        }
+        if (!source.substring(locOfOpenTriangle+1).startsWith(elementType)) {
+            return -1;
         }
         return locOfOpenTriangle;
     }
