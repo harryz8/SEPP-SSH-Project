@@ -29,6 +29,7 @@ jobs:
       - name: "Build project"
         working-directory: ./project
         run: |
+          docker compose down
           docker compose up -d
           ./gradlew build
 
