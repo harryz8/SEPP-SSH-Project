@@ -17,8 +17,8 @@ public class Ingredients {
 
     @Column
     private String ingredients_name;
-    @Column
-    private int quantity_available;
+    @Column(columnDefinition="DOUBLE PRECISION")
+    private double quantity_available;
 
 
 
@@ -26,13 +26,11 @@ public class Ingredients {
 
     }
 
-    public Ingredients( int ingredients_id, String ingredients, int quantity_available, int cost_per_kg) {
-
+    public Ingredients(String ingredients, double quantity_available) {
         this.ingredients_id = ingredients_id;
         this.quantity_available = quantity_available;
-
-
     }
+
     public int getIngredients_id() {
         return ingredients_id;
     }
@@ -49,11 +47,11 @@ public class Ingredients {
         this.ingredients_name = ingredients;
     }
 
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity_available;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(double quantity) {
         this.quantity_available = quantity_available;
     }
 

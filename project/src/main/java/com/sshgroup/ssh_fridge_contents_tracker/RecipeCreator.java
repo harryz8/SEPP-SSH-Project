@@ -4,9 +4,9 @@ import com.sshgroup.ssh_fridge_contents_tracker.DatabaseAccess;
 import com.sshgroup.ssh_fridge_contents_tracker.Ingredients;
 import com.sshgroup.ssh_fridge_contents_tracker.Recipe;
 import com.sshgroup.ssh_fridge_contents_tracker.Recipe_Ingredients;
+import jakarta.transaction.Transactional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -24,18 +24,18 @@ public class RecipeCreator {
             String recipeInstructions = scanner.nextLine();
 
             List<String> ingredientNames = new ArrayList<>();
-            List<Integer> amountNeeded = new ArrayList<>();
+            List<Double> amountNeeded = new ArrayList<>();
 
             while (true) {
                 System.out.print("Enter ingredient name (or done): ");
                 String temp = scanner.nextLine();
-                if (Objects.equals(temp, "done")) {
+                if ("done".equals(temp)) {
                     break;
                 }
                 ingredientNames.add(temp);
 
                 System.out.print("Enter amount required: ");
-                int amount = Integer.parseInt(scanner.nextLine());
+                double amount = Double.parseDouble(scanner.nextLine());
                 amountNeeded.add(amount);
             }
 
@@ -49,7 +49,7 @@ public class RecipeCreator {
 
                 for (int i = 0; i < ingredientNames.size(); i++) {
                     String ingredientName = ingredientNames.get(i);
-                    int quantityNeeded = amountNeeded.get(i);
+                    double quantityNeeded = amountNeeded.get(i);
 
                     Ingredients ingredient = findIngredient(session, ingredientName);
                     if (ingredient == null) {
@@ -70,8 +70,6 @@ public class RecipeCreator {
 
                 session.getTransaction().commit();
             }
-        } finally {
-            sessionFactory.close();
         }
     }
 
@@ -80,7 +78,12 @@ public class RecipeCreator {
                 .setParameter("name", name)
                 .uniqueResult();
     }
-    public static void addRecipe(String recipeName, String recipeInstructions) {
+
+    @Transactional
+    public static Recipe addRecipe(String recipeName, String recipeInstructions) {
+        if (recipeName == null || recipeInstructions == null || recipeName.isEmpty() || recipeInstructions.isEmpty()) {
+            return null;
+        }
         SessionFactory sessionFactory = DatabaseAccess.setup();
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
@@ -88,38 +91,45 @@ public class RecipeCreator {
             recipe.setRecipe_name(recipeName);
             recipe.setRecipe_instruction(recipeInstructions);
             session.persist(recipe);
-            session.getTransaction().commit();
+            return recipe;
         }
     }
 
-    public static void addIngredient(String ingredientName, int quantityNeeded) {
+    @Transactional
+    public static Ingredients addIngredient(String ingredientName, double quantityAvailiable) {
+        if (ingredientName == null || ingredientName.isEmpty()) {
+            return null;
+        }
         SessionFactory sessionFactory = DatabaseAccess.setup();
         try (Session session = sessionFactory.openSession()) {
             Ingredients ingredient = findIngredient(session, ingredientName);
             if (ingredient == null) {
                 ingredient = new Ingredients();
                 ingredient.setIngredients(ingredientName);
-                ingredient.setQuantity(quantityNeeded);
+                ingredient.setQuantity(quantityAvailiable);
                 //ingredient.setCost_per_kg(0);
             }
             else {
-                ingredient.setQuantity(ingredient.getQuantity() + quantityNeeded);
+                ingredient.setQuantity(ingredient.getQuantity() + quantityAvailiable);
             }
             session.persist(ingredient);
-            session.getTransaction().commit();
+            return ingredient;
         }
     }
 
-    public static void addLinkBetweenIngredientAndRecipe(Recipe recipe, Ingredients ingredient, int quantityNeeded) {
+    @Transactional
+    public static Recipe_Ingredients addLinkBetweenIngredientAndRecipe(Recipe recipe, Ingredients ingredient, double quantityNeeded) {
+        if (recipe == null || ingredient == null) {
+            return null;
+        }
         SessionFactory sessionFactory = DatabaseAccess.setup();
         try (Session session = sessionFactory.openSession()) {
             Recipe_Ingredients recipeIngredients = new Recipe_Ingredients();
             recipeIngredients.setRecipe_id(recipe);
             recipeIngredients.setIngredients_id(ingredient);
             recipeIngredients.setQuantity_needed(quantityNeeded);
-            //recipeIngredients.setTotal_cost(ingredient.getMin_cost() * quantityNeeded);
             session.persist(recipeIngredients);
-            session.getTransaction().commit();
+            return recipeIngredients;
         }
     }
 }

@@ -24,7 +24,7 @@ public class Recipe {
 
     @Column
     private String recipe_name;
-    @Column
+    @Column(columnDefinition="TEXT")
     private String recipe_instruction;
 
 
@@ -37,10 +37,6 @@ public class Recipe {
     public Recipe(String recipe_name, String recipe_instruction) {
         this.recipe_name = recipe_name;
         this.recipe_instruction = recipe_instruction;
-
-
-
-
     }
 
     public int getId() {
