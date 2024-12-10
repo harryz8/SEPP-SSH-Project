@@ -21,8 +21,7 @@ public class Recipe_Ingredients {
 
     @Column
     private int quantity_needed;
-    @Column
-    private int total_cost;
+
 
     public Recipe_Ingredients() {
 
@@ -33,7 +32,7 @@ public class Recipe_Ingredients {
         this.recipe_id = recipe_id;
         this.ingredients_id = ingredients_id;
         this.quantity_needed = quantity_needed;
-        this.total_cost = total_cost;
+
     }
 
         public int getRecipe_ingredients_id() {
@@ -67,12 +66,6 @@ public class Recipe_Ingredients {
             this.quantity_needed = quantity_needed;
         }
 
-        public int getTotal_cost() {
-            return total_cost;
-        }
-
-        public void setTotal_cost(int total_cost) {
-            this.total_cost = total_cost;
-        }
+        
 
 }

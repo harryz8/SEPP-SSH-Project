@@ -1,5 +1,7 @@
 package com.sshgroup.ssh_fridge_contents_tracker;
 
+import jakarta.enterprise.context.Initialized;
+import jakarta.persistence.criteria.From;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -7,6 +9,8 @@ import javafx.scene.chart.PieChart;
 import javafx.stage.Stage;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.event.spi.InitializeCollectionEventListener;
+
 import static org.hibernate.cfg.JdbcSettings.FORMAT_SQL;
 import static org.hibernate.cfg.JdbcSettings.HIGHLIGHT_SQL;
 import static org.hibernate.cfg.JdbcSettings.JAKARTA_JDBC_PASSWORD;
@@ -15,6 +19,7 @@ import static org.hibernate.cfg.JdbcSettings.JAKARTA_JDBC_USER;
 import static org.hibernate.cfg.JdbcSettings.SHOW_SQL;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.Scanner;
 
 public class MainApplication extends Application {
     @Override
@@ -40,6 +45,39 @@ public class MainApplication extends Application {
         else {
             CacheMap.cache.load();
             System.out.println("Command line mode goes here");
+            Scanner RecipeScanner =new Scanner(System.in);
+            String forScan;
+            System.out.println("Choose whether you want to add a recipe or get a recipe (;  :");
+            System.out.println("Please write add or get");
+
+            forScan = RecipeScanner.next();
+            if (forScan == "add"){
+                System.out.println("Please enter the dish name: ");
+                String recipe_name = RecipeScanner.next();
+
+
+                System.out.println("Now please enter the recipe instruction and " + "quantity needed");
+                String recipe_instruction = RecipeScanner.next();
+                int quantity_needed = RecipeScanner.nextInt();
+
+
+                RecipeScanner.close();
+
+
+            } else if (forScan == "get") {
+                System.out.println("The recipe for the dish is: ");
+                System.out.println("");
+
+
+                RecipeScanner.close();
+            } else {
+                System.out.println("Please enter a valid command (: ");
+
+
+
+            }
+
+
             Loading loading = new Loading();
             Thread loadingThread = new Thread(loading);
             loadingThread.start();

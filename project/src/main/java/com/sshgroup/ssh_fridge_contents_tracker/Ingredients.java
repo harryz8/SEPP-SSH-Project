@@ -18,8 +18,7 @@ public class Ingredients {
     private String ingredients_name;
     @Column
     private int quantity_available;
-    @Column
-    private int cost_per_kg;
+
 
 
     public Ingredients() {
@@ -30,7 +29,7 @@ public class Ingredients {
 
         this.ingredients_id = ingredients_id;
         this.quantity_available = quantity_available;
-        this.cost_per_kg = cost_per_kg;
+
 
     }
     public int getIngredients_id() {
@@ -57,11 +56,5 @@ public class Ingredients {
         this.quantity_available = quantity_available;
     }
 
-    public int getMin_cost() {
-        return cost_per_kg;
-    }
 
-    public void setCost_per_kg(int cost_per_kg) {
-        this.cost_per_kg = cost_per_kg;
-    }
 }
