@@ -75,14 +75,12 @@ public class RecipeCreatorTests {
             Ingredients cheese = new Ingredients();
             cheese.setIngredients("Cheese");
             cheese.setQuantity(10);
-            //cheese.setCost_per_kg(5);
             session.persist(cheese);
 
             Recipe_Ingredients recipeIngredients = new Recipe_Ingredients();
             recipeIngredients.setRecipe_id(recipe);
             recipeIngredients.setIngredients_id(cheese);
             recipeIngredients.setQuantity_needed(2);
-            //recipeIngredients.setTotal_cost(10);
             session.persist(recipeIngredients);
 
             session.getTransaction().commit();
@@ -91,7 +89,6 @@ public class RecipeCreatorTests {
             assertNotNull(association, "Recipe_Ingredients association should exist.");
             assertEquals(recipe.getId(), association.getRecipe_id().getId());
             assertEquals(cheese.getIngredients_id(), association.getIngredients_id().getIngredients_id());
-            //assertEquals(10, association.getTotal_cost());
         }
     }
 
@@ -131,7 +128,6 @@ public class RecipeCreatorTests {
             Ingredients sugar = new Ingredients();
             sugar.setIngredients("Sugar");
             sugar.setQuantity(15);
-            //sugar.setCost_per_kg(1);
             session.persist(sugar);
 
             session.getTransaction().commit();
