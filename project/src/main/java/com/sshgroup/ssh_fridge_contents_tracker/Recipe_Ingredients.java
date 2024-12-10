@@ -11,6 +11,7 @@ import java.util.Date;
 
 public class Recipe_Ingredients {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     int recipe_ingredients_id;
 
     @ManyToOne
