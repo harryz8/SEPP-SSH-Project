@@ -18,6 +18,7 @@ import jdk.jfr.Name;
 public class Recipe {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     int recipe_id;
 
 
@@ -33,8 +34,7 @@ public class Recipe {
 
 
 
-    public Recipe(int recipe_id, String recipe_name, String recipe_instruction) {
-        this.recipe_id = recipe_id;
+    public Recipe(String recipe_name, String recipe_instruction) {
         this.recipe_name = recipe_name;
         this.recipe_instruction = recipe_instruction;
 

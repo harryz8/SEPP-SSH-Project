@@ -12,6 +12,7 @@ import java.util.Date;
 @Table(name = "ingredients_table")
 public class Ingredients {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     int ingredients_id;
 
     @Column
@@ -45,7 +46,7 @@ public class Ingredients {
     }
 
     public void setIngredients(String ingredients) {
-        this.ingredients_name = ingredients_name;
+        this.ingredients_name = ingredients;
     }
 
     public int getQuantity() {
