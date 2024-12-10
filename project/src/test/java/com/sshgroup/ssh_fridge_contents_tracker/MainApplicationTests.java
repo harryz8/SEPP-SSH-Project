@@ -125,4 +125,8 @@ public class MainApplicationTests {
             System.out.println("Error: "+e.toString());
         }
     }
+    @Test
+    void stringGetPositionsTest() {
+
+    }
 }
