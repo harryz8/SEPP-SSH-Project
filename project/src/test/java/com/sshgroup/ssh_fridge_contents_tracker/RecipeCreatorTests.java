@@ -145,8 +145,8 @@ public class RecipeCreatorTests {
     @Test
     void testIngredientNotFound() {
         try (Session session = sessionFactory.openSession()) {
-            Ingredients fetchedIngredient = RecipeCreator.findIngredient(session, "NonExistent");
-            assertNull(fetchedIngredient, "Ingredient should not exist.");
+            Ingredients currentIngredient = RecipeCreator.findIngredient(session, "testingredient");
+            assertNull(currentIngredient, "Ingredient should not exist.");
         }
     }
     @Test
