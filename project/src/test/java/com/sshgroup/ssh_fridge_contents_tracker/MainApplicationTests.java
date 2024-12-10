@@ -173,9 +173,10 @@ public class MainApplicationTests {
         assertNull(WebScraper.getElementByIDNoCloseTag(incElement, "div", "red", "class"));
         assertNull(WebScraper.getElementByIDNoCloseTag(incElement, "div", "test", "id"));
     }
-//    @Test
-//    void getElementById() {
-//        String incElement = "<div class=\"test\"><p>Hello HTML</p><a href=\"Alink.com\">Some Link</a></div>";
-//
-//    }
+    @Test
+    void getElementById() {
+        String incElement = "<div class=\"test\"><p>Hello HTML</p><a href=\"Alink.com\">Some Link</a></div>";
+        assertEquals("<div class=\"test\"><p>Hello HTML</p><a href=\"Alink.com\">Some Link</a></div>", WebScraper.getElementByID(incElement, "div", "test", "class"));
+        //more
+    }
 }

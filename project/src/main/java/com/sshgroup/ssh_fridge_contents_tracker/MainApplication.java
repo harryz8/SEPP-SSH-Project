@@ -3,6 +3,7 @@ package com.sshgroup.ssh_fridge_contents_tracker;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.stage.Stage;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -28,7 +29,7 @@ public class MainApplication extends Application {
 
     @Override
     public void stop() throws Exception {
-        //CacheMap.cache.close();
+        DatabaseAccess.setup().close();
         super.stop();
     }
 
