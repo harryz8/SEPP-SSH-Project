@@ -77,7 +77,7 @@ public class RecipeCreator {
         }
     }
 
-    private static Ingredients findIngredient(Session session, String name) {
+    static Ingredients findIngredient(Session session, String name) {
         return session.createQuery("FROM Ingredients WHERE ingredients_name = :name", Ingredients.class)
                 .setParameter("name", name)
                 .uniqueResult();
