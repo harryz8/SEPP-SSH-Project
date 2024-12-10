@@ -38,7 +38,7 @@ public class DatabaseAccess {
                         .addAnnotatedClass(Recipe_Category.class)
                         .addAnnotatedClass(Category.class)
                         .addAnnotatedClass(Recipe_Ingredients.class)
-                        .setProperty(JAKARTA_JDBC_URL, "jdbc:postgresql://localhost:5436/ssh")
+                        .setProperty(JAKARTA_JDBC_URL, "jdbc:postgresql://localhost:5437/ssh")
                         .setProperty(JAKARTA_JDBC_USER, "group")
                         .setProperty(JAKARTA_JDBC_PASSWORD, "example")
                         .setProperty(SHOW_SQL, "false")
