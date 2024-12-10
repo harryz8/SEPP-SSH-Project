@@ -16,6 +16,10 @@ import static org.hibernate.cfg.JdbcSettings.*;
 import static org.hibernate.cfg.JdbcSettings.HIGHLIGHT_SQL;
 
 public class DatabaseAccess {
+
+    /**
+     * the session factory currently open
+     */
     private static SessionFactory sessionFactory;
 
     /**
@@ -34,7 +38,7 @@ public class DatabaseAccess {
                         .addAnnotatedClass(Recipe_Category.class)
                         .addAnnotatedClass(Category.class)
                         .addAnnotatedClass(Recipe_Ingredients.class)
-                        .setProperty(JAKARTA_JDBC_URL, "jdbc:postgresql://localhost:5435/ssh")
+                        .setProperty(JAKARTA_JDBC_URL, "jdbc:postgresql://localhost:5437/ssh")
                         .setProperty(JAKARTA_JDBC_USER, "group")
                         .setProperty(JAKARTA_JDBC_PASSWORD, "example")
                         .setProperty(SHOW_SQL, "false")
