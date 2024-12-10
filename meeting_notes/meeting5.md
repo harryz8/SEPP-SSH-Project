@@ -14,3 +14,7 @@ I have deleted couple of cost entities that we no longer would use in that way f
 Integrate and test our functions to produce a working prototype.
 
 ## What we achieved during this meeting
+
+### Harry
+
+I have fixed a github workflow issue by removing the requirement to run docker compose up as it is now done by gradle.

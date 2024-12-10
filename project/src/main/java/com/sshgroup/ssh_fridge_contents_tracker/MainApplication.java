@@ -38,6 +38,10 @@ public class MainApplication extends Application {
         super.stop();
     }
 
+    public static void loadRecipes() {
+        //RecipeCreator.addRecipe(new Recipe("Buttermilk pancakes", ""));
+    }
+
     public static void main(String[] args) throws MalformedURLException {
         if ((args.length > 0) && (args[0].toLowerCase().equals("i"))) {
             launch();
