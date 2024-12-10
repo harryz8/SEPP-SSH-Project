@@ -55,6 +55,10 @@ public class DatabaseAccess {
             } catch (ClassNotFoundException e) {
                 System.out.println("Error: " + e.toString());
             }
+            catch (org.hibernate.service.spi.ServiceException e) {
+                System.out.println("Could not connect to the postgreSQL port. Please check it is running and try again.");
+                System.exit(1);
+            }
         }
         return sessionFactory;
     }

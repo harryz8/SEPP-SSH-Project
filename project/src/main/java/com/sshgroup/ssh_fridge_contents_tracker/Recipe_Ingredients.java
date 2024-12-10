@@ -20,15 +20,15 @@ public class Recipe_Ingredients {
     Ingredients ingredients_id;
 
 
-    @Column
-    private int quantity_needed;
+    @Column(columnDefinition="DOUBLE PRECISION")
+    private double quantity_needed;
 
 
     public Recipe_Ingredients() {
 
     }
 
-    public Recipe_Ingredients(int recipe_ingredients_id, Recipe recipe_id, Ingredients ingredients_id, int quantity_needed, int total_cost) {
+    public Recipe_Ingredients(int recipe_ingredients_id, Recipe recipe_id, Ingredients ingredients_id, double quantity_needed) {
         this.recipe_ingredients_id = recipe_ingredients_id;
         this.recipe_id = recipe_id;
         this.ingredients_id = ingredients_id;
@@ -39,6 +39,7 @@ public class Recipe_Ingredients {
         public int getRecipe_ingredients_id() {
             return recipe_ingredients_id;
         }
+
         public void setRecipe_ingredients_id(int recipe_ingredients_id){
             this.recipe_ingredients_id = recipe_ingredients_id;
         }
@@ -59,11 +60,11 @@ public class Recipe_Ingredients {
             this.ingredients_id = ingredients_id;
         }
 
-         public int getQuantity_needed() {
+         public double getQuantity_needed() {
             return quantity_needed;
         }
 
-        public void setQuantity_needed(int quantity_needed) {
+        public void setQuantity_needed(double quantity_needed) {
             this.quantity_needed = quantity_needed;
         }
 
