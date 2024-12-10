@@ -44,7 +44,6 @@ public class CacheMap extends HashMap<String, PriceQuantity> {
         Root<CacheTable> rootCacheItems = cacheItemsQuery.from(CacheTable.class);
         CriteriaQuery<CacheTable> allCacheItems = cacheItemsQuery.select(rootCacheItems);
         TypedQuery<CacheTable> allCacheItemsQuery = session.createQuery(allCacheItems);
-        // List<CacheTable> cacheItems = session.createQuery("SELECT name_and_quantity_string, price_quantity FROM CacheTable WHERE date_updated<" + String.valueOf(sevenDays), CacheTable.class).getResultList();
         tr.commit();
         List<CacheTable> cacheItems = allCacheItemsQuery.getResultList();
         session.close();
