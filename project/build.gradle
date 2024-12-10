@@ -28,6 +28,7 @@ tasks.withType(JavaCompile) {
 apply plugin: 'docker-compose'
 
 dockerCompose.isRequiredBy(run)
+dockerCompose.isRequiredBy(test)
 
 application {
   mainModule = 'com.sshgroup.ssh_fridge_contents_tracker'
