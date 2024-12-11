@@ -8,8 +8,6 @@
 
 [Database](./database.md)
 
-[Threats Model](./threats.md)
-
 ## Directories
 
 [Project](./project)
