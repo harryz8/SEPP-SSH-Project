@@ -28,6 +28,7 @@ public class RecipeCreator {
 
             List<String> ingredientNames = new ArrayList<>();
             List<Double> amountNeeded = new ArrayList<>();
+            List<String> categories = new ArrayList<>();
 
             while (true) {
                 System.out.print("Enter ingredient name (or done): ");
@@ -40,6 +41,15 @@ public class RecipeCreator {
                 System.out.print("Enter amount required: ");
                 double amount = Double.parseDouble(scanner.nextLine());
                 amountNeeded.add(amount);
+            }
+
+            while (true) {
+                System.out.print("Enter any categories that apply to the recipe (or done): ");
+                String temp = scanner.nextLine();
+                if ("done".equals(temp)) {
+                    break;
+                }
+                categories.add(temp);
             }
 
             try (Session session = sessionFactory.openSession()) {
@@ -70,6 +80,21 @@ public class RecipeCreator {
                     recipeIngredients.setIngredients_id(ingredient);
                     recipeIngredients.setQuantity_needed(quantityNeeded);
                     session.persist(recipeIngredients);
+                }
+                for (int i = 0; i < categories.size(); i++) {
+                    String category = categories.get(i);
+
+                    Category category1 = findCategory(session, category);
+                    if (category1 == null) {
+                        category1 = new Category();
+                        category1.setCategory_name(category);
+                        session.persist(category1);
+                    }
+
+                    Recipe_Category recipeCategories = new Recipe_Category();
+                    recipeCategories.setRecipe_id(recipe);
+                    recipeCategories.setCategory_id(category1);
+                    session.persist(recipeCategories);
                 }
 
                 session.getTransaction().commit();

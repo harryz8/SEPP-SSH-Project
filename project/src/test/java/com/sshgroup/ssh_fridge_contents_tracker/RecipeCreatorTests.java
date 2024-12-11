@@ -93,6 +93,34 @@ public class RecipeCreatorTests {
     }
 
     @Test
+    void testRecipeCategoryAssociation() {
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+            Recipe recipe = new Recipe();
+            recipe.setRecipe_name("Pizza");
+            recipe.setRecipe_instruction("Bake dough, add toppings, bake again.");
+            session.persist(recipe);
+
+            Category vegan = new Category();
+            vegan.setCategory_name("Vegan");
+            session.persist(vegan);
+
+            Recipe_Category recipeCategories = new Recipe_Category();
+            recipeCategories.setRecipe_id(recipe);
+            recipeCategories.setCategory_id(vegan);
+            session.persist(recipeCategories);
+
+            session.getTransaction().commit();
+
+            Recipe_Category association = session.get(Recipe_Category.class, recipeCategories.getRecipe_category_id());
+            assertNotNull(association, "Recipe_Categories association should exist.");
+            assertEquals(recipe.getId(), association.getRecipe_id().getId());
+            assertEquals(vegan.getCategory_id(), association.getCategory_id().getCategory_id());
+        }
+    }
+
+    @Test
     void testFindIngredient() {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();

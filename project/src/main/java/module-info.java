@@ -14,7 +14,6 @@ module com.sshgroup.ssh_fridge_contents_tracker {
     requires jakarta.xml.bind;
     requires org.hibernate.commons.annotations;
     requires org.postgresql.jdbc;
-    requires net.bytebuddy;
 
     opens com.sshgroup.ssh_fridge_contents_tracker to javafx.fxml, org.hibernate.orm.core;
     exports com.sshgroup.ssh_fridge_contents_tracker;
