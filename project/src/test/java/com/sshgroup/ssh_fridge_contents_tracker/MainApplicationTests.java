@@ -3,6 +3,8 @@ package com.sshgroup.ssh_fridge_contents_tracker;
 import org.junit.jupiter.api.Test;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MainApplicationTests {
@@ -107,6 +109,13 @@ public class MainApplicationTests {
         PriceQuantity minOcadoPrice = RecipeToolkit.getCheapestIngredient(ingredientName, quantityNeeded);
         loadingThread.interrupt();
         assertEquals(0.45, minOcadoPrice.getPrice());
+        //check cache map is working
+        Date first = new Date();
+        long firstTime = first.getTime();
+        PriceQuantity minOcadoPrice2 = RecipeToolkit.getCheapestIngredient(ingredientName, quantityNeeded);
+        Date last = new Date();
+        long lastTime = last.getTime();
+        assertTrue(lastTime<(firstTime+20000));
     }
     @Test
     void testGetWebpageHTML() {

@@ -33,7 +33,7 @@ public class RecipeToolkit {
     public static PriceQuantity getCheapestIngredient(String ingredientName, double quantityNeeded) {
         PriceQuantity minItem = CacheMap.cache.get(ingredientName, String.valueOf(quantityNeeded));
         if (minItem != null) {
-            // System.out.println("Yay!");
+//            System.out.println("Yay!");
             return minItem;
         }
         ArrayList<PriceQuantity> ocadoItems = new ArrayList<>();
