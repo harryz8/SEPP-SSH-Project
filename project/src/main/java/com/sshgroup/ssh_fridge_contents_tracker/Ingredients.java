@@ -26,9 +26,10 @@ public class Ingredients {
 
     }
 
-    public Ingredients(String ingredients, double quantity_available) {
+    public Ingredients(String ingredients, double quantity) {
         this.ingredients_id = ingredients_id;
-        this.quantity_available = quantity_available;
+        this.ingredients_name = ingredients;
+        this.quantity_available = quantity;
     }
 
     public int getIngredients_id() {
@@ -52,7 +53,7 @@ public class Ingredients {
     }
 
     public void setQuantity(double quantity) {
-        this.quantity_available = quantity_available;
+        this.quantity_available = quantity;
     }
 
     public boolean equals(Ingredients otherIngredient) {
