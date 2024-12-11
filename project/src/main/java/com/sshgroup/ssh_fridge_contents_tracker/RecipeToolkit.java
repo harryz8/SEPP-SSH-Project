@@ -53,6 +53,7 @@ public class RecipeToolkit {
         // Then add the sorted recipes to a new list
         ArrayList<Recipe> sortedList = new ArrayList<>();
         for (Map.Entry<Recipe, Double> entry : sortedCosts) {
+            System.out.println(entry.getValue());
             sortedList.add(entry.getKey());
         }
         return sortedList;
