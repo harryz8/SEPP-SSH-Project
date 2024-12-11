@@ -63,7 +63,7 @@ public class RecipeToolkit {
         ArrayList<Recipe> newList = new ArrayList<>();
         // loop through original list and only add to the new list if the category matches
         for(Recipe r : recipeList){
-            if (dbAccess.getCategory(r).equals(category.getCategory_id())){
+            if (dbAccess.getCategory(r).equals(category)){
                 newList.add(r);
             }
         }

@@ -33,12 +33,6 @@ dockerCompose.isRequiredBy(test)
 run{
   standardInput = System.in
 }
-=======
->>>>>>> 41a8016 (added docker to gradle)
-
-apply plugin: 'docker-compose'
-
-dockerCompose.isRequiredBy(run)
 
 application {
   mainModule = 'com.sshgroup.ssh_fridge_contents_tracker'

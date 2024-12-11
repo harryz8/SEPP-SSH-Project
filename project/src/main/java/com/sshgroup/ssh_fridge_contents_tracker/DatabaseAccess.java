@@ -41,7 +41,7 @@ public class DatabaseAccess {
                         .addAnnotatedClass(Recipe_Category.class)
                         .addAnnotatedClass(Category.class)
                         .addAnnotatedClass(Recipe_Ingredients.class)
-                        .setProperty(JAKARTA_JDBC_URL, "jdbc:postgresql://localhost:5437/ssh")
+                        .setProperty(JAKARTA_JDBC_URL, "jdbc:postgresql://localhost:5435/ssh")
                         .setProperty(JAKARTA_JDBC_USER, "group")
                         .setProperty(JAKARTA_JDBC_PASSWORD, "example")
                         .setProperty(SHOW_SQL, "false")
@@ -69,10 +69,11 @@ public class DatabaseAccess {
     public Category getCategory(Recipe recipe){
         Category cat = null;
         try(Session session = sessionFactory.openSession()){
-            String hql = "SELECT rec_cat.category_id FROM com.sshgroup.ssh_fridge_contents_tracker.Recipe_Category rec_cat WHERE recipe_id = :rec";
+            String hql = "SELECT rec_cat.category_id FROM com.sshgroup.ssh_fridge_contents_tracker.Recipe_Category rec_cat JOIN rec_cat.recipe_id as op WHERE op.recipe_id = :rec";
             Query query = session.createQuery(hql);
-            query.setParameter("rec", recipe);
+            query.setParameter("rec", recipe.getId());
             List<Category> result = query.getResultList();
+            System.out.println(result.toString());
             if (!result.isEmpty()){
                 cat = result.get(0);
             }
@@ -176,23 +177,6 @@ public class DatabaseAccess {
     }
 
 
-    public Integer ingredientsGetQuantity(Integer ingredient_id){
-        Integer ingredientHave = null;
-        try(Session session = sessionFactory.openSession()){
-            String hql = "SELECT ing.quantity_available FROM com.sshgroup.ssh_fridge_contents_tracker.Ingredients ing WHERE ingredients_id =:iID";
-            Query query = session.createQuery(hql);
-            query.setParameter("iID", ingredient_id);
-            List<Integer> result = query.list();
 
-            if(!result.isEmpty()){
-                ingredientHave = result.get(0);
-            }
-        } catch (Exception e){
-            System.out.println(e.toString());
-        }
-
-        return ingredientHave;
-
-    }
 
 }
