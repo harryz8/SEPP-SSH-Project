@@ -14,15 +14,11 @@ import java.util.*;
  * A class extending HashMap which adds methods to save to and load from the cache.csv resource.
  */
 public class CacheMap extends HashMap<String, PriceQuantity> {
+
     /**
      * The cache variable used everywhere in the code
      */
     public static CacheMap cache = new CacheMap();
-
-    /**
-     * The name of the cache resource
-     */
-    //final SessionFactory sessionFactory = DatabaseAccess.setup();
 
     /**
      * Constructor, calls the constructor of HashMap
