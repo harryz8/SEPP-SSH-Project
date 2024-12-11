@@ -34,11 +34,7 @@ public class CacheMap extends HashMap<String, PriceQuantity> {
         //get all from hybernate
         Date today = new Date();
         long sevenDays = (today.getTime()) + ((1000*60*60*24)*7);
-        SessionFactory sessionFactory = DatabaseAccess.setup();
-        List<CacheTable> cacheItems;
-        try (Session session = sessionFactory.openSession()) {
-            cacheItems = session.createQuery("FROM CacheTable", CacheTable.class).getResultList();
-        }
+        List<CacheTable> cacheItems = DatabaseAccess.getAllCacheTableRecords();
         for (CacheTable each : cacheItems) {
             if (each.getDate_updated() < sevenDays) {
                 String[] priceQuantityList = each.getPrice_quantity().split("\\|");

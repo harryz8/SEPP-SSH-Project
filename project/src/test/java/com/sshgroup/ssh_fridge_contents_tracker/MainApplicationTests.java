@@ -1,13 +1,33 @@
 package com.sshgroup.ssh_fridge_contents_tracker;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MainApplicationTests {
+
+    private static SessionFactory sessionFactory;
+
+    @BeforeAll
+    static void setup() {
+        sessionFactory = DatabaseAccess.setup();
+    }
+
+//    @AfterAll
+//    static void tearDown() {
+//        if (sessionFactory != null) {
+//            sessionFactory.close();
+//        }
+//    }
+
     @Test
     void testJUnitIsWorking() {
         assertTrue(true);
@@ -79,6 +99,8 @@ public class MainApplicationTests {
         assertEquals(null, element);
         element = WebScraper.getElement(null, null);
         assertEquals(null, element);
+        String broken = "<div class=\"test\">";
+        assertNull(WebScraper.getElement(broken, "div"));
     }
     @Test
     void getParameterTest() {
@@ -115,6 +137,7 @@ public class MainApplicationTests {
         PriceQuantity minOcadoPrice2 = RecipeToolkit.getCheapestIngredient(ingredientName, quantityNeeded);
         Date last = new Date();
         long lastTime = last.getTime();
+//        System.out.println(lastTime-firstTime);
         assertTrue(lastTime<(firstTime+20000));
     }
     @Test
@@ -181,11 +204,51 @@ public class MainApplicationTests {
         assertNull(WebScraper.getElementByIDNoCloseTag(incElement, "q", "test", "class"));
         assertNull(WebScraper.getElementByIDNoCloseTag(incElement, "div", "red", "class"));
         assertNull(WebScraper.getElementByIDNoCloseTag(incElement, "div", "test", "id"));
+        String broken = "<div class=\"test\"";
+        assertNull(WebScraper.getElementByIDNoCloseTag(broken, "div", "test", "hello"));
     }
     @Test
-    void getElementById() {
+    void getElementByIdTest() {
         String incElement = "<div class=\"test\"><p>Hello HTML</p><a href=\"Alink.com\">Some Link</a></div>";
+        assertEquals("<img id=\"dog\">A dog</img>", WebScraper.getElementByID("<div class=\"test\"><p>Hello HTML</p><img id=\"dog\">A dog</img><a href=\"Alink.com\">Some Link</a></div>", "img", "dog", "id"));
         assertEquals("<div class=\"test\"><p>Hello HTML</p><a href=\"Alink.com\">Some Link</a></div>", WebScraper.getElementByID(incElement, "div", "test", "class"));
-        //more
+        assertNull(WebScraper.getElementByID(incElement, "div", "hello", "class"));
+        assertNull(WebScraper.getElementByID(incElement, "car", "test", "class"));
+        assertNull(WebScraper.getElementByID(incElement, "div", "test", "ingredient"));
+        assertNull(WebScraper.getElementByID(incElement, "div", "", "class"));
+        assertNull(WebScraper.getElementByID(incElement, "", "test", "class"));
+        assertNull(WebScraper.getElementByID(incElement, "div", "test", ""));
+        assertNull(WebScraper.getElementByID(incElement, "div", null, "class"));
+        assertNull(WebScraper.getElementByID(incElement, null, "test", "class"));
+        assertNull(WebScraper.getElementByID(incElement, "div", "test", null));
+        String broken = "<div class=\"test\">";
+        assertNull(WebScraper.getElementByID(broken, "div", "test", "hello"));
+    }
+    @Test
+    void loadRecipesTest() {
+        MainApplication.loadRecipes();
+        try (Session session = sessionFactory.openSession()) {
+            List<Recipe> found = RecipeCreator.findRecipe(session, "Buttermilk pancakes");
+            assertEquals(1, found.size());
+            Ingredients found1 = RecipeCreator.findIngredient(session, "Salt");
+            assertEquals("Salt", found1.getIngredients());
+            Category found2 = RecipeCreator.findCategory(session, "Vegetarian");
+            assertEquals("Vegetarian", found2.getCategory_name());
+        }
+    }
+    @Test
+    void getUnorderedListTest() {
+        String source = "<html><ul id=\"red\"><li>Info</li><li>Our Products</li><li>Contact</li></ul></html>";
+        List<String> first = WebScraper.getUnorderedListItems(source);
+        for (String each : first) {
+            System.out.println(each);
+        }
+        assertEquals(3, first.size());
+        assertEquals("<li>Info</li>", first.getFirst());
+        assertEquals("<li>Our Products</li>", first.get(1));
+        assertEquals("<li>Contact</li>", first.getLast());
+        String sourceBroken = "<html><ul id=\"red\"><li>Info</li><li>Our Products</li><li>Contact</ul></html>";
+        assertEquals(2, WebScraper.getUnorderedListItems(sourceBroken).size());
+        //TODO: add broken strings to webScraper tests
     }
 }

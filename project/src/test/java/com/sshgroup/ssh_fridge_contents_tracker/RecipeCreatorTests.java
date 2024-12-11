@@ -17,12 +17,12 @@ public class RecipeCreatorTests {
         sessionFactory = DatabaseAccess.setup();
     }
 
-    @AfterAll
-    static void tearDown() {
-        if (sessionFactory != null) {
-            sessionFactory.close();
-        }
-    }
+//    @AfterAll
+//    static void tearDown() {
+//        if (sessionFactory != null) {
+//            sessionFactory.close();
+//        }
+//    }
 
     @Test
     void testRecipeCreation() {

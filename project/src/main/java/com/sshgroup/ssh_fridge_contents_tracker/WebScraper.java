@@ -80,18 +80,20 @@ public class WebScraper {
             return null;
         }
         source = source.substring(firstUl.getLastPos()+1, lastUl.getFirstPos());
+        String origSource = source;
         // find all the elements of type innerElementTagType in the outer element
         ArrayList<String> retArr = new ArrayList<>();
         int lastInt = 0;
-        while (lastInt < source.length() && !(source.isEmpty())) {
+        while (lastInt < origSource.length() && !(source.isEmpty())) {
             StringLocation first = StringToolkit.getPositions(source, "<"+innerElementTagType);
             StringLocation last = StringToolkit.getPositions(source, "</"+innerElementTagType+">");
             if (first == null || last == null) {
                 break;
             }
-            lastInt = last.getLastPos();
+            lastInt += last.getLastPos();
             retArr.add(source.substring(first.getFirstPos(), last.getLastPos()+1));
             source = source.substring(last.getLastPos()+1);
+            lastInt++;
         }
         return retArr;
     }
