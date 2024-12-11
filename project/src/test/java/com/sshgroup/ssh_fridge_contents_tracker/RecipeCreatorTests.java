@@ -6,7 +6,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.List;
 
 public class RecipeCreatorTests {
@@ -18,12 +17,12 @@ public class RecipeCreatorTests {
         sessionFactory = DatabaseAccess.setup();
     }
 
-    @AfterAll
-    static void tearDown() {
-        if (sessionFactory != null) {
-            sessionFactory.close();
-        }
-    }
+//    @AfterAll
+//    static void tearDown() {
+//        if (sessionFactory != null) {
+//            sessionFactory.close();
+//        }
+//    }
 
     @Test
     void testRecipeCreation() {
@@ -151,6 +150,82 @@ public class RecipeCreatorTests {
             Ingredients pastIngredient = RecipeCreator.addIngredient("Kiwi", 0);
             Ingredients currentIngredient = RecipeCreator.findIngredient(session, "Kiwi");
             assertEquals(pastIngredient.getIngredients_id(), currentIngredient.getIngredients_id());
+        }
+        // check it can't be added twice
+        try (Session session = sessionFactory.openSession()) {
+            Ingredients pastIngredient = RecipeCreator.addIngredient("Kiwi", 0);
+            Ingredients currentIngredient = RecipeCreator.findIngredient(session, "Kiwi");
+            assertEquals(pastIngredient.getIngredients_id(), currentIngredient.getIngredients_id());
+        }
+    }
+    @Test
+    void testAddRecipe() {
+        try (Session session = sessionFactory.openSession()) {
+            Recipe pastRecipe = RecipeCreator.addRecipe("Beans on toast", "Cook beans, toast toast and then place the beans on the toast.", 5);
+            List<Recipe> currentRecipe = RecipeCreator.findRecipe(session, "Beans on toast");
+            boolean any = false;
+            for (Recipe each : currentRecipe) {
+                if (each.equals(pastRecipe)) {
+                    any = true;
+                    break;
+                }
+            }
+            assertTrue(any);
+        }
+    }
+    @Test
+    void testAddLinkBetweenIngredientAndRecipe() {
+        try (Session session = sessionFactory.openSession()) {
+            Recipe pastRecipe = RecipeCreator.addRecipe("Beans on toast", "Cook beans, toast toast and then place the beans on the toast.", 5);
+            Ingredients pastIngredient = RecipeCreator.addIngredient("Beans", 0);
+            Ingredients nextIngredient = RecipeCreator.addIngredient("Toast", 0);
+            Recipe_Ingredients link = RecipeCreator.addLinkBetweenIngredientAndRecipe(pastRecipe, pastIngredient, 400);
+            RecipeCreator.addLinkBetweenIngredientAndRecipe(pastRecipe, nextIngredient, 190);
+            assertTrue(link.recipe_id.getName().equals("Beans on toast"));
+        }
+    }
+    @Test
+    void testAddCategory() {
+        try (Session session = sessionFactory.openSession()) {
+            Category pastCat = RecipeCreator.addCategory("Vegan");
+            Category currentCat = RecipeCreator.findCategory(session, "Vegan");
+            assertTrue(pastCat.equals(currentCat));
+        }
+        // check it can't be added twice
+        try (Session session = sessionFactory.openSession()) {
+            Category pastCat = RecipeCreator.addCategory("Vegan");
+            Category currentCat = RecipeCreator.findCategory(session, "Vegan");
+            assertTrue(pastCat.equals(currentCat));
+        }
+    }
+    @Test
+    void testAddLinkBetweenCategoryAndRecipe() {
+        try (Session session = sessionFactory.openSession()) {
+            Recipe pastRecipe = RecipeCreator.addRecipe("Beans on toast", "Cook beans, toast toast and then place the beans on the toast.", 5);
+            Category pastCat = RecipeCreator.addCategory("Vegan");
+            Recipe_Category link = RecipeCreator.addLinkBetweenCategoryAndRecipe(pastRecipe, pastCat);
+            assertTrue(link.recipe_id.getName().equals("Beans on toast"));
+        }
+    }
+    @Test
+    void testFindRecipe() {
+        try (Session session = sessionFactory.openSession()) {
+            List<Recipe> found = RecipeCreator.findRecipe(session, "qwerty");
+            assertEquals(0, found.size());
+        }
+    }
+    @Test
+    void testFindIngredients() {
+        try (Session session = sessionFactory.openSession()) {
+            Ingredients found = RecipeCreator.findIngredient(session, "qwerty");
+            assertNull(found);
+        }
+    }
+    @Test
+    void testFindCategory() {
+        try (Session session = sessionFactory.openSession()) {
+            Category found = RecipeCreator.findCategory(session, "qwerty");
+            assertNull(found);
         }
     }
 }

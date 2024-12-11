@@ -9,6 +9,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.type.Type;
 
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.*;
 
@@ -61,5 +62,13 @@ public class DatabaseAccess {
             }
         }
         return sessionFactory;
+    }
+
+    public static List<CacheTable> getAllCacheTableRecords() {
+        List<CacheTable> cacheItems;
+        try (Session session = sessionFactory.openSession()) {
+            cacheItems = session.createQuery("FROM CacheTable", CacheTable.class).getResultList();
+        }
+        return cacheItems;
     }
 }

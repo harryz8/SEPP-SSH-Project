@@ -120,13 +120,13 @@ public class RecipeCreator {
      * @param name the name of recipe you are looking to get
      * @return null on error, or the {@link com.sshgroup.ssh_fridge_contents_tracker.Recipe} object that you were looking for
      */
-    public static Recipe findRecipe(Session session, String name) {
+    public static List<Recipe> findRecipe(Session session, String name) {
         if (session == null || name == null || name.isEmpty()) {
             return null;
         }
         return session.createQuery("FROM Recipe WHERE recipe_name = :name", Recipe.class)
                 .setParameter("name", name)
-                .uniqueResult();
+                .getResultList();
     }
 
     /**

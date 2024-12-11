@@ -14,15 +14,11 @@ import java.util.*;
  * A class extending HashMap which adds methods to save to and load from the cache.csv resource.
  */
 public class CacheMap extends HashMap<String, PriceQuantity> {
+
     /**
      * The cache variable used everywhere in the code
      */
     public static CacheMap cache = new CacheMap();
-
-    /**
-     * The name of the cache resource
-     */
-    //final SessionFactory sessionFactory = DatabaseAccess.setup();
 
     /**
      * Constructor, calls the constructor of HashMap
@@ -38,11 +34,7 @@ public class CacheMap extends HashMap<String, PriceQuantity> {
         //get all from hybernate
         Date today = new Date();
         long sevenDays = (today.getTime()) + ((1000*60*60*24)*7);
-        SessionFactory sessionFactory = DatabaseAccess.setup();
-        List<CacheTable> cacheItems;
-        try (Session session = sessionFactory.openSession()) {
-            cacheItems = session.createQuery("FROM CacheTable", CacheTable.class).getResultList();
-        }
+        List<CacheTable> cacheItems = DatabaseAccess.getAllCacheTableRecords();
         for (CacheTable each : cacheItems) {
             if (each.getDate_updated() < sevenDays) {
                 String[] priceQuantityList = each.getPrice_quantity().split("\\|");
