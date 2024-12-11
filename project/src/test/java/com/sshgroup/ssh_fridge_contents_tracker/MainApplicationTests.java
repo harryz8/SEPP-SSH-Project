@@ -8,7 +8,10 @@ import org.junit.jupiter.api.Test;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
+<<<<<<< HEAD
 import java.util.List;
+=======
+>>>>>>> 61ec3d0 (rewrote CacheMap load code)
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -137,7 +140,10 @@ public class MainApplicationTests {
         PriceQuantity minOcadoPrice2 = RecipeToolkit.getCheapestIngredient(ingredientName, quantityNeeded);
         Date last = new Date();
         long lastTime = last.getTime();
+<<<<<<< HEAD
 //        System.out.println(lastTime-firstTime);
+=======
+>>>>>>> 61ec3d0 (rewrote CacheMap load code)
         assertTrue(lastTime<(firstTime+20000));
     }
     @Test
