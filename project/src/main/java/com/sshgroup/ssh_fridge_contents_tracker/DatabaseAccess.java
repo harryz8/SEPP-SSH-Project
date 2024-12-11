@@ -97,20 +97,17 @@ public class DatabaseAccess {
     public Integer updateIngredientQuantity(Integer ingredient_id, Integer newQuantity){
         Integer rowsAffected = 0;
         try(Session session = sessionFactory.openSession()){
-            Transaction trans = session.beginTransaction();
+            session.beginTransaction();
 
-            String hql = "UPDATE com.sshgroup.ssh_fridge_contents_tracker.Ingredients i SET i.quantity_available =:newQuantity WHERE ingredients_id = :iID";
+            String hql = "UPDATE com.sshgroup.ssh_fridge_contents_tracker.Ingredients i SET i.quantity_available =:newQuantity WHERE i.ingredients_id = :iID";
             Query query = session.createQuery(hql);
+            System.out.println(newQuantity);
             query.setParameter("newQuantity", newQuantity);
             query.setParameter("iID", ingredient_id);
 
             rowsAffected = query.executeUpdate();
-            trans.commit();
+            session.getTransaction().commit();
 
-            String hql2 = "SELECT i.quantity_available FROM com.sshgroup.ssh_fridge_contents_tracker.Ingredients i ";
-            Query query2 = session.createQuery(hql2);
-            List<Double> result = query2.getResultList();
-            System.out.println(result.get(0));
             System.out.println("Updated Rows: " + rowsAffected);
         } catch (Exception e){
             System.out.println(e);
@@ -168,6 +165,14 @@ public class DatabaseAccess {
 
         return ingredientHave;
 
+    }
+
+    public static List<CacheTable> getAllCacheTableRecords() {
+        List<CacheTable> cacheItems;
+        try (Session session = sessionFactory.openSession()) {
+            cacheItems = session.createQuery("FROM CacheTable", CacheTable.class).getResultList();
+        }
+        return cacheItems;
     }
 
 
