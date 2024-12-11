@@ -1,5 +1,6 @@
 package com.sshgroup.ssh_fridge_contents_tracker;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -114,6 +115,14 @@ public class RecipeCreatorTests {
         try (Session session = sessionFactory.openSession()) {
             Ingredients currentIngredient = RecipeCreator.findIngredient(session, "testingredient");
             assertNull(currentIngredient, "Ingredient should not exist.");
+        }
+    }
+    @Test
+    void testAddIngredient() {
+        try (Session session = sessionFactory.openSession()) {
+            Ingredients pastIngredient = RecipeCreator.addIngredient("Kiwi", 0);
+            Ingredients currentIngredient = RecipeCreator.findIngredient(session, "Kiwi");
+            assertEquals(pastIngredient.getIngredients_id(), currentIngredient.getIngredients_id());
         }
     }
 }

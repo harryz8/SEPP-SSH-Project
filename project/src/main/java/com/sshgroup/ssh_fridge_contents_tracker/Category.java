@@ -35,4 +35,10 @@ public class Category {
         this.category_name = category_name;
     }
 
+    public boolean equals(Category otherCategory) {
+        if (otherCategory == null) {
+            return false;
+        }
+        return (this.getCategory_id() == otherCategory.getCategory_id());
+    }
 }

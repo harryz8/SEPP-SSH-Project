@@ -26,6 +26,8 @@ public class Recipe {
     private String recipe_name;
     @Column(columnDefinition="TEXT")
     private String recipe_instruction;
+    @Column
+    private int number_servings;
 
 
     public Recipe(){
@@ -34,9 +36,10 @@ public class Recipe {
 
 
 
-    public Recipe(String recipe_name, String recipe_instruction) {
+    public Recipe(String recipe_name, String recipe_instruction, int number_servings) {
         this.recipe_name = recipe_name;
         this.recipe_instruction = recipe_instruction;
+        this.number_servings = number_servings;
     }
 
     public int getId() {
@@ -63,9 +66,18 @@ public class Recipe {
         this.recipe_instruction = recipe_instruction;
     }
 
+    public void setNumber_servings(int number_servings) {
+        this.number_servings = number_servings;
+    }
 
+    public int getNumber_servings() {
+        return number_servings;
+    }
 
-
-
-
+    public boolean equals(Recipe otherRecipe) {
+        if (otherRecipe == null) {
+            return false;
+        }
+        return (this.getId() == otherRecipe.getId());
+    }
 }
