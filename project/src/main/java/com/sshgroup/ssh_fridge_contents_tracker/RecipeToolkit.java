@@ -2,12 +2,18 @@ package com.sshgroup.ssh_fridge_contents_tracker;
 
 import org.hibernate.SessionFactory;
 
-
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.hibernate.cfg.JdbcSettings.*;
+import static org.hibernate.cfg.JdbcSettings.HIGHLIGHT_SQL;
+
+/**
+ * A class of static methods related to filtering a list of {@link com.sshgroup.ssh_fridge_contents_tracker.Recipe}
+ */
 public class RecipeToolkit {
 
     SessionFactory session = DatabaseAccess.setup();
@@ -50,12 +56,13 @@ public class RecipeToolkit {
         return sortedList;
     }
 
-    public static ArrayList<Recipe> filterByCategory(ArrayList<Recipe> recipeList, Category category) {
+/*
+    public static ArrayList<Recipe> filterByCategory(ArrayList<Recipe> recipeList, Categories category) {
         // declare new list
         ArrayList<Recipe> newList = new ArrayList<>();
         // loop through original list and only add to the new list if the category matches
         for(Recipe r : recipeList){
-            if (Recipe.getCategory(r).equals(category.getCategory_id())){
+            if (Recipe.getCategory().equals(category)){
                 newList.add(r);
             }
         }
@@ -139,5 +146,5 @@ public class RecipeToolkit {
             return null;
         }
     }
-
+*/
 }

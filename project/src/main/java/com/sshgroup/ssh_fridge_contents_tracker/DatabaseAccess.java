@@ -1,5 +1,6 @@
 package com.sshgroup.ssh_fridge_contents_tracker;
 
+import org.hibernate.Transaction;
 import org.hibernate.boot.Metadata;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
@@ -64,30 +65,75 @@ public class DatabaseAccess {
         }
         return sessionFactory;
     }
-/*
-    public List<Ingredients> getIngredientList(Integer recipe_id){
-        List<Integer> ingList = null;
+
+    public Category getCategory(Recipe recipe){
+        Category cat = null;
+        try(Session session = sessionFactory.openSession()){
+            String hql = "SELECT rec_cat.category_id FROM com.sshgroup.ssh_fridge_contents_tracker.Recipe_Category rec_cat WHERE recipe_id = :rec";
+            Query query = session.createQuery(hql);
+            query.setParameter("rec", recipe);
+            List<Category> result = query.getResultList();
+            if (!result.isEmpty()){
+                cat = result.get(0);
+            }
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        return cat;
+    }
+
+    public List<Ingredients> getAllIngredients(){
+        List<Ingredients> ingList = null;
+        try(Session session = sessionFactory.openSession()){
+            String hql = "SELECT i FROM com.sshgroup.ssh_fridge_contents_tracker.Ingredients i";
+            Query query = session.createQuery(hql);
+            ingList = query.getResultList();
+        } catch(Exception e){
+            System.out.println(e);
+        }
+        return ingList;
+    }
+
+    public Integer updateIngredientQuantity(Integer ingredient_id, Integer newQuantity){
+        Integer rowsAffected = 0;
+        try(Session session = sessionFactory.openSession()){
+            Transaction trans = session.beginTransaction();
+
+            String hql = "UPDATE com.sshgroup.ssh_fridge_contents_tracker.Ingredients i SET i.quantity_available =:newQuantity WHERE ingredients_id = :iID";
+            Query query = session.createQuery(hql);
+            query.setParameter("newQuantity", newQuantity);
+            query.setParameter("iID", ingredient_id);
+
+            rowsAffected = query.executeUpdate();
+            trans.commit();
+            System.out.println("Updated Rows: " + rowsAffected);
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        return rowsAffected;
+    }
+
+
+    public List<Ingredients> getIngredientListRecipe(Recipe recipe){
+        List<Ingredients> ingList = null;
         try (Session session  = sessionFactory.openSession()){
-            String hql = "SELECT Ingredient "
+            String hql = "SELECT i.ingredients_id FROM com.sshgroup.ssh_fridge_contents_tracker.Recipe_Ingredients i WHERE recipe_id = :rec";
+            Query query = session.createQuery(hql);
+            query.setParameter("rec", recipe);
+            ingList = query.getResultList();
+        }catch(Exception e){
+            System.out.println(e);
         }
-
-    public static List<CacheTable> getAllCacheTableRecords() {
-        List<CacheTable> cacheItems;
-        try (Session session = sessionFactory.openSession()) {
-            cacheItems = session.createQuery("FROM CacheTable", CacheTable.class).getResultList();
-        }
-        return cacheItems;
+        return ingList;
     }
 
-    }
-*/
-    public Integer recipeGetQuantity(Integer ingredient_id, Integer recipe_id){
+    public Integer recipeGetQuantity(Ingredients ingredient, Recipe recipe){
         Integer quantityNeed = null;
         try (Session session = sessionFactory.openSession()){
             String hql = "SELECT rec_ing.quantity_needed FROM com.sshgroup.ssh_fridge_contents_tracker.Recipe_Ingredients rec_ing WHERE recipe_id =:rID AND ingredients_id = :iID";
             Query query = session.createQuery(hql);
-            query.setParameter("rID", recipe_id);
-            query.setParameter("iID", ingredient_id);
+            query.setParameter("rID", ingredient);
+            query.setParameter("iID", recipe);
             List<Integer> result = query.list();
 
             if(!result.isEmpty()){
