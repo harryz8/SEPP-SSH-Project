@@ -149,6 +149,7 @@ public class RecipeCreatorTests {
             assertNull(currentIngredient, "Ingredient should not exist.");
         }
     }
+<<<<<<< HEAD
     @Test
     void testAddIngredient() {
         try (Session session = sessionFactory.openSession()) {
@@ -233,4 +234,9 @@ public class RecipeCreatorTests {
             assertNull(found);
         }
     }
+=======
+
+>>>>>>> 31e9bf3 (Added tests)
 }
+
+

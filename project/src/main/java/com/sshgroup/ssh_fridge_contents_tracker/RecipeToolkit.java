@@ -13,27 +13,20 @@ import java.util.Map;
 public class RecipeToolkit {
 
     SessionFactory session = DatabaseAccess.setup();
+    DatabaseAccess dbAccess = new DatabaseAccess();
 
-    public static ArrayList<Recipe> sortByPriceOfRemainingItems(ArrayList<Recipe> recipeList) {
-        ArrayList<Ingredient> ingList = new ArrayList<>();
+    public ArrayList<Recipe> sortByPriceOfRemainingItems(ArrayList<Recipe> recipeList) {
+        ArrayList<Ingredients> ingList = new ArrayList<>();
         // 2d list for recipes and their costs
         Map<Recipe, Double> costsForRecipes = new HashMap<>();
         // Iterate through the recipe list
-        for (Recipe r : recipeList){
+        for (Recipe r : recipeList) {
             double temp = 0.0;
             Integer recipeID = r.getId();
             // get list of ingredients and loop through
             ingList = r.getIngredientList();
             for (Ingredient i : ingList){
                 // get quantity needed and quantity have. if have < needed then add the cost of that ingredient to temp
-<<<<<<< HEAD
-                int need = DatabaseAccess.get(i.getID());
-                int have = i.getQuantity();
-                if (need <= have){
-                    temp = 0.0;
-                } else{
-                    temp += i.getCost();
-=======
                 int need = dbAccess.recipeGetQuantity(i, r);
                 int have = dbAccess.ingredientsGetQuantity(i.getIngredients_id());
                 if (need <= have) {
@@ -43,7 +36,7 @@ public class RecipeToolkit {
                     double cost = priceQ.getPrice();
                     temp += cost;
                     System.out.println("temp");
->>>>>>> ec78ca0 (Added Camera Simulator, Finished off recipe toolkit and Added methods to DatabaseAccess)
+
                 }
             }
             costsForRecipes.put(r, temp);
@@ -54,18 +47,13 @@ public class RecipeToolkit {
         sortedCosts.sort(Map.Entry.comparingByValue());
         // Then add the sorted recipes to a new list
         ArrayList<Recipe> sortedList = new ArrayList<>();
-        for(Map.Entry<Recipe, Double> entry : sortedCosts){
+        for (Map.Entry<Recipe, Double> entry : sortedCosts) {
             sortedList.add(entry.getKey());
         }
         return sortedList;
     }
 
-<<<<<<< HEAD
-
-    public static ArrayList<Recipe> filterByCategory(ArrayList<Recipe> recipeList, Categories category) {
-=======
     public  ArrayList<Recipe> filterByCategory(ArrayList<Recipe> recipeList, Category category) {
->>>>>>> ec78ca0 (Added Camera Simulator, Finished off recipe toolkit and Added methods to DatabaseAccess)
         // declare new list
         ArrayList<Recipe> newList = new ArrayList<>();
         // loop through original list and only add to the new list if the category matches
@@ -73,17 +61,9 @@ public class RecipeToolkit {
             if (dbAccess.getCategory(r).equals(category.getCategory_id())){
                 newList.add(r);
             }
-            CacheMap.cache.put(ingredientName, String.valueOf(quantityNeeded), minOcado);
-            return minOcado;
         }
-        catch (MalformedURLException e) {
-            System.out.println("Unable to connect to web store. Error: "+e.toString());
-            return null;
-        }
+        return newList;
     }
-<<<<<<< HEAD
-}
-=======
 
 public static PriceQuantity getCheapestIngredient(String ingredientName, double quantityNeeded) {
     PriceQuantity minItem = CacheMap.cache.get(ingredientName, String.valueOf(quantityNeeded));
@@ -159,4 +139,3 @@ public static PriceQuantity getCheapestIngredient(String ingredientName, double 
     }
 }
 }
->>>>>>> ec78ca0 (Added Camera Simulator, Finished off recipe toolkit and Added methods to DatabaseAccess)
