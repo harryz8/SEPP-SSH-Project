@@ -19,12 +19,16 @@ import static org.hibernate.cfg.JdbcSettings.JAKARTA_JDBC_USER;
 import static org.hibernate.cfg.JdbcSettings.SHOW_SQL;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import org.hibernate.Session;
 import java.util.concurrent.locks.ReentrantLock;
 
 //import io.prometheus.metrics.*;
 
 public class MainApplication extends Application {
+    public static ArrayList<Recipe> recipeList = new ArrayList<>();
     @Override
     public void start(Stage stage) throws IOException {
         CacheMap.cache.load();
@@ -99,48 +103,70 @@ public class MainApplication extends Application {
     public static void main(String[] args) throws MalformedURLException {
         loadRecipes();
         CacheMap.cache.load();
-        if ((args.length > 0) && (args[0].toLowerCase().equals("i"))) {
-            launch();
-        }
-        else {
-            System.out.println("Command line mode goes here");
-            Scanner RecipeScanner = new Scanner(System.in);
-            String forScan;
-            System.out.println("Choose whether you want to add a recipe or get a recipe (;  :");
-            System.out.println("Please write add or get");
-            forScan = RecipeScanner.nextLine();
-            if (forScan.toLowerCase().equals("add")){
+        System.out.println("Command line mode goes here");
+        Scanner RecipeScanner = new Scanner(System.in);
+        String forScan;
+        System.out.println("Choose whether you want to add a recipe or get a recipe (;  :");
+        System.out.println("Please write add or get");
+        forScan = RecipeScanner.nextLine();
+        if (forScan.toLowerCase().equals("add")){
 //                System.out.println("Please enter the dish name: ");
 //                String recipe_name = RecipeScanner.nextLine();
 //                System.out.println("Now please enter the recipe instruction and " + "quantity needed");
 //                String recipe_instruction = RecipeScanner.next();
 //                int quantity_needed = RecipeScanner.nextInt();
-                RecipeScanner.close();
-                RecipeCreator.createRecipe();
-            } else if (forScan.toLowerCase().equals("get")) {
-                RecipeScanner.close();
-                Loading loading = new Loading();
-                Thread loadingThread = new Thread(loading);
-                loadingThread.start();
-                //===========Do Stuff Here Whilst User Is Waiting===================
-                try {
-                    Thread.sleep(10000);
-                }
-                catch (InterruptedException e) {
-                    System.out.println("Main thread interrupted: "+ e.toString());
-                }
-                //===========Stop The Loading Symbol================================
-                loadingThread.interrupt();
-                System.out.println("The recipe for the dish is: ");
-            } else {
-                System.out.println("Please enter a valid command (: ");
-                RecipeScanner.close();
+            //RecipeScanner.close();
+            RecipeCreator.createRecipe();
+        } else if (forScan.toLowerCase().equals("get")) {
+            List<Recipe> allRecipes = new ArrayList<>();
+            try (Session session = DatabaseAccess.setup().openSession()) {
+                allRecipes = RecipeCreator.getAllRecipe(session);
             }
-
-            //cleanup
-            DatabaseAccess.setup().close();
-            System.exit(0);
+            if (allRecipes.isEmpty()) {
+                System.out.println("No recipes in database");
+                System.exit(0);
+            }
+            RecipeToolkit rp = new RecipeToolkit();
+            recipeList = rp.sortByPriceOfRemainingItems((ArrayList<Recipe>) allRecipes);
+            // RecipeScanner.close();
+            System.out.println("Do you want to filter by a category? (Y/N)");
+            String categoryChoice = RecipeScanner.nextLine().toLowerCase();
+            if (categoryChoice.equals("y")) {
+                System.out.println("Enter a category: ");
+                String choiceCat = RecipeScanner.nextLine();
+                Category theCat = null;
+                try (Session session = DatabaseAccess.setup().openSession()) {
+                    theCat = RecipeCreator.findCategory(session, choiceCat);
+                }
+                if (theCat == null) {
+                    System.out.println("No such category... continuing");
+                }
+                else {
+                    recipeList = rp.filterByCategory(recipeList, theCat);
+                }
+            }
+            launch();
+//                Loading loading = new Loading();
+//                Thread loadingThread = new Thread(loading);
+//                loadingThread.start();
+//                //===========Do Stuff Here Whilst User Is Waiting===================
+//                try {
+//                    Thread.sleep(10000);
+//                }
+//                catch (InterruptedException e) {
+//                    System.out.println("Main thread interrupted: "+ e.toString());
+//                }
+//                //===========Stop The Loading Symbol================================
+//                loadingThread.interrupt();
+//                System.out.println("The recipe for the dish is: ");
+        } else {
+            System.out.println("Please enter a valid command (: ");
+            RecipeScanner.close();
         }
+
+        //cleanup
+        DatabaseAccess.setup().close();
+        System.exit(0);
     }
 
 
