@@ -31,7 +31,7 @@ public class RecipeToolkit {
             ingList = new ArrayList<>();
             for (Ingredients i : ingList) {
                 // get quantity needed and quantity have. if have < needed then add the cost of that ingredient to temp
-                int need = dbAccess.recipeGetQuantity(i, r);
+                Double need = dbAccess.recipeGetQuantity(i, r);
                 int have = dbAccess.ingredientsGetQuantity(i.getIngredients_id());
                 if (need <= have) {
                     temp += 0.0;
