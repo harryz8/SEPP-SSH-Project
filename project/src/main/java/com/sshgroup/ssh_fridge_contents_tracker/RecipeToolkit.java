@@ -3,6 +3,8 @@ package com.sshgroup.ssh_fridge_contents_tracker;
 import org.hibernate.SessionFactory;
 
 import java.lang.reflect.Array;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -56,17 +58,17 @@ public class RecipeToolkit {
         return sortedList;
     }
 
-/*
-    public static ArrayList<Recipe> filterByCategory(ArrayList<Recipe> recipeList, Categories category) {
+    public  ArrayList<Recipe> filterByCategory(ArrayList<Recipe> recipeList, Category category) {
         // declare new list
         ArrayList<Recipe> newList = new ArrayList<>();
         // loop through original list and only add to the new list if the category matches
         for(Recipe r : recipeList){
-            if (Recipe.getCategory().equals(category)){
+            if (dbAccess.getCategory(r).equals(category.getCategory_id())){
                 newList.add(r);
             }
         }
         return newList;
+    }
     /**
      * A function that takes the name of an ingredient needed and the minimum quantity needed and uses webscraping techniques to find the cheapest item with the required quantity and returns the price of that item
      * @param ingredientName a string of the name of the ingredient required to find the price for
@@ -146,5 +148,4 @@ public class RecipeToolkit {
             return null;
         }
     }
-*/
 }
