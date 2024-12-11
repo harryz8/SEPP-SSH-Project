@@ -8,6 +8,8 @@ I attempted to work out how to distribute the software using docker but docker d
 ### Khaled
 I have deleted couple of cost entities that we no longer would use in that way from Ingredients class and the Recipe_Ingredients class then pushed it. I also set commands for the users in the main class whether the user wants to add a recipe or get a recipe, that will be linked to Tom's code that he wrote to merge the work and that should make the user to be able to use the commands 
 
+### Phoebe
+I have created the Camera Simulator and several database queries to work alongside my RecipeToolkit function. I have also began making all the unit tests for my new functions
 
 ## What we want to achieve this time
 
