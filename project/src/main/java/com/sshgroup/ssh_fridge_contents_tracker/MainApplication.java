@@ -56,6 +56,8 @@ public class MainApplication extends Application {
         RecipeCreator.addLinkBetweenIngredientAndRecipe(pancakeRecipe, egg, 3);
         Ingredients butter = RecipeCreator.addIngredient("Butter", 0);
         RecipeCreator.addLinkBetweenIngredientAndRecipe(pancakeRecipe, butter, 50);
+        Category desert = RecipeCreator.addCategory("Desert");
+        RecipeCreator.addLinkBetweenCategoryAndRecipe(pancakeRecipe, desert);
         Recipe spinachAndCoconutRecipe = RecipeCreator.addRecipe("Spinach and coconut dal with pitta and yoghurt", "Heat the oil in a large saucepan over a low–medium heat. Add the onion, ginger and 3 cloves of garlic, cover with a lid and cook, stirring frequently, for 10 minutes or until softened, but not coloured.\n" +
                 "Add the curry powder and lentils and stir well to make sure the lentils are well coated. Add the stock, bring to a simmer and then cook, stirring regularly, for 15–20 minutes, until the lentils are pale yellow and only retain a little bite. Add the coconut milk and spinach, turn off the heat and stir to combine. Replace the lid and leave the spinach to fully wilt.\n" +
                 "Season with salt and pepper. This recipe makes four portions – eat one portion now and divide the remaining three portions into three sealed containers. Keep two portions in the fridge and put one portion in the freezer (see Recipe Tip 2 for details). Serve the dal with the toasted pitta and yoghurt garnished with red chilli, if using.", 4);
@@ -87,7 +89,8 @@ public class MainApplication extends Application {
         RecipeCreator.addLinkBetweenIngredientAndRecipe(spinachAndCoconutRecipe, salt2, 0.3);
         Ingredients pepper = RecipeCreator.addIngredient("Black pepper", 0);
         RecipeCreator.addLinkBetweenIngredientAndRecipe(spinachAndCoconutRecipe, pepper, 0.3);
-        //TODO: Add the recipes to catagories
+        Category vegetarian  = RecipeCreator.addCategory("Vegetarian");
+        RecipeCreator.addLinkBetweenCategoryAndRecipe(spinachAndCoconutRecipe, vegetarian);
     }
 
     public static void main(String[] args) throws MalformedURLException {
