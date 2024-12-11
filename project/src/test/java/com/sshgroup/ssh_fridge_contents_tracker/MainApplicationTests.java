@@ -244,9 +244,9 @@ public class MainApplicationTests {
             System.out.println(each);
         }
         assertEquals(3, first.size());
-        assertEquals("<li>Info</li>", first.getFirst());
+        assertEquals("<li>Info</li>", first.get(0));
         assertEquals("<li>Our Products</li>", first.get(1));
-        assertEquals("<li>Contact</li>", first.getLast());
+        assertEquals("<li>Contact</li>", first.get(2));
         String sourceBroken = "<html><ul id=\"red\"><li>Info</li><li>Our Products</li><li>Contact</ul></html>";
         assertEquals(2, WebScraper.getUnorderedListItems(sourceBroken).size());
         //TODO: add broken strings to webScraper tests
