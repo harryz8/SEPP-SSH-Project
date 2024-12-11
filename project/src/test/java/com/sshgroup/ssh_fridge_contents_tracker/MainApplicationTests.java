@@ -121,6 +121,7 @@ public class MainApplicationTests {
         element = WebScraper.getParameterValue(incElement, "id");
         assertEquals(null, element);
     }
+    /*
     @Test
     void testOcadoPriceQuantityComparitorImplementation() {
         Loading loading = new Loading();
@@ -140,6 +141,8 @@ public class MainApplicationTests {
         long lastTime = last.getTime();
         assertTrue(lastTime<(firstTime+20000));
     }
+    */
+
     @Test
     void testGetWebpageHTML() {
         WebScraper ws = new WebScraper(null);

@@ -22,6 +22,8 @@ import java.net.MalformedURLException;
 import java.util.Scanner;
 import java.util.concurrent.locks.ReentrantLock;
 
+//import io.prometheus.metrics.*;
+
 public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
@@ -90,6 +92,9 @@ public class MainApplication extends Application {
         Ingredients pepper = RecipeCreator.addIngredient("Black pepper", 0);
         RecipeCreator.addLinkBetweenIngredientAndRecipe(spinachAndCoconutRecipe, pepper, 0.3);
     }
+    private static void initPrometheus(){
+        //JvmMetrics.builder.register();
+    }
 
     public static void main(String[] args) throws MalformedURLException {
         loadRecipes();
@@ -137,4 +142,6 @@ public class MainApplication extends Application {
             System.exit(0);
         }
     }
+
+
 }

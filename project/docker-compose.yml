@@ -8,3 +8,8 @@ services:
       - POSTGRES_USER=group
       - POSTGRES_PASSWORD=example
       - POSTGRES_DB=ssh
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - 9090:9090

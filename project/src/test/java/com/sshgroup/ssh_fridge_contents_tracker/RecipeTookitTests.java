@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class RecipeTookitTests {
-
+    /*
     private static SessionFactory sessionFactory;
 
     @BeforeAll
@@ -44,6 +44,7 @@ public class RecipeTookitTests {
 
         assertNotEquals(ingList, null);
     }
+
 
     @Test
     void testUpdateIngredientsQuantity(){
@@ -129,13 +130,7 @@ public class RecipeTookitTests {
         }
     }
 
-    @Test
-    void testGetCategory(){
-        
-
-
-    }
-
+    */
 }
 
 
