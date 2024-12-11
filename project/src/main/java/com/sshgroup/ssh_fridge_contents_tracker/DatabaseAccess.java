@@ -1,13 +1,11 @@
 package com.sshgroup.ssh_fridge_contents_tracker;
 
-import org.hibernate.Transaction;
 import org.hibernate.boot.Metadata;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.type.Type;
 
@@ -66,89 +64,12 @@ public class DatabaseAccess {
         return sessionFactory;
     }
 
-    public Category getCategory(Recipe recipe){
-        Category cat = null;
-        try(Session session = sessionFactory.openSession()){
-            String hql = "SELECT rec_cat.category_id FROM com.sshgroup.ssh_fridge_contents_tracker.Recipe_Category rec_cat WHERE recipe_id = :rec";
-            Query query = session.createQuery(hql);
-            query.setParameter("rec", recipe);
-            List<Category> result = query.getResultList();
-            if (!result.isEmpty()){
-                cat = result.get(0);
-            }
-        } catch (Exception e){
-            System.out.println(e);
+    public static List<CacheTable> getAllCacheTableRecords() {
+        List<CacheTable> cacheItems;
+        try (Session session = sessionFactory.openSession()) {
+            cacheItems = session.createQuery("FROM CacheTable", CacheTable.class).getResultList();
         }
-        return cat;
-    }
-
-    public List<Ingredients> getAllIngredients(){
-        List<Ingredients> ingList = null;
-        try(Session session = sessionFactory.openSession()){
-            String hql = "SELECT i FROM com.sshgroup.ssh_fridge_contents_tracker.Ingredients i";
-            Query query = session.createQuery(hql);
-            ingList = query.getResultList();
-        } catch(Exception e){
-            System.out.println(e);
-        }
-        return ingList;
-    }
-
-    public Integer updateIngredientQuantity(Integer ingredient_id, Integer newQuantity){
-        Integer rowsAffected = 0;
-        try(Session session = sessionFactory.openSession()){
-            Transaction trans = session.beginTransaction();
-
-            String hql = "UPDATE com.sshgroup.ssh_fridge_contents_tracker.Ingredients i SET i.quantity_available =:newQuantity WHERE ingredients_id = :iID";
-            Query query = session.createQuery(hql);
-            query.setParameter("newQuantity", newQuantity);
-            query.setParameter("iID", ingredient_id);
-
-            rowsAffected = query.executeUpdate();
-            trans.commit();
-
-            String hql2 = "SELECT i.quantity_available FROM com.sshgroup.ssh_fridge_contents_tracker.Ingredients i ";
-            Query query2 = session.createQuery(hql2);
-            List<Double> result = query2.getResultList();
-            System.out.println(result.get(0));
-            System.out.println("Updated Rows: " + rowsAffected);
-        } catch (Exception e){
-            System.out.println(e);
-        }
-        return rowsAffected;
-    }
-
-
-    public List<Ingredients> getIngredientListRecipe(Recipe recipe){
-        List<Ingredients> ingList = null;
-        try (Session session  = sessionFactory.openSession()){
-            String hql = "SELECT i.ingredients_id FROM com.sshgroup.ssh_fridge_contents_tracker.Recipe_Ingredients i WHERE recipe_id = :rec";
-            Query query = session.createQuery(hql);
-            query.setParameter("rec", recipe);
-            ingList = query.getResultList();
-        }catch(Exception e){
-            System.out.println(e);
-        }
-        return ingList;
-    }
-
-    public Double recipeGetQuantity(Ingredients ingredient, Recipe recipe){
-        Double quantityNeed = null;
-        try (Session session = sessionFactory.openSession()){
-            String hql = "SELECT rec_ing.quantity_needed FROM com.sshgroup.ssh_fridge_contents_tracker.Recipe_Ingredients rec_ing WHERE recipe_id =:rID AND ingredients_id = :iID";
-            Query query = session.createQuery(hql);
-            query.setParameter("rID", recipe);
-            query.setParameter("iID", ingredient);
-            List<Double> result = query.list();
-            System.out.println(result.toString());
-
-            if(!result.isEmpty()){
-                quantityNeed = result.get(0);
-            }
-        } catch(Exception e){
-            System.out.println(e.toString());
-        }
-        return quantityNeed;
+        return cacheItems;
     }
 
     public Integer ingredientsGetQuantity(Integer ingredient_id){
@@ -170,12 +91,4 @@ public class DatabaseAccess {
 
     }
 
-
-    public static List<CacheTable> getAllCacheTableRecords() {
-        List<CacheTable> cacheItems;
-        try (Session session = sessionFactory.openSession()) {
-            cacheItems = session.createQuery("FROM CacheTable", CacheTable.class).getResultList();
-        }
-        return cacheItems;
-    }
 }
