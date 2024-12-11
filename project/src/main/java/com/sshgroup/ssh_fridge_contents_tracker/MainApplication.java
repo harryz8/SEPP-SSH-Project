@@ -89,8 +89,6 @@ public class MainApplication extends Application {
         RecipeCreator.addLinkBetweenIngredientAndRecipe(spinachAndCoconutRecipe, salt2, 0.3);
         Ingredients pepper = RecipeCreator.addIngredient("Black pepper", 0);
         RecipeCreator.addLinkBetweenIngredientAndRecipe(spinachAndCoconutRecipe, pepper, 0.3);
-        Category vegetarian  = RecipeCreator.addCategory("Vegetarian");
-        RecipeCreator.addLinkBetweenCategoryAndRecipe(spinachAndCoconutRecipe, vegetarian);
     }
 
     public static void main(String[] args) throws MalformedURLException {
