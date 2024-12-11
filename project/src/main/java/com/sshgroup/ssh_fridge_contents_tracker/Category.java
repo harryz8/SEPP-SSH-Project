@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 @Table(name = "category_table")
 public class Category {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     int category_id;
 
     @Column
@@ -14,8 +15,7 @@ public class Category {
 
     public Category(){
     }
-    public Category(int category_id, String category_name){
-        this.category_id = category_id;
+    public Category(String category_name){
         this.category_name = category_name;
     }
 
@@ -35,4 +35,10 @@ public class Category {
         this.category_name = category_name;
     }
 
+    public boolean equals(Category otherCategory) {
+        if (otherCategory == null) {
+            return false;
+        }
+        return (this.getCategory_id() == otherCategory.getCategory_id());
+    }
 }

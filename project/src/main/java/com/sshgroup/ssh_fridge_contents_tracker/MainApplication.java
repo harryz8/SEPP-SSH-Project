@@ -43,7 +43,7 @@ public class MainApplication extends Application {
         Recipe pancakeRecipe = RecipeCreator.addRecipe("Buttermilk pancakes", "First sieve the flour, baking powder and salt together in a roomy bowl and make a well in the centre. After that, whisk the buttermilk and 3fl oz/75ml cold water together in a jug and gradually whisk this into the bowl, slowly incorporating the flour with each new addition of liquid. Finally, add the eggs a little at a time until you have a smooth batter.\n" +
                 "Now place a large, solid frying pan over a medium heat, add 2 teaspoons of the lard and heat it until the fat shimmers. Then, using a tablespoon of batter per pancake, place 2 or 3 spoonfuls into the pan.\n" +
                 "They will take about 1 minute to turn golden brown, then turn them over using a spatula and fork, being careful not to splash yourself with the hot fat. Give them another 45 seconds on the other side, by which time they should have puffed up like little soufflés, then briefly rest them on some kitchen paper to absorb any excess fat.\n" +
-                "Repeat this with the rest of the batter, adding a little more lard if necessary. They will keep warm in a low oven, but to enjoy them at their best, have everyone seated to eat them as soon as they come out of the pan.");
+                "Repeat this with the rest of the batter, adding a little more lard if necessary. They will keep warm in a low oven, but to enjoy them at their best, have everyone seated to eat them as soon as they come out of the pan.", 6);
         Ingredients buttermilk = RecipeCreator.addIngredient("Buttermilk", 0);
         RecipeCreator.addLinkBetweenIngredientAndRecipe(pancakeRecipe, buttermilk, 0.12);
         Ingredients plainFlour = RecipeCreator.addIngredient("Plain flour", 0);
@@ -56,9 +56,11 @@ public class MainApplication extends Application {
         RecipeCreator.addLinkBetweenIngredientAndRecipe(pancakeRecipe, egg, 3);
         Ingredients butter = RecipeCreator.addIngredient("Butter", 0);
         RecipeCreator.addLinkBetweenIngredientAndRecipe(pancakeRecipe, butter, 50);
+        Category desert = RecipeCreator.addCategory("Desert");
+        RecipeCreator.addLinkBetweenCategoryAndRecipe(pancakeRecipe, desert);
         Recipe spinachAndCoconutRecipe = RecipeCreator.addRecipe("Spinach and coconut dal with pitta and yoghurt", "Heat the oil in a large saucepan over a low–medium heat. Add the onion, ginger and 3 cloves of garlic, cover with a lid and cook, stirring frequently, for 10 minutes or until softened, but not coloured.\n" +
                 "Add the curry powder and lentils and stir well to make sure the lentils are well coated. Add the stock, bring to a simmer and then cook, stirring regularly, for 15–20 minutes, until the lentils are pale yellow and only retain a little bite. Add the coconut milk and spinach, turn off the heat and stir to combine. Replace the lid and leave the spinach to fully wilt.\n" +
-                "Season with salt and pepper. This recipe makes four portions – eat one portion now and divide the remaining three portions into three sealed containers. Keep two portions in the fridge and put one portion in the freezer (see Recipe Tip 2 for details). Serve the dal with the toasted pitta and yoghurt garnished with red chilli, if using.");
+                "Season with salt and pepper. This recipe makes four portions – eat one portion now and divide the remaining three portions into three sealed containers. Keep two portions in the fridge and put one portion in the freezer (see Recipe Tip 2 for details). Serve the dal with the toasted pitta and yoghurt garnished with red chilli, if using.", 4);
         Ingredients oil = RecipeCreator.addIngredient("Oil", 0);
         RecipeCreator.addLinkBetweenIngredientAndRecipe(spinachAndCoconutRecipe, oil, 0.0147868);
         Ingredients onion = RecipeCreator.addIngredient("Onion", 0);
@@ -87,6 +89,8 @@ public class MainApplication extends Application {
         RecipeCreator.addLinkBetweenIngredientAndRecipe(spinachAndCoconutRecipe, salt2, 0.3);
         Ingredients pepper = RecipeCreator.addIngredient("Black pepper", 0);
         RecipeCreator.addLinkBetweenIngredientAndRecipe(spinachAndCoconutRecipe, pepper, 0.3);
+        Category vegetarian  = RecipeCreator.addCategory("Vegetarian");
+        RecipeCreator.addLinkBetweenCategoryAndRecipe(spinachAndCoconutRecipe, vegetarian);
     }
 
     public static void main(String[] args) throws MalformedURLException {

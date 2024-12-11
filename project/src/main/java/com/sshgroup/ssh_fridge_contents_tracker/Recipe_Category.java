@@ -11,6 +11,7 @@ import java.util.Date;
 @Table(name = "recipe_category_table")
 public class Recipe_Category {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     int recipe_category_id;
     @ManyToOne
     Recipe recipe_id;
@@ -21,8 +22,7 @@ public class Recipe_Category {
     public Recipe_Category(){
     }
 
-    public Recipe_Category(int recipe_category_id, Recipe recipe_id, Category category_id){
-        this.recipe_category_id = recipe_category_id;
+    public Recipe_Category(Recipe recipe_id, Category category_id){
         this.recipe_id = recipe_id;
         this.category_id = category_id;
     }

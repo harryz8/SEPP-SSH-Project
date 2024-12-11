@@ -4,6 +4,7 @@ import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import jakarta.persistence.criteria.Root;
 import java.io.*;
@@ -37,16 +38,11 @@ public class CacheMap extends HashMap<String, PriceQuantity> {
         //get all from hybernate
         Date today = new Date();
         long sevenDays = (today.getTime()) + ((1000*60*60*24)*7);
-        Session session = DatabaseAccess.setup().openSession();
-        Transaction tr = session.beginTransaction();
-        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-        CriteriaQuery<CacheTable> cacheItemsQuery = criteriaBuilder.createQuery(CacheTable.class);
-        Root<CacheTable> rootCacheItems = cacheItemsQuery.from(CacheTable.class);
-        CriteriaQuery<CacheTable> allCacheItems = cacheItemsQuery.select(rootCacheItems);
-        TypedQuery<CacheTable> allCacheItemsQuery = session.createQuery(allCacheItems);
-        tr.commit();
-        List<CacheTable> cacheItems = allCacheItemsQuery.getResultList();
-        session.close();
+        SessionFactory sessionFactory = DatabaseAccess.setup();
+        List<CacheTable> cacheItems;
+        try (Session session = sessionFactory.openSession()) {
+            cacheItems = session.createQuery("FROM CacheTable", CacheTable.class).getResultList();
+        }
         for (CacheTable each : cacheItems) {
             if (each.getDate_updated() < sevenDays) {
                 String[] priceQuantityList = each.getPrice_quantity().split("\\|");

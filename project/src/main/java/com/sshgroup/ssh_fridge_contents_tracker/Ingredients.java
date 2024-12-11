@@ -55,5 +55,10 @@ public class Ingredients {
         this.quantity_available = quantity_available;
     }
 
-
+    public boolean equals(Ingredients otherIngredient) {
+        if (otherIngredient == null) {
+            return false;
+        }
+        return (this.getIngredients_id() == otherIngredient.getIngredients_id());
+    }
 }

@@ -64,3 +64,5 @@ We are not going to use containerisation to distribute the program as it doesn't
 ## Observability
 
 ## Orchestration
+
+## Dependabot
