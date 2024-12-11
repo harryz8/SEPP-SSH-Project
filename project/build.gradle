@@ -28,7 +28,6 @@ tasks.withType(JavaCompile) {
 apply plugin: 'docker-compose'
 
 dockerCompose.isRequiredBy(run)
-<<<<<<< HEAD
 dockerCompose.isRequiredBy(test)
 
 run{

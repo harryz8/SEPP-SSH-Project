@@ -106,6 +106,11 @@ public class DatabaseAccess {
 
             rowsAffected = query.executeUpdate();
             trans.commit();
+
+            String hql2 = "SELECT i.quantity_available FROM com.sshgroup.ssh_fridge_contents_tracker.Ingredients i ";
+            Query query2 = session.createQuery(hql2);
+            List<Double> result = query2.getResultList();
+            System.out.println(result.get(0));
             System.out.println("Updated Rows: " + rowsAffected);
         } catch (Exception e){
             System.out.println(e);
@@ -127,14 +132,15 @@ public class DatabaseAccess {
         return ingList;
     }
 
-    public Integer recipeGetQuantity(Ingredients ingredient, Recipe recipe){
-        Integer quantityNeed = null;
+    public Double recipeGetQuantity(Ingredients ingredient, Recipe recipe){
+        Double quantityNeed = null;
         try (Session session = sessionFactory.openSession()){
             String hql = "SELECT rec_ing.quantity_needed FROM com.sshgroup.ssh_fridge_contents_tracker.Recipe_Ingredients rec_ing WHERE recipe_id =:rID AND ingredients_id = :iID";
             Query query = session.createQuery(hql);
-            query.setParameter("rID", ingredient);
-            query.setParameter("iID", recipe);
-            List<Integer> result = query.list();
+            query.setParameter("rID", recipe);
+            query.setParameter("iID", ingredient);
+            List<Double> result = query.list();
+            System.out.println(result.toString());
 
             if(!result.isEmpty()){
                 quantityNeed = result.get(0);
