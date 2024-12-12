@@ -59,17 +59,35 @@ public class RecipeToolkit {
         return sortedList;
     }
 
-    public  ArrayList<Recipe> filterByCategory(ArrayList<Recipe> recipeList, Category category) {
+//    public  ArrayList<Recipe> filterByCategory(ArrayList<Recipe> recipeList, Category category) {
+//        // declare new list
+//        ArrayList<Recipe> newList = new ArrayList<>();
+//        // loop through original list and only add to the new list if the category matches
+//        for(Recipe r : recipeList){
+//            if (dbAccess.getCategory(r).equals(category)){
+//                newList.add(r);
+//            }
+//        }
+//        return newList;
+//    }
+
+    public static ArrayList<Recipe> filterByCategory(ArrayList<Recipe> recipeList, Category category) {
         // declare new list
+        DatabaseAccess dbAccess = new DatabaseAccess();
         ArrayList<Recipe> newList = new ArrayList<>();
         // loop through original list and only add to the new list if the category matches
         for(Recipe r : recipeList){
-            if (dbAccess.getCategory(r).equals(category)){
+            Category cat = dbAccess.getCategory(r);
+            //System.out.println(cat.getCategory_name());
+            int catID = cat.getCategory_id();
+            if (catID == category.getCategory_id()){
                 newList.add(r);
             }
         }
         return newList;
     }
+
+
     /**
      * A function that takes the name of an ingredient needed and the minimum quantity needed and uses webscraping techniques to find the cheapest item with the required quantity and returns the price of that item
      * @param ingredientName a string of the name of the ingredient required to find the price for

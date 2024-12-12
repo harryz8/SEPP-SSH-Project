@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -125,7 +126,29 @@ public class RecipeTookitTests {
 
         }
     }
+    @Test
+    void testCategoryFilter(){
+        try(Session session = sessionFactory.openSession()){
+            DatabaseAccess dbAccess = new DatabaseAccess();
+            session.beginTransaction();
+            Category italy = RecipeCreator.addCategory("Italian");
+            Category mex = RecipeCreator.addCategory("Mexican");
 
+            Recipe taco = RecipeCreator.addRecipe("Tacos", "Make the meat, put it in a shell", 4);
+            Recipe pasta = RecipeCreator.addRecipe("Pasta", "boil the pasta, add the sauce", 4);
+
+            session.getTransaction().commit();
+            RecipeCreator.addLinkBetweenCategoryAndRecipe(taco, mex);
+            RecipeCreator.addLinkBetweenCategoryAndRecipe(pasta, italy);
+
+            ArrayList<Recipe> recList = new ArrayList<>();
+            recList.add(taco);
+            recList.add(pasta);
+            ArrayList<Recipe> resList = RecipeToolkit.filterByCategory(recList, italy);
+            System.out.println(resList.get(0).getName());
+            assertEquals(pasta.getName(), resList.get(0).getName());
+        }
+    }
 
 }
 
