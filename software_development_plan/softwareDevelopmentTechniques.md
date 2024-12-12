@@ -62,7 +62,3 @@ We made a docker file in our 5th of December meeting. We set it in our project f
 We are not going to use containerisation to distribute the program as it doesn't work very well with JavaFX.
 
 ## Observability
-
-## Orchestration
-
-## Dependabot
