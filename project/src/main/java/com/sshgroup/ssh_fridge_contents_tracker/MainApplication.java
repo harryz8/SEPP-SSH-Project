@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import org.hibernate.Session;
 import java.util.concurrent.locks.ReentrantLock;
@@ -28,7 +29,7 @@ import java.util.concurrent.locks.ReentrantLock;
 //import io.prometheus.metrics.*;
 
 public class MainApplication extends Application {
-    public static ArrayList<Recipe> recipeList = new ArrayList<>();
+    public static List<Map.Entry<Recipe, Double>> recipeList = new ArrayList<>();
     @Override
     public void start(Stage stage) throws IOException {
         CacheMap.cache.load();
@@ -43,11 +44,13 @@ public class MainApplication extends Application {
     public void stop() throws Exception {
         DatabaseAccess.setup().close();
         super.stop();
+        String[] args = new String[1];
+        main(args);
     }
 
     public static void loadRecipes() {
         try (Session session = DatabaseAccess.setup().openSession()) {
-            System.out.println(RecipeCreator.findRecipe(session, "Buttermilk pancakes"));
+            //System.out.println(RecipeCreator.findRecipe(session, "Buttermilk pancakes"));
             if (RecipeCreator.findRecipe(session, "Buttermilk pancakes").isEmpty()) {
                 Recipe pancakeRecipe = RecipeCreator.addRecipe("Buttermilk pancakes", "First sieve the flour, baking powder and salt together in a roomy bowl and make a well in the centre. After that, whisk the buttermilk and 3fl oz/75ml cold water together in a jug and gradually whisk this into the bowl, slowly incorporating the flour with each new addition of liquid. Finally, add the eggs a little at a time until you have a smooth batter.\n" +
                         "Now place a large, solid frying pan over a medium heat, add 2 teaspoons of the lard and heat it until the fat shimmers. Then, using a tablespoon of batter per pancake, place 2 or 3 spoonfuls into the pan.\n" +
@@ -112,7 +115,6 @@ public class MainApplication extends Application {
     public static void main(String[] args) throws MalformedURLException {
         loadRecipes();
         CacheMap.cache.load();
-        System.out.println("Command line mode goes here");
         Scanner RecipeScanner = new Scanner(System.in);
         String forScan;
         System.out.println("Choose whether you want to add a recipe or get a recipe (;  :");
@@ -126,6 +128,7 @@ public class MainApplication extends Application {
 //                int quantity_needed = RecipeScanner.nextInt();
             //RecipeScanner.close();
             RecipeCreator.createRecipe();
+            main(args);
         } else if (forScan.toLowerCase().equals("get")) {
             List<Recipe> allRecipes = new ArrayList<>();
             try (Session session = DatabaseAccess.setup().openSession()) {
@@ -133,16 +136,14 @@ public class MainApplication extends Application {
             }
             if (allRecipes.isEmpty()) {
                 System.out.println("No recipes in database");
-                System.exit(0);
+                main(args);
             }
             RecipeToolkit rp = new RecipeToolkit();
             CameraSimulator cs = new CameraSimulator();
             cs.randomQuantities();
-            Loading loading = new Loading();
-            Thread loadingThread = new Thread(loading);
-            loadingThread.start();
-            recipeList = rp.sortByPriceOfRemainingItems((ArrayList<Recipe>) allRecipes);
-            loadingThread.interrupt();
+            try (Session session = DatabaseAccess.setup().openSession()) {
+                cs.recipePassedInMoreExpensiveSimulator(RecipeCreator.findRecipe(session, "Buttermilk pancakes").get(0));
+            }
             System.out.println("Do you want to filter by a category? (Y/N)");
             String categoryChoice = RecipeScanner.nextLine().toLowerCase();
             if (categoryChoice.equals("y")) {
@@ -156,9 +157,16 @@ public class MainApplication extends Application {
                     System.out.println("No such category... continuing");
                 }
                 else {
-                    recipeList = RecipeToolkit.filterByCategory(recipeList, theCat);
+                    allRecipes = RecipeToolkit.filterByCategory((ArrayList<Recipe>) allRecipes, theCat);
                 }
             }
+
+            Loading loading = new Loading();
+            Thread loadingThread = new Thread(loading);
+            loadingThread.start();
+            recipeList = rp.sortByPriceOfRemainingItems((ArrayList<Recipe>) allRecipes);
+            loadingThread.interrupt();
+            System.out.println();
             launch();
         } else {
             System.out.println("Please enter a valid command (: ");
