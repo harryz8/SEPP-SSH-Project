@@ -136,8 +136,13 @@ public class MainApplication extends Application {
                 System.exit(0);
             }
             RecipeToolkit rp = new RecipeToolkit();
+            CameraSimulator cs = new CameraSimulator();
+            cs.randomQuantities();
+            Loading loading = new Loading();
+            Thread loadingThread = new Thread(loading);
+            loadingThread.start();
             recipeList = rp.sortByPriceOfRemainingItems((ArrayList<Recipe>) allRecipes);
-            // RecipeScanner.close();
+            loadingThread.interrupt();
             System.out.println("Do you want to filter by a category? (Y/N)");
             String categoryChoice = RecipeScanner.nextLine().toLowerCase();
             if (categoryChoice.equals("y")) {
@@ -155,19 +160,6 @@ public class MainApplication extends Application {
                 }
             }
             launch();
-//                Loading loading = new Loading();
-//                Thread loadingThread = new Thread(loading);
-//                loadingThread.start();
-//                //===========Do Stuff Here Whilst User Is Waiting===================
-//                try {
-//                    Thread.sleep(10000);
-//                }
-//                catch (InterruptedException e) {
-//                    System.out.println("Main thread interrupted: "+ e.toString());
-//                }
-//                //===========Stop The Loading Symbol================================
-//                loadingThread.interrupt();
-//                System.out.println("The recipe for the dish is: ");
         } else {
             System.out.println("Please enter a valid command (: ");
             RecipeScanner.close();

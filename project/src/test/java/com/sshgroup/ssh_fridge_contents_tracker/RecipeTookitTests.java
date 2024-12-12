@@ -41,7 +41,7 @@ public class RecipeTookitTests {
         session.getTransaction().commit();
 
         List<Ingredients> ingList = dbAccess.getAllIngredients();
-        System.out.println("Fetched List: " + ingList.toString());
+        // System.out.println("Fetched List: " + ingList.toString());
 
         assertNotEquals(ingList, null);
     }
