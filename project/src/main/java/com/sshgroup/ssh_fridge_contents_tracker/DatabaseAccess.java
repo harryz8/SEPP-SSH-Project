@@ -66,14 +66,30 @@ public class DatabaseAccess {
         return sessionFactory;
     }
 
+//    public Category getCategory(Recipe recipe){
+//        Category cat = null;
+//        try(Session session = sessionFactory.openSession()){
+//            String hql = "SELECT rec_cat.category_id FROM com.sshgroup.ssh_fridge_contents_tracker.Recipe_Category rec_cat JOIN rec_cat.recipe_id as op WHERE op.recipe_id = :rec";
+//            Query query = session.createQuery(hql);
+//            query.setParameter("rec", recipe.getId());
+//            List<Category> result = query.getResultList();
+//            System.out.println(result.toString());
+//            if (!result.isEmpty()){
+//                cat = result.get(0);
+//            }
+//        } catch (Exception e){
+//            System.out.println(e);
+//        }
+//        return cat;
+//    }
+
     public Category getCategory(Recipe recipe){
         Category cat = null;
         try(Session session = sessionFactory.openSession()){
-            String hql = "SELECT rec_cat.category_id FROM com.sshgroup.ssh_fridge_contents_tracker.Recipe_Category rec_cat JOIN rec_cat.recipe_id as op WHERE op.recipe_id = :rec";
+            String hql = "SELECT rec_cat.category_id FROM com.sshgroup.ssh_fridge_contents_tracker.Recipe_Category rec_cat WHERE recipe_id = :rec";
             Query query = session.createQuery(hql);
-            query.setParameter("rec", recipe.getId());
+            query.setParameter("rec", recipe);
             List<Category> result = query.getResultList();
-            System.out.println(result.toString());
             if (!result.isEmpty()){
                 cat = result.get(0);
             }

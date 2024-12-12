@@ -18,8 +18,8 @@ public class MainController {
         sp.prefWidthProperty().bind(window.widthProperty()); //makes width of scrollpane same as window
         window.add(sp, 0, 2);
         innerGrid.prefWidthProperty().bind(sp.widthProperty()); //makes width of innerGrid same as scrollpane
-        innerGrid.prefHeight(1200);
-        System.out.println("Recipes no.: "+String.valueOf(recipeList.size()));
+        innerGrid.minHeight(1200);
+        //System.out.println("Recipes no.: "+String.valueOf(recipeList.size()));
         for (int i = 0; i < recipeList.size(); i+=RECIPEFRAMESIZE) {
             Label item = new Label();
             item.setPadding(new Insets(10, 0, 10, 0));
