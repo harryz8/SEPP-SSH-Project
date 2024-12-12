@@ -69,10 +69,7 @@ public class RecipeCreator {
                     if (ingredient == null) {
                         ingredient = new Ingredients();
                         ingredient.setIngredients(ingredientName);
-                        ingredient.setQuantity(quantityNeeded);
                         session.persist(ingredient);
-                    } else {
-                        ingredient.setQuantity(ingredient.getQuantity() + quantityNeeded);
                     }
 
                     Recipe_Ingredients recipeIngredients = new Recipe_Ingredients();
