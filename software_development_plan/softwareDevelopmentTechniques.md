@@ -41,7 +41,7 @@ feedback is collected. If required, tweaks to the program will be made.
 
 ## Build Tools
 
-We are going to use Gradle as our build tool.
+We are using Gradle as our build tool.
 
 ## Dependencies
 
@@ -52,7 +52,7 @@ We are going to use Gradle as our build tool.
 
 ## Continuous Integration
 
-We will use a GitHub workflow to automate continuous integration.
+We have used GitHub workflows to integrate this. When a pull request is made, the program is built on a system running the latest version of Ubuntu, hosted by GitHub. The pull request should not be merged unless the build is successful on Java 17, 21 and 23 and all tests pass. This is clearly shown in the pull request when somebody goes to approve it. 
 
 ## Containerisation
 
