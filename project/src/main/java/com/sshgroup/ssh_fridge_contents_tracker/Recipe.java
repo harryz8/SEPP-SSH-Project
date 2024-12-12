@@ -34,8 +34,6 @@ public class Recipe {
 
     }
 
-
-
     public Recipe(String recipe_name, String recipe_instruction, int number_servings) {
         this.recipe_name = recipe_name;
         this.recipe_instruction = recipe_instruction;

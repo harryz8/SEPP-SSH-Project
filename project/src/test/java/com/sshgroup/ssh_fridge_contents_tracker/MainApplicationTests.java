@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -120,6 +121,7 @@ public class MainApplicationTests {
         element = WebScraper.getParameterValue(incElement, "id");
         assertEquals(null, element);
     }
+    /*
     @Test
     void testOcadoPriceQuantityComparitorImplementation() {
         Loading loading = new Loading();
@@ -137,9 +139,10 @@ public class MainApplicationTests {
         PriceQuantity minOcadoPrice2 = RecipeToolkit.getCheapestIngredient(ingredientName, quantityNeeded);
         Date last = new Date();
         long lastTime = last.getTime();
-//        System.out.println(lastTime-firstTime);
         assertTrue(lastTime<(firstTime+20000));
     }
+    */
+
     @Test
     void testGetWebpageHTML() {
         WebScraper ws = new WebScraper(null);

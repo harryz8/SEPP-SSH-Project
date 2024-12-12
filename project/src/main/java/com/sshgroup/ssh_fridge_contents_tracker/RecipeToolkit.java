@@ -1,11 +1,14 @@
 package com.sshgroup.ssh_fridge_contents_tracker;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
+import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.hibernate.cfg.JdbcSettings.*;
 import static org.hibernate.cfg.JdbcSettings.HIGHLIGHT_SQL;
@@ -15,14 +18,75 @@ import static org.hibernate.cfg.JdbcSettings.HIGHLIGHT_SQL;
  */
 public class RecipeToolkit {
 
-    public static ArrayList<Recipe> sortByPriceOfRemainingItems(ArrayList<Recipe> recipeList) {
-        // TODO: implement here
-        return recipeList;
+    SessionFactory session = DatabaseAccess.setup();
+    DatabaseAccess dbAccess = new DatabaseAccess();
+
+    public ArrayList<Recipe> sortByPriceOfRemainingItems(ArrayList<Recipe> recipeList) {
+        ArrayList<Ingredients> ingList = new ArrayList<>();
+        // 2d list for recipes and their costs
+        Map<Recipe, Double> costsForRecipes = new HashMap<>();
+        // Iterate through the recipe list
+        for (Recipe r : recipeList) {
+            double temp = 0.0;
+            Integer recipeID = r.getId();
+            // get list of ingredients and loop through
+            ingList = new ArrayList<>();
+            for (Ingredients i : ingList) {
+                // get quantity needed and quantity have. if have < needed then add the cost of that ingredient to temp
+                Double need = dbAccess.recipeGetQuantity(i, r);
+                int have = dbAccess.ingredientsGetQuantity(i.getIngredients_id());
+                if (need <= have) {
+                    temp += 0.0;
+                } else {
+                    PriceQuantity priceQ = getCheapestIngredient(i.getIngredients(), need);
+                    double cost = priceQ.getPrice();
+                    temp += cost;
+                    System.out.println("temp");
+                }
+            }
+            costsForRecipes.put(r, temp);
+        }
+        // now that the costs for each recipe are assigned we sort the list based on these costs
+        // makes a list of mapped entries with Recipe as the key and the cost as the value. Sort by the value
+        List<Map.Entry<Recipe, Double>> sortedCosts = new ArrayList<>(costsForRecipes.entrySet());
+        sortedCosts.sort(Map.Entry.comparingByValue());
+        // Then add the sorted recipes to a new list
+        ArrayList<Recipe> sortedList = new ArrayList<>();
+        for (Map.Entry<Recipe, Double> entry : sortedCosts) {
+            System.out.println(entry.getValue());
+            sortedList.add(entry.getKey());
+        }
+        return sortedList;
     }
+
+//    public  ArrayList<Recipe> filterByCategory(ArrayList<Recipe> recipeList, Category category) {
+//        // declare new list
+//        ArrayList<Recipe> newList = new ArrayList<>();
+//        // loop through original list and only add to the new list if the category matches
+//        for(Recipe r : recipeList){
+//            if (dbAccess.getCategory(r).equals(category)){
+//                newList.add(r);
+//            }
+//        }
+//        return newList;
+//    }
+
     public static ArrayList<Recipe> filterByCategory(ArrayList<Recipe> recipeList, Category category) {
-        // TODO: implement here
-        return recipeList;
+        // declare new list
+        DatabaseAccess dbAccess = new DatabaseAccess();
+        ArrayList<Recipe> newList = new ArrayList<>();
+        // loop through original list and only add to the new list if the category matches
+        for(Recipe r : recipeList){
+            Category cat = dbAccess.getCategory(r);
+            //System.out.println(cat.getCategory_name());
+            int catID = cat.getCategory_id();
+            if (catID == category.getCategory_id()){
+                newList.add(r);
+            }
+        }
+        return newList;
     }
+
 
     /**
      * A function that takes the name of an ingredient needed and the minimum quantity needed and uses webscraping techniques to find the cheapest item with the required quantity and returns the price of that item
