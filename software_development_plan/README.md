@@ -48,14 +48,19 @@ We will use GitHub's [kanban](https://github.com/users/harryz8/projects/1) to ke
 
 ## Build Tools
 
-We are using Gradle as our build tool.
+We are using Gradle as our build tool, and to handle dependencies.
 
 ## Dependencies
 
-- JavaFX
+- JavaFX (is a plugin)
 - JUnit
 - org.postgresql:postgresql:42.6.0
 - org.hibernate.orm:hibernate-core:6.6.3.Final
+- jakarta
+- jboss-logging
+- fasterxml.classmate
+- bytebuddy
+- avast.docker-compose (is a plugin)
 
 ## Continuous Integration
 
