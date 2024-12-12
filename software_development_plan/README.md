@@ -14,15 +14,13 @@ We will use the Kanban found [here](https://github.com/users/harryz8/projects/1/
 
 [Here](./softwareDevelopmentTechniques.md#Unit-Tests).
 
-## Integration and System Testing
-
-### Integration Testing
+## Integration Testing
 
 [Here](./softwareDevelopmentTechniques.md#Integration-Tests).
 
-### System Testing
-
 ## Deployment
+
+We will set the latest version of the code as a release in the gitHub repo, and keep big version changes tagged with a version number. This is a prototype so wont be properly deployed; this just makes sure that if someone wanted to download the latest proper version from the GitHub website, they can easily find it.
 
 ## How we linked to existing systems
 
