@@ -1,11 +1,13 @@
 package com.sshgroup.ssh_fridge_contents_tracker;
 
+import org.hibernate.Transaction;
 import org.hibernate.boot.Metadata;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.type.Type;
 
@@ -39,7 +41,7 @@ public class DatabaseAccess {
                         .addAnnotatedClass(Recipe_Category.class)
                         .addAnnotatedClass(Category.class)
                         .addAnnotatedClass(Recipe_Ingredients.class)
-                        .setProperty(JAKARTA_JDBC_URL, "jdbc:postgresql://localhost:5437/ssh")
+                        .setProperty(JAKARTA_JDBC_URL, "jdbc:postgresql://localhost:5435/ssh")
                         .setProperty(JAKARTA_JDBC_USER, "group")
                         .setProperty(JAKARTA_JDBC_PASSWORD, "example")
                         .setProperty(SHOW_SQL, "false")
@@ -64,6 +66,121 @@ public class DatabaseAccess {
         return sessionFactory;
     }
 
+//    public Category getCategory(Recipe recipe){
+//        Category cat = null;
+//        try(Session session = sessionFactory.openSession()){
+//            String hql = "SELECT rec_cat.category_id FROM com.sshgroup.ssh_fridge_contents_tracker.Recipe_Category rec_cat JOIN rec_cat.recipe_id as op WHERE op.recipe_id = :rec";
+//            Query query = session.createQuery(hql);
+//            query.setParameter("rec", recipe.getId());
+//            List<Category> result = query.getResultList();
+//            System.out.println(result.toString());
+//            if (!result.isEmpty()){
+//                cat = result.get(0);
+//            }
+//        } catch (Exception e){
+//            System.out.println(e);
+//        }
+//        return cat;
+//    }
+
+    public Category getCategory(Recipe recipe){
+        Category cat = null;
+        try(Session session = sessionFactory.openSession()){
+            String hql = "SELECT rec_cat.category_id FROM com.sshgroup.ssh_fridge_contents_tracker.Recipe_Category rec_cat WHERE recipe_id = :rec";
+            Query query = session.createQuery(hql);
+            query.setParameter("rec", recipe);
+            List<Category> result = query.getResultList();
+            if (!result.isEmpty()){
+                cat = result.get(0);
+            }
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        return cat;
+    }
+
+    public List<Ingredients> getAllIngredients(){
+        List<Ingredients> ingList = null;
+        try(Session session = sessionFactory.openSession()){
+            String hql = "SELECT i FROM com.sshgroup.ssh_fridge_contents_tracker.Ingredients i";
+            Query query = session.createQuery(hql);
+            ingList = query.getResultList();
+        } catch(Exception e){
+            System.out.println(e);
+        }
+        return ingList;
+    }
+
+    public Integer updateIngredientQuantity(Integer ingredient_id, Integer newQuantity){
+        Integer rowsAffected = 0;
+        try(Session session = sessionFactory.openSession()){
+            session.beginTransaction();
+
+            String hql = "UPDATE com.sshgroup.ssh_fridge_contents_tracker.Ingredients i SET i.quantity_available =:newQuantity WHERE i.ingredients_id = :iID";
+            Query query = session.createQuery(hql);
+            query.setParameter("newQuantity", newQuantity);
+            query.setParameter("iID", ingredient_id);
+
+            rowsAffected = query.executeUpdate();
+            session.getTransaction().commit();
+
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        return rowsAffected;
+    }
+
+
+    public List<Ingredients> getIngredientListRecipe(Recipe recipe){
+        List<Ingredients> ingList = null;
+        try (Session session  = sessionFactory.openSession()){
+            String hql = "SELECT i.ingredients_id FROM com.sshgroup.ssh_fridge_contents_tracker.Recipe_Ingredients i WHERE recipe_id = :rec";
+            Query query = session.createQuery(hql);
+            query.setParameter("rec", recipe);
+            ingList = query.getResultList();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return ingList;
+    }
+
+    public Double recipeGetQuantity(Ingredients ingredient, Recipe recipe){
+        Double quantityNeed = null;
+        try (Session session = sessionFactory.openSession()){
+            String hql = "SELECT rec_ing.quantity_needed FROM com.sshgroup.ssh_fridge_contents_tracker.Recipe_Ingredients rec_ing WHERE recipe_id =:rID AND ingredients_id = :iID";
+            Query query = session.createQuery(hql);
+            query.setParameter("rID", recipe);
+            query.setParameter("iID", ingredient);
+            List<Double> result = query.list();
+
+            if(!result.isEmpty()){
+                quantityNeed = result.get(0);
+            }
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+        return quantityNeed;
+    }
+
+    public Double ingredientsGetQuantity(Integer ingredient_id){
+        Double ingredientHave = null;
+        try(Session session = sessionFactory.openSession()){
+            String hql = "SELECT ing.quantity_available FROM com.sshgroup.ssh_fridge_contents_tracker.Ingredients ing WHERE ingredients_id =:iID";
+            Query query = session.createQuery(hql);
+            query.setParameter("iID", ingredient_id);
+            List<Double> result = query.list();
+
+            if(!result.isEmpty()){
+                ingredientHave = result.get(0);
+            }
+        } catch (Exception e){
+            System.out.println(e.toString());
+        }
+
+        return ingredientHave;
+
+    }
+
     public static List<CacheTable> getAllCacheTableRecords() {
         List<CacheTable> cacheItems;
         try (Session session = sessionFactory.openSession()) {
@@ -71,4 +188,8 @@ public class DatabaseAccess {
         }
         return cacheItems;
     }
+
+
+
+
 }
