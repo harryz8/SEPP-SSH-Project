@@ -8,4 +8,5 @@ We could write our own database or use the module __hibernate__.
 
 ## Entity Relationship Diagram
 
-![diagram showing the relations between the tables](./readme_images/ERD.png)
+
+![image](https://github.com/user-attachments/assets/89e7a86c-ff68-4e5f-9950-36639d8ba586)
