@@ -22,7 +22,7 @@ We plan to:
 
 ### Integration Tests
 
-We are going to test the program as a whole using Python scripts that simulate different user inputs and verify outputs. We will also run unit tests each time two separately developed parts are integrated.
+We tried writing jUnit tests that pass user input, but we found that it can only be read once by a scanner whereas our program scans for input multiple times. Hence we couldn't really do integration testing.
 
 ### Formal Verification
 
@@ -71,4 +71,4 @@ We have used GitHub workflows to integrate this. When a pull request is made, th
 We are using containerisation allowing the postgres database to be bundled with the rest of the program when distributing and is useful when using Hibernate.
 We made a docker file in our 5th of December meeting. We set it in our project file and modify it so that it suits our work after we'd faced some barriers in installation and setting things which are required up as we noticed some errors.
 
-We are not going to use containerisation to distribute the program as it doesn't work very well with JavaFX.
+We are not going to use containerisation to distribute the program as it doesn't work very well with JavaFX. When we tried it out we found it cannot display to the screen.
