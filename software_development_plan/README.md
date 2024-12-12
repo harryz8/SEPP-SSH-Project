@@ -68,7 +68,7 @@ We have used GitHub workflows to integrate this. When a pull request is made, th
 
 ## Containerisation
 
-We are using containerisation allowing the postgres database to be bundled with the rest of the program when distributing and is useful when using Hybernate.
+We are using containerisation allowing the postgres database to be bundled with the rest of the program when distributing and is useful when using Hibernate.
 We made a docker file in our 5th of December meeting. We set it in our project file and modify it so that it suits our work after we'd faced some barriers in installation and setting things which are required up as we noticed some errors.
 
 We are not going to use containerisation to distribute the program as it doesn't work very well with JavaFX.
