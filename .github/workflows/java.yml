@@ -6,6 +6,8 @@ on:
       - main
   pull_request:
   workflow_dispatch:
+  release:
+    types: [created]
 
 jobs:
   build:
@@ -56,3 +58,21 @@ jobs:
         with:
           path: project/build/distributions/SSH_Fridge_Contents_Tracker-1.0.zip
           name: SSH-Fridge-Contents-Tracker-java-${{ matrix.java-version }}
+
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: "oracle"
+      - name: Setup gradle
+        uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582
+      - name: Publish the package
+        run: ./gradlew publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
