@@ -6,7 +6,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.event.spi.InitializeCollectionEventListener;
@@ -35,6 +37,7 @@ public class MainApplication extends Application {
         CacheMap.cache.load();
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 360, 640);
+        scene.getStylesheets().add(this.getClass().getResource("styles.css").toExternalForm());
         stage.setTitle("Recipes");
         stage.setScene(scene);
         stage.show();
@@ -44,8 +47,6 @@ public class MainApplication extends Application {
     public void stop() throws Exception {
         DatabaseAccess.setup().close();
         super.stop();
-        String[] args = new String[1];
-        main(args);
     }
 
     public static void loadRecipes() {
@@ -128,7 +129,6 @@ public class MainApplication extends Application {
 //                int quantity_needed = RecipeScanner.nextInt();
             //RecipeScanner.close();
             RecipeCreator.createRecipe();
-            main(args);
         } else if (forScan.toLowerCase().equals("get")) {
             List<Recipe> allRecipes = new ArrayList<>();
             try (Session session = DatabaseAccess.setup().openSession()) {
@@ -136,7 +136,7 @@ public class MainApplication extends Application {
             }
             if (allRecipes.isEmpty()) {
                 System.out.println("No recipes in database");
-                main(args);
+                System.exit(0);
             }
             RecipeToolkit rp = new RecipeToolkit();
             CameraSimulator cs = new CameraSimulator();

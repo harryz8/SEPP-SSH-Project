@@ -8,3 +8,5 @@ services:
       - POSTGRES_USER=group
       - POSTGRES_PASSWORD=example
       - POSTGRES_DB=ssh
+    volumes:
+      - ./db-data:/var/lib/postgresql/data

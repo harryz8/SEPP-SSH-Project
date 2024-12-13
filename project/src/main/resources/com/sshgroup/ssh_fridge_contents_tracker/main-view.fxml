@@ -10,6 +10,6 @@
 <GridPane fx:id="window" alignment="CENTER" hgap="20.0" vgap="20.0" xmlns:fx="http://javafx.com/fxml"
           fx:controller="com.sshgroup.ssh_fridge_contents_tracker.MainController">
 
-  <Label fx:id="title" text="Recipe Suggestions" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
-  <Label wrapText="true" text="Here are some recipes you could make using many of the ingredients in your fridge:" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2"/>
+  <Label fx:id="title" id="title" text="Recipe Suggestions" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+  <Label wrapText="true" text="Here are some recipes you could make using many of the ingredients in your fridge:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 </GridPane>

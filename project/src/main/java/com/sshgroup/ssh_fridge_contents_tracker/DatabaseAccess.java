@@ -144,6 +144,19 @@ public class DatabaseAccess {
         return ingList;
     }
 
+    public List<Recipe_Ingredients> getIngredient_RecipeListRecipe(Recipe recipe){
+        List<Recipe_Ingredients> ingList = null;
+        try (Session session  = sessionFactory.openSession()){
+            String hql = "SELECT i FROM com.sshgroup.ssh_fridge_contents_tracker.Recipe_Ingredients i WHERE recipe_id = :rec";
+            Query query = session.createQuery(hql);
+            query.setParameter("rec", recipe);
+            ingList = query.getResultList();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return ingList;
+    }
+
     public Double recipeGetQuantity(Ingredients ingredient, Recipe recipe){
         Double quantityNeed = null;
         try (Session session = sessionFactory.openSession()){
